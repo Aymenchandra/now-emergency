@@ -1,5 +1,29 @@
 import nodemailer from "nodemailer";
-import { emailVerification } from "./templates/emailVerification";
+import { emailVerification } from "@/lib/templates/emailVerification";
+
+
+export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
+  const { SMTP_EMAIL, SMTP_PASSWORD, HOST } = process.env;
+
+  const transport = nodemailer.createTransport({
+    host: HOST,
+    auth: {
+      user: SMTP_EMAIL,
+      pass: SMTP_PASSWORD,
+    },
+  });
+
+  try {
+    await transport.sendMail({
+      from: SMTP_EMAIL,
+      to: email,
+      subject: 'Two Factor Authentication Code',
+      html: `<p>Your Two Factor Authentication Code: ${token}</p>`,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const sendPasswordResetEmail = async (
   email: string,
@@ -38,9 +62,7 @@ const sendEmail = async (email: string, subject: string, title: string, link: st
     await transport.sendMail({
       from: SMTP_EMAIL,
       to: email,
-      // subject: "confirm your email",
       subject: subject,
-      // html: emailVerification(email,link),
       html: emailVerification(email,title, link),
     });
   } catch (error) {

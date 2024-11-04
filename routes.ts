@@ -1,7 +1,10 @@
 // Public routes accessiblity these routes do not require authentication
 export const publicRoutes = [
     "/",
-    "/auth/new-verification"
+    "/auth/new-verification",
+    "/layout/server",
+    "/server",
+    "/client"
 ]
 
 // Auth routes accessiblity these routes will redirect in users to default routes /dashboard
