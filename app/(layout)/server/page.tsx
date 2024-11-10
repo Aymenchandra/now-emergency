@@ -1,4 +1,4 @@
-import { Profile } from "@/app/(protected)/_components/profile"
+import { Settings } from "@/components/layout/settings"
 import { CurrentUser } from "@/lib/auth"
 
 const serverPage = async () => {
@@ -6,7 +6,7 @@ const serverPage = async () => {
   return (
     <div>
       {/* {JSON.stringify(user)} */}
-      <Profile label="server component" user={user}/>
+      <Settings label="server component" user={user}/>
     </div>
   )
 }

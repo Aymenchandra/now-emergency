@@ -126,6 +126,7 @@ export const LoginForm = () => {
                                                     disabled={isPending}
                                                 />
                                             </FormControl>
+                                            <FormMessage />
                                             <Button
                                                 size="sm"
                                                 variant="link"
@@ -136,7 +137,6 @@ export const LoginForm = () => {
                                                     Forget password?
                                                 </Link>
                                             </Button>
-                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />

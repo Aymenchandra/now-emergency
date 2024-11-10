@@ -6,7 +6,7 @@ interface profileProps {
     label: string;
 }
 
-export const Profile = ({
+export const Settings = ({
     user,
     label
 }: profileProps) => {

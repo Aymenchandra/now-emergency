@@ -2,21 +2,9 @@
 
 import * as React from "react"
 import {
-  ArrowDown,
-  ArrowUp,
-  Bell,
-  Copy,
-  CornerUpLeft,
-  CornerUpRight,
-  FileText,
-  GalleryVerticalEnd,
-  LineChart,
-  Link,
-  MoreHorizontal,
+  ScreenShareOff,
   Settings2,
   Star,
-  Trash,
-  Trash2,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -34,85 +22,55 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useCurrentUser } from "@/hooks/use-current-user"
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
+import Image from "next/image"
+import { logout } from "@/actions/logout"
+import { useRouter } from "next/navigation"
 
 const data = [
   [
     {
-      label: "Customize Page",
+      label: "Profile",
       icon: Settings2,
-    },
-    {
-      label: "Turn into wiki",
-      icon: FileText,
+      url: '/profile'
     },
   ],
   [
     {
-      label: "Copy Link",
-      icon: Link,
-    },
-    {
-      label: "Duplicate",
-      icon: Copy,
-    },
-    {
-      label: "Move to",
-      icon: CornerUpRight,
-    },
-    {
-      label: "Move to Trash",
-      icon: Trash2,
-    },
-  ],
-  [
-    {
-      label: "Undo",
-      icon: CornerUpLeft,
-    },
-    {
-      label: "View analytics",
-      icon: LineChart,
-    },
-    {
-      label: "Version History",
-      icon: GalleryVerticalEnd,
-    },
-    {
-      label: "Show delete pages",
-      icon: Trash,
-    },
-    {
-      label: "Notifications",
-      icon: Bell,
-    },
-  ],
-  [
-    {
-      label: "Import",
-      icon: ArrowUp,
-    },
-    {
-      label: "Export",
-      icon: ArrowDown,
+      label: "Disconnect",
+      icon: ScreenShareOff,
+      url: '/auth/login'
     },
   ],
 ]
 
 export function NavActions() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const router = useRouter()
+  const user = useCurrentUser()
 
+  const avatarAction = async (url: string) => {
+    if (url == '/auth/login') {
+      await logout()
+      return
+    }
+    router.push(url)
+    setIsOpen(false)
+  }
   React.useEffect(() => {
-    setIsOpen(true)
+    setIsOpen(false)
   }, [])
 
   return (
     <div className="flex items-center gap-2 text-sm">
       <div className="hidden font-medium text-muted-foreground md:inline-block">
-        Edit Oct 08
+        {/* {user?.email} */}
       </div>
       <Button variant="ghost" size="icon" className="h-7 w-7">
         <Star />
       </Button>
+
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -120,7 +78,19 @@ export function NavActions() {
             size="icon"
             className="h-7 w-7 data-[state=open]:bg-accent"
           >
-            <MoreHorizontal />
+            {/* <Avatar>
+              <AvatarImage src={user?.image || ""} />
+              <AvatarFallback><Image src="/default-avatar.png" width={50} height={50} alt="avatar not found"/></AvatarFallback>
+            </Avatar> */}
+
+            {/* <div className="flex items-center gap-4"> */}
+            <img className="w-10 h-10 rounded-full" src="/default-avatar.png" alt="avatar not found" />
+            {/* <div className="font-medium dark:text-white">
+                <div>Jese Leos</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+              </div>
+            </div> */}
+
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -129,13 +99,20 @@ export function NavActions() {
         >
           <Sidebar collapsible="none" className="bg-transparent">
             <SidebarContent>
+              <div className="flex items-center gap-4 p-4">
+                <img className="w-10 h-10 rounded-full" src="/default-avatar.png" alt="avatar not found" />
+                <div className="font-medium dark:text-white">
+                  <div>{user?.name}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{user?.role.toLowerCase()}</div>
+                </div>
+              </div>
               {data.map((group, index) => (
                 <SidebarGroup key={index} className="border-b last:border-none">
                   <SidebarGroupContent className="gap-0">
                     <SidebarMenu>
                       {group.map((item, index) => (
                         <SidebarMenuItem key={index}>
-                          <SidebarMenuButton>
+                          <SidebarMenuButton onClick={() => avatarAction(item.url)}>
                             <item.icon /> <span>{item.label}</span>
                           </SidebarMenuButton>
                         </SidebarMenuItem>
@@ -148,6 +125,7 @@ export function NavActions() {
           </Sidebar>
         </PopoverContent>
       </Popover>
+
     </div>
   )
 }

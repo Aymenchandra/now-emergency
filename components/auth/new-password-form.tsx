@@ -91,6 +91,7 @@ export const NewPasswordForm = () => {
                         type="submit"
                         className="w-full"
                         disabled={isPending}
+                        
                     >
                         Reset Password
                     </Button>

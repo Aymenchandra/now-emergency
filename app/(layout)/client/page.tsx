@@ -1,5 +1,5 @@
 "use client"
-import { Profile } from "@/app/(protected)/_components/profile"
+import { Settings } from "@/components/layout/settings"
 import { useCurrentUser } from "@/hooks/use-current-user"
 
 const clientPage = () => {
@@ -8,7 +8,7 @@ const clientPage = () => {
   return (
     <div>
       {/* {JSON.stringify(user)} */}
-      <Profile label="client component" user={user}/>
+      <Settings label="client component" user={user}/>
     </div>
   )
 }
