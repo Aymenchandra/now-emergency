@@ -2,11 +2,9 @@
 
 import * as React from "react"
 import {
-  Home,
-  Inbox,
-  Search,
   Sparkles,
   User,
+  Users,
 } from "lucide-react"
 
 import { NavMain } from "@/components/layout/shared/nav-main"
@@ -29,6 +27,11 @@ const data = {
       title: "Server",
       url: "/server",
       icon: Sparkles,
+    },
+    {
+      title: "Users",
+      url: "/users",
+      icon: Users,
     },
     {
       title: "Profile",

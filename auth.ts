@@ -79,7 +79,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             token.email = existingUser.email
             token.role = existingUser.role
             token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled
-
+            token.picture = existingUser.image
             return token
         }
     },

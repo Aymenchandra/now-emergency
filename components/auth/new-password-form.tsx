@@ -19,7 +19,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { NewPasswordSchema } from "@/schemas"
-import { newPasswordReset } from "@/actions/new-password"
+import { newPasswordReset } from "@/actions/auth/new-password"
 
 export const NewPasswordForm = () => {
     const [error,setError] = useState<string | undefined>()

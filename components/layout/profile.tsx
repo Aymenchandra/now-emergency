@@ -1,4 +1,4 @@
-
+"use client"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -24,11 +24,12 @@ import { FormSuccess } from "@/components/form-success"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { userRole } from "@prisma/client"
 import { Switch } from "@/components/ui/switch"
+import { ImageForm } from "@/components/layout/image-form"
 
 
 export const Profile = () => {
 
-    const user = useCurrentUser()
+  const user = useCurrentUser()
 
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
@@ -63,60 +64,58 @@ export const Profile = () => {
     })
   }
 
-    return (
-        <>
-        <CardHeader>
-          <p className="text-2xl font-semibold text-center">
-            Profile
-          </p>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="space-y-2">
-                <FormField control={form.control} name="name" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input {...field} placeholder="Name" disabled={isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}>
-                </FormField>
-                {user?.isOAuth === false && (
-                  <>
-                    <FormField control={form.control} name="email" render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="Email@example.com" disabled={isPending} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}>
-                    </FormField>
-                    <FormField control={form.control} name="password" render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Password</FormLabel>
-                        <FormControl>
-                          <Input type="password" {...field} placeholder="*****" disabled={isPending} autoComplete="on" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}>
-                    </FormField>
-                    <FormField control={form.control} name="newPassword" render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>New Password</FormLabel>
-                        <FormControl>
-                          <Input type="password" {...field} placeholder="*****" disabled={isPending} autoComplete="on" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}></FormField>
-                  </>
-                )}
+  return (
+    <>
+      <CardHeader>
+        <ImageForm/>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form className="space-y-4 mt-4" onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="space-y-2">
+              <FormField control={form.control} name="name" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Name" disabled={isPending} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}>
+              </FormField>
+              {user?.isOAuth === false && (
+                <>
+                  <FormField control={form.control} name="email" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder="Email@example.com" disabled={isPending} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}>
+                  </FormField>
+                  <FormField control={form.control} name="password" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input type="password" {...field} placeholder="*****" disabled={isPending} autoComplete="on" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}>
+                  </FormField>
+                  <FormField control={form.control} name="newPassword" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>New Password</FormLabel>
+                      <FormControl>
+                        <Input type="password" {...field} placeholder="*****" disabled={isPending} autoComplete="on" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}></FormField>
+                </>
+              )}
               <FormField control={form.control} name="role" render={({ field }) => (
                 <FormItem>
                   <FormLabel>Role</FormLabel>
@@ -126,7 +125,7 @@ export const Profile = () => {
                         <SelectValue placeholder="Select a role"></SelectValue>
                       </SelectTrigger>
                     </FormControl>
-  
+
                     <SelectContent>
                       <SelectItem value={userRole.ADMIN}>
                         Admin
@@ -141,20 +140,20 @@ export const Profile = () => {
               )}>
               </FormField>
               {user?.isOAuth === false && (
-              <FormField control={form.control} name="isTwoFactorEnabled" render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                  <div className="space-y-0 5">
-                    <FormLabel>Two Factor Authentication</FormLabel>
-                    <FormDescription>
-                      Enable two factor authentication for your account
-                    </FormDescription>
-                  </div>
-                  <FormControl>
-                    <Switch disabled={isPending} checked={field.value} onCheckedChange={field.onChange} />
-                  </FormControl>
-                </FormItem>
-              )}></FormField>
-            )}
+                <FormField control={form.control} name="isTwoFactorEnabled" render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <div className="space-y-0 5">
+                      <FormLabel>Two Factor Authentication</FormLabel>
+                      <FormDescription>
+                        Enable two factor authentication for your account
+                      </FormDescription>
+                    </div>
+                    <FormControl>
+                      <Switch disabled={isPending} checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                  </FormItem>
+                )}></FormField>
+              )}
             </div>
             <FormSuccess message={success} />
             <FormError message={error} />
@@ -162,6 +161,6 @@ export const Profile = () => {
           </form>
         </Form>
       </CardContent >
-      </>
-    )
+    </>
+  )
 }

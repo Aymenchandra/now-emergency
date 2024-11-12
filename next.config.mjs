@@ -4,10 +4,11 @@ const nextConfig = {
         remotePatterns :[
             {
                 protocol : 'https',
-                hostname : 'demo.tailadmin.com'
+                hostname : 'res.cloudinary.com'
             }
         ]
-    }
+    },
+
 };
 
 export default nextConfig;

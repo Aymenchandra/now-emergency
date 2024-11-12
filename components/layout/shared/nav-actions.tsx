@@ -25,7 +25,7 @@ import {
 import { useCurrentUser } from "@/hooks/use-current-user"
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import Image from "next/image"
-import { logout } from "@/actions/logout"
+import { logout } from "@/actions/auth/logout"
 import { useRouter } from "next/navigation"
 
 const data = [
@@ -76,21 +76,9 @@ export function NavActions() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-7 w-7 data-[state=open]:bg-accent"
+            className="h-10 w-10 rounded-full"
           >
-            {/* <Avatar>
-              <AvatarImage src={user?.image || ""} />
-              <AvatarFallback><Image src="/default-avatar.png" width={50} height={50} alt="avatar not found"/></AvatarFallback>
-            </Avatar> */}
-
-            {/* <div className="flex items-center gap-4"> */}
-            <img className="w-10 h-10 rounded-full" src="/default-avatar.png" alt="avatar not found" />
-            {/* <div className="font-medium dark:text-white">
-                <div>Jese Leos</div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
-              </div>
-            </div> */}
-
+            <img className="w-10 h-10 rounded-full" src={user?.image || "/default-avatar.png"} alt="avatar not found" />
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -100,10 +88,10 @@ export function NavActions() {
           <Sidebar collapsible="none" className="bg-transparent">
             <SidebarContent>
               <div className="flex items-center gap-4 p-4">
-                <img className="w-10 h-10 rounded-full" src="/default-avatar.png" alt="avatar not found" />
+                <Image className="w-10 h-10 rounded-full" src={user?.image || "/default-avatar.png"} width={200} height={200} alt="avatar not found" />
                 <div className="font-medium dark:text-white">
                   <div>{user?.name}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">{user?.role.toLowerCase()}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{user?.role.toLowerCase()}</div>
                 </div>
               </div>
               {data.map((group, index) => (

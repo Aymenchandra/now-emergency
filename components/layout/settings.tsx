@@ -14,7 +14,7 @@ export const Settings = ({
         <div>
             <div className="relative z-30 mx-auto mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
                 <div className="relative drop-shadow-2">
-                    <img className="h-auto w-[50%] mx-auto sm:w-[100%]" src="https://demo.tailadmin.com/src/images/user/user-06.png" alt="profile" />
+                    <img className="h-auto w-[50%] mx-auto sm:w-[100%]" src="/default-avatar.png" alt="profile" />
                     <label htmlFor="profile" className="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2">
                         <Camera />
                         <input type="file" name="profile" id="profile" className="sr-only" />
