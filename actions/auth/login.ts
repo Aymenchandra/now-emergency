@@ -82,7 +82,7 @@ export const login = async (payload: z.infer<typeof LoginSchema>) => {
         await signIn("credentials", {
             email,
             password,
-            redirectTo: '/settings',
+            redirectTo: DEFAULT_LOGIN_REDIRECT,
         })
     } catch (error) {
         if (error instanceof AuthError) {

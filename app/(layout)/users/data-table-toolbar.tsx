@@ -11,6 +11,8 @@ import { DataTableFacetedFilter } from "@/components/data-table-components/data-
 import { DataTableViewOptions } from "@/components/data-table-components/data-table-view-options";
 import { CirclePlus, TrashIcon } from "lucide-react";
 import { CalendarDatePicker } from "@/components/calendar-date-picker";
+import { ResponsiveDialog } from "@/components/responsive-dialog";
+import { AddUserForm } from "@/components/forms/add-form";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -19,6 +21,8 @@ interface DataTableToolbarProps<TData> {
 export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
+  const [isAddOpen, setIsAddOpen] = useState(false);
+
   const isFiltered = table.getState().columnFilters.length > 0;
 
   const [dateRange, setDateRange] = useState<{ from: Date; to: Date }>({
@@ -50,13 +54,6 @@ export function DataTableToolbar<TData>({
             options={role}
           />
         )}
-        {/* {table.getColumn("type") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("type")}
-            title="Type"
-            options={incomeType}
-          />
-        )} */}
         {isFiltered && (
           <Button
             variant="ghost"
@@ -83,7 +80,21 @@ export function DataTableToolbar<TData>({
           </Button>
         ) : null}
         <DataTableViewOptions table={table} />
-        <Button size="sm"> <CirclePlus/> Add</Button>
+
+        <Button
+          size="sm"
+          onClick={() => {
+            setIsAddOpen(true);
+          }}>
+          <CirclePlus /> Add
+        </Button>
+        <ResponsiveDialog
+          isOpen={isAddOpen}
+          setIsOpen={setIsAddOpen}
+          title="Add User"
+        >
+          <AddUserForm setIsOpen={setIsAddOpen} />
+        </ResponsiveDialog>
       </div>
     </div>
   );

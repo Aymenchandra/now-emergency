@@ -15,7 +15,6 @@ async function getData() {
 
 export default async function DemoPage() {
   const data = await getData();
-  console.log("data", data);
 
   return (
     <div className="h-full flex-1 flex-col space-y-2 p-8 md:flex">
