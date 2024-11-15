@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Users } from "@/schemas/data-table-schema";
+import { Users } from "@/schemas/data-table-user-schema";
 import { DataTableColumnHeader } from "@/components/data-table-components/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -78,7 +78,7 @@ export const columns: ColumnDef<Users>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Role" className="sr-only" /> // sr-only is required to hide column title
     ),
-    cell: ({ row }) => {
+    cell: () => {
       return (
         <div className="sr-only"></div> // sr-only is required to hide column value
       );
@@ -92,7 +92,7 @@ export const columns: ColumnDef<Users>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Image" className="sr-only" /> // sr-only is required to hide column title
     ),
-    cell: ({ row }) => {
+    cell: () => {
       return (
         <div className="sr-only"></div> // sr-only is required to hide column value
       );
@@ -100,6 +100,7 @@ export const columns: ColumnDef<Users>[] = [
     enableHiding: false,
     enableSorting: false
   },
+
   {
     accessorKey: "emailVerified",
     header: ({ column }) => (

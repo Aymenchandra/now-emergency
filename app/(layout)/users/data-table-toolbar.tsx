@@ -13,15 +13,21 @@ import { CirclePlus, TrashIcon } from "lucide-react";
 import { CalendarDatePicker } from "@/components/calendar-date-picker";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 import { AddUserForm } from "@/components/forms/add-form";
+import { MultiDeleteUserForm } from "@/components/forms/multi-delete-form";
+
+interface RowData<T> {
+  id: string;
+}
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
 }
 
-export function DataTableToolbar<TData>({
+export function DataTableToolbar<TData extends RowData<string>>({
   table,
 }: DataTableToolbarProps<TData>) {
   const [isAddOpen, setIsAddOpen] = useState(false);
+  const [isMultiDeleteOpen, setIsMultiDeleteOpen] = useState(false);
 
   const isFiltered = table.getState().columnFilters.length > 0;
 
@@ -74,12 +80,23 @@ export function DataTableToolbar<TData>({
 
       <div className="flex items-center gap-2">
         {table.getFilteredSelectedRowModel().rows.length > 0 ? (
-          <Button variant="outline" size="sm">
-            <TrashIcon className="mr-2 size-4" aria-hidden="true" />
-            Delete ({table.getFilteredSelectedRowModel().rows.length})
-          </Button>
+          <>
+            <Button variant="outline" size="sm" onClick={() => {setIsMultiDeleteOpen(true);}}>
+              <TrashIcon className="mr-2 size-4" aria-hidden="true" />
+              Delete ({table.getFilteredSelectedRowModel().rows.length})
+            </Button>
+            <ResponsiveDialog
+              isOpen={isMultiDeleteOpen}
+              setIsOpen={setIsMultiDeleteOpen}
+              title="Delete All Users"
+              description={`Are you sure you want to delete these selected Users (${table.getFilteredSelectedRowModel().rows.length})`}
+            >
+              <MultiDeleteUserForm idList={Object.values(table.getSelectedRowModel().rowsById).map(item => item.original.id)} setIsOpen={setIsMultiDeleteOpen} />
+            </ResponsiveDialog>
+          </>
         ) : null}
         <DataTableViewOptions table={table} />
+
 
         <Button
           size="sm"

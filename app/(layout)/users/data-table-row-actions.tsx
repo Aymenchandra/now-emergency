@@ -13,9 +13,8 @@ import { useState } from "react";
 import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
-import DeleteForm from "@/components/forms/delete-form";
 import { EditUserForm } from "@/components/forms/edit-form";
-import { useRouter } from "next/navigation";
+import { DeleteUserForm } from "@/components/forms/delete-form";
 
 interface RowData<T> {
   id: string;
@@ -36,25 +35,25 @@ export function DataTableRowActions<TData extends RowData<string>>({
   // }
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const id = row.original.id as string;
-  const router = useRouter()
 
   return (
     <>
       <ResponsiveDialog
         isOpen={isEditOpen}
         setIsOpen={setIsEditOpen}
-        title="Edit Person"
+        title="Edit User"
+        description="Are you sure you want to update this user?"
+
       >
-        <EditUserForm id={id} />
+        <EditUserForm user={row.original} setIsOpen={setIsEditOpen} />
       </ResponsiveDialog>
       <ResponsiveDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
-        title="Delete Person"
-        description="Are you sure you want to delete this person?"
+        title="Delete User"
+        description="Are you sure you want to delete this user?"
       >
-        <DeleteForm cardId={id} setIsOpen={setIsDeleteOpen} />
+        <DeleteUserForm idUser={row.original.id} setIsOpen={setIsDeleteOpen} />
       </ResponsiveDialog>
 
       <DropdownMenu>
@@ -68,7 +67,7 @@ export function DataTableRowActions<TData extends RowData<string>>({
           <DropdownMenuItem className="group flex w-full items-center justify-between  text-left p-0 text-sm font-base text-neutral-500 ">
             <button
               onClick={() => {
-                router.push(`/profile/${id}`);
+                setIsEditOpen(true);
               }}
               className="w-full justify-start flex rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
             >

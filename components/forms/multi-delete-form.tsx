@@ -10,27 +10,28 @@ import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { deleteUserSchema } from "@/schemas/data-table-user-schema"
+import { multideleteUserSchema } from "@/schemas/data-table-user-schema"
 import { deleteUser } from "@/actions/user/deleteUser"
+import { deleteMultiUser } from "@/actions/user/deleteMultiUser"
 
-export const DeleteUserForm = ({ idUser, setIsOpen }: { idUser: string, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+export const MultiDeleteUserForm = ({ idList, setIsOpen }: { idList: any, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const router = useRouter()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
 
-  const form = useForm<z.infer<typeof deleteUserSchema>>({
-    resolver: zodResolver(deleteUserSchema),
+  const form = useForm<z.infer<typeof multideleteUserSchema>>({
+    resolver: zodResolver(multideleteUserSchema),
     defaultValues: {
-      id: idUser
+      idList: idList
     }
   })
 
-  const onSubmit = (payload: z.infer<typeof deleteUserSchema>) => {
+  const onSubmit = (payload: z.infer<typeof multideleteUserSchema>) => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      deleteUser(payload)
+      deleteMultiUser(payload)
         .then((data) => {
           if (data.error) {
             setError(data.error)
@@ -76,7 +77,7 @@ export const DeleteUserForm = ({ idUser, setIsOpen }: { idUser: string, setIsOpe
                   deleting...
                 </>
               ) : (
-                'Delete'
+                'Delete All'
               )}
             </>
           </Button>

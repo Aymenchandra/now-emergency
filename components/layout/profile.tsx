@@ -27,17 +27,14 @@ import { Switch } from "@/components/ui/switch"
 import { ImageForm } from "@/components/layout/image-form"
 
 
-export const Profile = ({ editUser } : {editUser ?: any})  => {
+export const Profile = ()  => {
 
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const { update } = useSession();
   const [isPending, startTransition] = useTransition()
 
-  if(editUser === null){
-    return  <FormError message="User Not Found" />
-  }
-  const user = editUser || useCurrentUser();
+  const user = useCurrentUser();
 
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
@@ -88,7 +85,7 @@ export const Profile = ({ editUser } : {editUser ?: any})  => {
                 </FormItem>
               )}>
               </FormField>
-              {user?.password === null && (
+              {user?.isOAuth === false && (
                 <>
                   <FormField control={form.control} name="email" render={({ field }) => (
                     <FormItem>

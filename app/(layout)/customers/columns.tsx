@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Expense } from "../../../schemas/data-table-schema";
+import { Expense } from "../../../schemas/data-table-user-schema";
 import { DataTableColumnHeader } from "../../../components/data-table-components/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { TrendingUp, TrendingDown } from "lucide-react";

@@ -4,16 +4,7 @@ import { db } from "@/lib/db";
 
 
 async function getData() {
-  const data = db.user.findMany({
-    select:{
-      id:true,
-      name:true,
-      email:true,
-      emailVerified:true,
-      role:true,
-      image:true,
-    }
-  })
+  const data = db.user.findMany()
   return data;
 }
 
