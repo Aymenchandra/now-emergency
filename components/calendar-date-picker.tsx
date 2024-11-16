@@ -31,7 +31,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
-import { Calendar } from "./ui/calendar";
+import { Calendar } from "@/components/ui/calendar";
 
 const months = [
   "January",

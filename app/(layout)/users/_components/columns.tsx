@@ -1,14 +1,14 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Users } from "@/schemas/data-table-user-schema";
 import { DataTableColumnHeader } from "@/components/data-table-components/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { User } from "@/components/layout/features/users";
 
-export const columns: ColumnDef<Users>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -107,7 +107,16 @@ export const columns: ColumnDef<Users>[] = [
       <DataTableColumnHeader column={column} title="EmailVerified" />
     ),
     cell: ({ row }) => {
-      const date = new Date(row.getValue("emailVerified"));
+      const emailVerified = row.getValue("emailVerified")
+      if (emailVerified === null) {
+        return (
+          <div className="flex w-[100px] items-center">
+            <span className="capitalize">N/A</span> 
+          </div>
+        );
+      }
+
+      const date = new Date(emailVerified as string);
       const formattedDate = date.toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",

@@ -147,22 +147,34 @@ export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boo
         )}></FormField>
         <FormError message={error} />
         <FormSuccess message={success} />
-        <Button
-          type="submit"
-          disabled={isPending}
-          className="w-full sm:w-auto"
-        >
-          <>
-            {isPending ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Saving...
-              </>
-            ) : (
-              'Save'
-            )}
-          </>
-        </Button>
+        <div className="w-full flex justify-center sm:space-x-6">
+          <Button
+            size="lg"
+            variant="outline"
+            disabled={isPending}
+            className="w-full hidden sm:block"
+            type="button"
+            onClick={() => setIsOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            disabled={isPending}
+            className="w-full"
+          >
+            <>
+              {isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Adding...
+                </>
+              ) : (
+                'Add'
+              )}
+            </>
+          </Button>
+        </div>
       </form>
     </Form>
   );

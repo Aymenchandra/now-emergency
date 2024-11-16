@@ -1,6 +1,3 @@
-import { Header } from "@/components/auth/header";
-import { Backbutton } from "@/components/auth/back-button";
-import { Card,CardFooter,CardHeader } from "@/components/ui/card";
 import { CardWrapper } from "@/components/auth/card-wrapper"
 import { FormError } from "@/components/form-error"
 

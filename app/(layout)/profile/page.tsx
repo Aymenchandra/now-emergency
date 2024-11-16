@@ -1,6 +1,6 @@
 "use client"
 
-import { Profile } from "@/components/layout/profile"
+import { Profile } from "@/components/layout/features/profile"
 
 
 const profilePage = () => {

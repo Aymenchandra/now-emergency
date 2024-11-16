@@ -1,6 +1,5 @@
 "use client";
 import { Row } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,10 +12,11 @@ import { useState } from "react";
 import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
-import { EditUserForm } from "@/components/forms/edit-form";
-import { DeleteUserForm } from "@/components/forms/delete-form";
+import { EditUserForm } from "@/components/layout/users-crud-forms/edit-user-form";
+import { DeleteUserForm } from "@/components/layout/users-crud-forms/delete-user-form";
+import { User } from "@/components/layout/features/users";
 
-interface RowData<T> {
+interface RowData<T> extends User{
   id: string;
 }
 
@@ -24,15 +24,9 @@ interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
-export function DataTableRowActions<TData extends RowData<string>>({
+export function DataTableRowActions<TData extends RowData<string>,User>({
   row
 }: DataTableRowActionsProps<TData>) {
-  // const task = taskSchema.parse(row.original);
-
-  // const getRow = (row: Row<TData>) => {
-  //   const original = row.original as RowData;  
-  //   console.log(original.id);  
-  // }
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 

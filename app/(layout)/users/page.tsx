@@ -1,5 +1,5 @@
 
-import { Users } from "@/components/layout/users";
+import { Users } from "@/components/layout/features/users";
 
 const usersPage = () => {
   

@@ -3,7 +3,6 @@
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { profile } from "@/actions/profile"
 import { Button } from "@/components/ui/button"
 import { Dispatch, SetStateAction, useState, useTransition } from "react"
 import {
@@ -16,7 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { ProfileSchema } from "@/schemas"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -26,8 +24,9 @@ import { editUser } from "@/actions/user/editUser"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { editUserSchema } from "@/schemas/data-table-user-schema"
+import { User } from "@/components/layout/features/users"
 
-export const EditUserForm = ({ user,setIsOpen }: { user: any, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+export const EditUserForm = ({ user,setIsOpen }: { user: User, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const router = useRouter()  
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
@@ -144,22 +143,34 @@ export const EditUserForm = ({ user,setIsOpen }: { user: any, setIsOpen: Dispatc
         </div>
         <FormSuccess message={success} />
         <FormError message={error} />
-        <Button
-          type="submit"
-          disabled={isPending}
-          className="w-full sm:w-auto"
-        >
-          <>
-            {isPending ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Updating...
-              </>
-            ) : (
-              'Update'
-            )}
-          </>
-        </Button>
+        <div className="w-full flex justify-center sm:space-x-6">
+          <Button
+            size="lg"
+            variant="outline"
+            disabled={isPending}
+            className="w-full hidden sm:block"
+            type="button"
+            onClick={() => setIsOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            disabled={isPending}
+            className="w-full "
+          >
+            <>
+              {isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Editing...
+                </>
+              ) : (
+                'Edit'
+              )}
+            </>
+          </Button>
+        </div>
       </form>
     </Form>
   );

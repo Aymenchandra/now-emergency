@@ -1,4 +1,4 @@
-import { Settings } from "@/components/layout/settings"
+import { Settings } from "@/components/layout/features/settings"
 import { CurrentUser } from "@/lib/auth"
 
 const serverPage = async () => {

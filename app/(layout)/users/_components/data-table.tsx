@@ -26,14 +26,20 @@ import {
 } from "@/components/ui/table";
 
 import { DataTablePagination } from "@/components/data-table-components/data-table-pagination";
-import { DataTableToolbar } from "@/app/(layout)/users/data-table-toolbar";
+import { DataTableToolbar } from "@/app/(layout)/users/_components/data-table-toolbar";
+import { User } from "@/components/layout/features/users";
+
+
+interface RowData<T> extends User {
+  id: string;
+}
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends RowData<string>, TValue> ({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {

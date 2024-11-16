@@ -1,3 +1,4 @@
+
 import { useState, useTransition } from "react"
 import { useSession } from "next-auth/react"
 import { useCurrentUser } from "@/hooks/use-current-user"
@@ -5,8 +6,8 @@ import { Camera } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { upload } from "@/actions/upload"
-import { FormSuccess } from "../form-success"
-import { FormError } from "../form-error"
+import { FormSuccess } from "@/components/form-success"
+import { FormError } from "@/components/form-error"
 
 
 export const ImageForm = () => {
@@ -19,8 +20,8 @@ export const ImageForm = () => {
   const { update } = useSession();
   const [isPending, startTransition] = useTransition()
 
-  const handleImageChange = (event: any) => {
-    const file = event.target.files[0];
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
       const url = URL.createObjectURL(file);
       setImageUrl(url)

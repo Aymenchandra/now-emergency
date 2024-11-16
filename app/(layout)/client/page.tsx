@@ -1,5 +1,5 @@
 "use client"
-import { Settings } from "@/components/layout/settings"
+import { Settings } from "@/components/layout/features/settings"
 import { useCurrentUser } from "@/hooks/use-current-user"
 
 const clientPage = () => {

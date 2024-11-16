@@ -22,7 +22,6 @@ export default async function dashboardlayout({
 
   return (
     <SessionProvider session={session} >
-
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
@@ -38,7 +37,6 @@ export default async function dashboardlayout({
               </div>
             </div>
           </div>
-
         </SidebarInset>
       </SidebarProvider>
     </SessionProvider>

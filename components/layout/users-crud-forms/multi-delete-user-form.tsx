@@ -11,10 +11,9 @@ import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { multideleteUserSchema } from "@/schemas/data-table-user-schema"
-import { deleteUser } from "@/actions/user/deleteUser"
 import { deleteMultiUser } from "@/actions/user/deleteMultiUser"
 
-export const MultiDeleteUserForm = ({ idList, setIsOpen }: { idList: any, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+export const MultiDeleteUserForm = ({ idList, setIsOpen }: { idList: string[], setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const router = useRouter()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')

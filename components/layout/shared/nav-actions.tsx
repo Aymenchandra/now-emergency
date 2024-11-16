@@ -23,7 +23,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { useCurrentUser } from "@/hooks/use-current-user"
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import Image from "next/image"
 import { logout } from "@/actions/auth/logout"
 import { useRouter } from "next/navigation"
