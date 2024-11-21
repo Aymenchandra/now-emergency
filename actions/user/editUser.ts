@@ -10,6 +10,12 @@ import { editUserSchema } from "@/schemas/data-table-user-schema"
 
 export const editUser = async (payload: z.infer<typeof editUserSchema>,idUser : string) => {
 
+    const validatedFields = editUserSchema.safeParse(payload);
+
+    if (!validatedFields.success) {
+        return { error: "Invalid fields!" };
+    }
+
     const dbUser = await getUserById(idUser);
 
     if (!dbUser) {

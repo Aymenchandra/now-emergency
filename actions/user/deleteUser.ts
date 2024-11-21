@@ -7,6 +7,12 @@ import { deleteUserSchema } from "@/schemas/data-table-user-schema"
 
 export const deleteUser = async (payload: z.infer<typeof deleteUserSchema>) => {
 
+    const validatedFields = deleteUserSchema.safeParse(payload);
+
+    if (!validatedFields.success) {
+        return { error: "Invalid fields!" };
+    }
+
     const user = await getUserById(payload.id);
 
     if (!user) {

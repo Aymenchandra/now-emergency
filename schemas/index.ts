@@ -79,3 +79,9 @@ export const AddUserSchema = z.object({
     }),
     role: z.enum([userRole.ADMIN,userRole.USER])
 })
+
+export const MapSearchSchema = z.object({
+    search: z.string().min(1,{
+        message: "Search is required" 
+    }),
+})

@@ -6,6 +6,12 @@ import { multideleteUserSchema } from "@/schemas/data-table-user-schema"
 
 export const deleteMultiUser = async (payload: z.infer<typeof multideleteUserSchema>) => {
 
+    const validatedFields = multideleteUserSchema.safeParse(payload);
+
+    if (!validatedFields.success) {
+        return { error: "Invalid fields!" };
+    }
+
     if (payload.idList.length === 0) {
         return { error: "No IDs provided to delete" };
     }
