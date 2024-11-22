@@ -23,9 +23,8 @@ import { MapSearchSchema } from "@/schemas"
 import { fetchLocationDetails, mapSearch } from "@/actions/map"
 import { Search } from "lucide-react"
 import { toast } from "sonner"
-
-
-
+import MapClickHandler from "./mapClickHandler"
+import MapUpdater from "./mapUpdater"
 
 const defaults = {
     posix: [36.797739040981085, 10.185517712488258],
@@ -34,11 +33,11 @@ const defaults = {
 
 const Map = () => {
     // map params
-    const [position, setPosition] = useState<LatLngTuple | null>(null);
+    const [position, setPosition] = useState<LatLngTuple | null>(defaults.posix as LatLngTuple);
     const [popupContent, setPopupContent] = useState<string | null>(null);
     const customMarkerIcon = new Icon({
-        iconUrl : "localisation-marker.png",
-        iconSize : [38,38]
+        iconUrl: "localisation-marker.png",
+        iconSize: [38, 38]
     })
 
     const [isPending, startTransition] = useTransition()
@@ -51,39 +50,8 @@ const Map = () => {
         }
     });
 
-    // Custom hook to handle the click event on the map
-    const MapClickHandler = () => {
-        useMapEvents({
-            click(e) {
-                const { lat, lng } = e.latlng;
-                setPosition([lat, lng]);
-                fetchLocationDetails(lat, lng).then((data) => {
-                    if (data.error) {
-                        setError(data.error)
-                        return
-                    }
-                    setPopupContent(data.setPopupContent as string)
-                })
-                    .catch(() => console.error("Something went wrong"))
-            }
-        });
-        return null;
-    };
-
-    // Custom hook to handle the map's view changes
-    const MapUpdater = () => {
-        const map = useMap();
-        useEffect(() => {
-            if (position) {
-                map.setView(position); // Manually update the map view when the position changes
-            }
-        }, [position, map]);
-
-        return null;
-    };
-
     // Fetch the user's current location when the component mounts
-    useEffect(() => {
+    const getCurrentLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -95,6 +63,16 @@ const Map = () => {
                             return
                         }
                         setPopupContent(data.setPopupContent as string)
+                        toast.success("Location Name", {
+                            description: data?.setDisplayName,
+                            actionButtonStyle: {
+                                background: "red"
+                            },
+                            action: {
+                                label: "create",
+                                onClick: () => console.log("create")
+                            }
+                        })
                     })
                         .catch(() => console.error("Something went wrong"))
                 },
@@ -107,6 +85,16 @@ const Map = () => {
                             return
                         }
                         setPopupContent(data.setPopupContent as string)
+                        toast.success("Location Name", {
+                            description: data?.setDisplayName,
+                            actionButtonStyle: {
+                                background: "red"
+                            },
+                            action: {
+                                label: "create",
+                                onClick: () => console.log("create")
+                            }
+                        })
                     })
                         .catch(() => console.error("Something went wrong"))
                 }
@@ -120,10 +108,25 @@ const Map = () => {
                     return
                 }
                 setPopupContent(data.setPopupContent as string)
+                toast.success("Location Name", {
+                    description: data?.setDisplayName,
+                    actionButtonStyle: {
+                        background: "red"
+                    },
+                    action: {
+                        label: "create",
+                        onClick: () => console.log("create")
+                    }
+                })
             })
                 .catch(() => console.error("Something went wrong"))
         }
-    }, []);
+    };
+
+    useEffect(() => {
+        return () => getCurrentLocation();
+    }, [])
+
 
     const onSubmit = (payload: z.infer<typeof MapSearchSchema>) => {
         setError("");
@@ -134,9 +137,15 @@ const Map = () => {
                         setError(data.error)
                         return
                     }
-                    toast.error("Success", {
-                        description: "Profile updated successfully",
-
+                    toast.success("Location Name", {
+                        description: data?.setDisplayName,
+                        actionButtonStyle: {
+                            background: "red"
+                        },
+                        action: {
+                            label: "create",
+                            onClick: () => console.log("create")
+                        }
                     })
 
                     setPosition(data?.setPosition as LatLngTuple);
@@ -203,10 +212,9 @@ const Map = () => {
                 <Marker position={position} draggable={false} icon={customMarkerIcon}>
                     <Popup>{popupContent}</Popup>
                 </Marker>
-                <MapClickHandler />
-                <MapUpdater />
+                <MapClickHandler setPosition={setPosition} setPopupContent={setPopupContent} setError={setError} />
+                <MapUpdater position={position} />
             </MapContainer>
-
         </>
     );
 }
