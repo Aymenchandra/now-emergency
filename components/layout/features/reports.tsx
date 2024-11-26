@@ -10,7 +10,7 @@ export type Report = {
   description: string | null,
   country: string | null,
   governorate: string | null,
-  position: Number[],
+  position: number[],
   type: emergencyType,
   userId: string | null;
   status: emergencyStatus,

@@ -1,7 +1,8 @@
+// this form for both add and edit emergency
 'use client';
 
 import * as z from 'zod';
-import { AddEmergencySchema } from '@/schemas';
+import { EmergencySchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { emergencyStatus, emergencyType } from '@prisma/client';
 import React, { Dispatch, SetStateAction, useState, useTransition } from 'react';
@@ -20,23 +21,29 @@ import { Button } from "@/components/ui/button"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from 'lucide-react';
-import { AddEmergency } from '@/actions/emergency/addEmergency';
+import { Emergency } from '@/actions/emergency/Emergency';
 import { useRouter } from 'next/navigation';
 import { Textarea } from '@/components/ui/textarea';
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { LatLngTuple } from 'leaflet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-interface AddEmergencyFormProps {
+interface EmergencyFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   location: {
     position: LatLngTuple | null;
     country: string | null;
     governorate: string | null;
   };
+  emergencyInfo?: {
+    id: string | null;
+    title: string | null;
+    description: string | null;
+    type: emergencyType | null
+  };
 }
 
-export const AddEmergencyForm = ({ setIsOpen, location }: AddEmergencyFormProps) => {
+export const EmergencyForm = ({ setIsOpen, location, emergencyInfo }: EmergencyFormProps) => {
 
   const user = useCurrentUser()
   const router = useRouter();
@@ -44,25 +51,25 @@ export const AddEmergencyForm = ({ setIsOpen, location }: AddEmergencyFormProps)
   const [error, setError] = useState<string | undefined>("")
   const [success, setSuccess] = useState<string | undefined>("")
 
-  const form = useForm<z.infer<typeof AddEmergencySchema>>({
-    resolver: zodResolver(AddEmergencySchema),
+  const form = useForm<z.infer<typeof EmergencySchema>>({
+    resolver: zodResolver(EmergencySchema),
     defaultValues: {
-      title: "",
-      description: "",
+      title: emergencyInfo?.title || "",
+      description: emergencyInfo?.description || "",
       country: location.country as string,
       governorate: location.governorate as string,
       position: location.position as LatLngTuple,
-      type: undefined,
+      type: emergencyInfo?.type || undefined,
       userId: user?.id,
       status: emergencyStatus.HELP,
     }
   });
 
-  const onSubmit = (payload: z.infer<typeof AddEmergencySchema>) => {
+  const onSubmit = (payload: z.infer<typeof EmergencySchema>) => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      AddEmergency(payload)
+      Emergency(payload,emergencyInfo?.id as string)
         .then((data) => {
           if (data.success) {
             setSuccess(data.success)
@@ -76,7 +83,6 @@ export const AddEmergencyForm = ({ setIsOpen, location }: AddEmergencyFormProps)
           setError(data.error)
         })
     })
-
   }
 
   return (
@@ -207,10 +213,10 @@ export const AddEmergencyForm = ({ setIsOpen, location }: AddEmergencyFormProps)
               {isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Adding...
+                  Saving...
                 </>
               ) : (
-                'Add'
+                'Save'
               )}
             </>
           </Button>

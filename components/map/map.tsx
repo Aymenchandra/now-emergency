@@ -23,15 +23,19 @@ import MapClickHandler from "./mapClickHandler"
 import MapUpdater from "./mapUpdater"
 import { ToastMessage } from "@/lib/toast-message"
 import { ResponsiveDialog } from "../responsive-dialog";
-import { AddEmergencyForm } from "../layout/emergency-crud-forms/add-emergency-form";
+import { EmergencyForm } from "../layout/emergency-crud-forms/emergency-form";
+import { Report } from "../layout/features/reports";
 
 // Default location for initial load (when geolocation is unavailable)
 const defaults = {
     posix: [36.797739040981085, 10.185517712488258],
     zoom: 13,
 }
+interface MapProps {
+    upDateEmergency?: Report;
+};
 
-const Map = () => {
+export const Map = ({ upDateEmergency }: MapProps) => {
     // State object for location-related data
     const [location, setLocation] = useState<{
         position: LatLngTuple | null;
@@ -48,7 +52,7 @@ const Map = () => {
     });
 
     // State for modal and error handling
-    const [isAddEmergencyOpen, setIsAddEmergencyOpen] = useState(false);
+    const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
     const [error, setError] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
 
@@ -58,17 +62,17 @@ const Map = () => {
     });
 
     const customMarkerIcon = new Icon({
-        iconUrl: "localisation-marker.png",
+        iconUrl: "/localisation-marker.png",
         iconSize: [38, 38],
     });
-
+    
     const fetchAndSetLocation = (latitude: number, longitude: number) => {
         fetchLocationDetails(latitude, longitude).then((data) => {
             if (data.error) {
                 setError(data.error);
                 return;
             }
-    
+
             if (!data?.setLocation) {
                 setError("Invalid location data");
                 return;
@@ -76,21 +80,25 @@ const Map = () => {
 
             // Update the location state with the fetched data
             setLocation({
-                position: [latitude, longitude], 
+                position: [latitude, longitude],
                 country: data.setLocation.country,
                 governorate: data.setLocation.governorate,
                 popupContent: data.setLocation.popupContent,
                 display_name: data.setLocation.display_name,
             });
-    
+
             // Trigger the Toast message with the display name from the fetched data
-            ToastMessage("Location Name", data.setLocation.display_name, setIsAddEmergencyOpen);
+            ToastMessage("Location Name", data.setLocation.display_name, setIsEmergencyOpen);
         }).catch(() => console.error("Something went wrong"));
     };
 
     // Fetch user's geolocation or fallback to default position
     const getCurrentLocation = () => {
-        if (navigator.geolocation) {
+        if(upDateEmergency){
+            // data already in database in case we update emergency
+            fetchAndSetLocation(upDateEmergency.position[0], upDateEmergency.position[1]);
+        }
+        else if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => fetchAndSetLocation(position.coords.latitude, position.coords.longitude),
                 () => {
@@ -121,10 +129,10 @@ const Map = () => {
                     position: data?.setLocation?.position as LatLngTuple,
                     country: data?.setLocation?.country,
                     governorate: data?.setLocation?.governorate,
-                    popupContent: data?.setLocation?.popupContent ,
-                    display_name: data?.setLocation?.display_name ,
+                    popupContent: data?.setLocation?.popupContent,
+                    display_name: data?.setLocation?.display_name,
                 });
-                ToastMessage("Location Name", data?.setLocation?.display_name, setIsAddEmergencyOpen);
+                ToastMessage("Location Name", data?.setLocation?.display_name, setIsEmergencyOpen);
             }).catch(() => console.error("Something went wrong"));
         });
     };
@@ -163,7 +171,7 @@ const Map = () => {
                 </form>
             </Form>
 
-            {!isAddEmergencyOpen && (
+            {!isEmergencyOpen && (
                 <MapContainer
                     center={location.position}
                     zoom={defaults.zoom}
@@ -179,21 +187,27 @@ const Map = () => {
                     </Marker>
                     <MapClickHandler
                         setLocation={setLocation}
-                        setIsAddEmergencyOpen={setIsAddEmergencyOpen}
+                        setIsEmergencyOpen={setIsEmergencyOpen}
                     />
                     <MapUpdater position={location.position} />
                 </MapContainer>
             )}
 
             <ResponsiveDialog
-                isOpen={isAddEmergencyOpen}
-                setIsOpen={setIsAddEmergencyOpen}
+                isOpen={isEmergencyOpen}
+                setIsOpen={setIsEmergencyOpen}
                 title="Add Emergency"
                 description={location.display_name as string}
             >
-                <AddEmergencyForm
-                    setIsOpen={setIsAddEmergencyOpen}
+                <EmergencyForm
+                    setIsOpen={setIsEmergencyOpen}
                     location={{ ...location }}
+                    emergencyInfo={{ 
+                        id: upDateEmergency?.id || null, 
+                        title: upDateEmergency?.title || null, 
+                        description: upDateEmergency?.description || null, 
+                        type: upDateEmergency?.type || null
+                    }}
                 />
             </ResponsiveDialog>
         </>

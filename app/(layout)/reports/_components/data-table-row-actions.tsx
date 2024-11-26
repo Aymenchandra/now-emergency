@@ -15,6 +15,7 @@ import { ResponsiveDialog } from "@/components/responsive-dialog";
 
 import { Report } from "@/components/layout/features/reports";
 import { DeleteEmergencyForm } from "@/components/layout/emergency-crud-forms/delete-emergency-form";
+import { useRouter } from "next/navigation";
 
 interface RowData<T> extends Report{
   id: string;
@@ -27,20 +28,11 @@ interface DataTableRowActionsProps<TData> {
 export function DataTableRowActions<TData extends RowData<string>,User>({
   row
 }: DataTableRowActionsProps<TData>) {
-  const [isEditOpen, setIsEditOpen] = useState(false);
+  const router = useRouter()
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   return (
     <>
-      {/* <ResponsiveDialog
-        isOpen={isEditOpen}
-        setIsOpen={setIsEditOpen}
-        title="Edit User"
-        description="Are you sure you want to update this user?"
-
-      >
-        <EditUserForm user={row.original} setIsOpen={setIsEditOpen} />
-      </ResponsiveDialog> */}
       <ResponsiveDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
@@ -61,7 +53,7 @@ export function DataTableRowActions<TData extends RowData<string>,User>({
           <DropdownMenuItem className="group flex w-full items-center justify-between  text-left p-0 text-sm font-base text-neutral-500 ">
             <button
               onClick={() => {
-                setIsEditOpen(true);
+                router.push(`/emergency/${row.original.id}`)
               }}
               className="w-full justify-start flex rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
             >

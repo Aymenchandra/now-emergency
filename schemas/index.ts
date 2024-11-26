@@ -95,7 +95,7 @@ export const MapSearchSchema = z.object({
     }),
 })
 
-export const AddEmergencySchema = z.object({
+export const EmergencySchema = z.object({
     title: z.string().min(1, {
         message: "Title is required"
     }),

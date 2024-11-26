@@ -12,10 +12,10 @@ interface MapClickHandlerProps {
         popupContent: string | null;
         display_name: string | null;
     }>>;
-    setIsAddEmergencyOpen: Dispatch<SetStateAction<boolean>>;
+    setIsEmergencyOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const MapClickHandler = ({ setLocation, setIsAddEmergencyOpen }: MapClickHandlerProps) => {
+const MapClickHandler = ({ setLocation, setIsEmergencyOpen }: MapClickHandlerProps) => {
     useMapEvents({
         click(e) {
             const { lat, lng } = e.latlng;
@@ -40,7 +40,7 @@ const MapClickHandler = ({ setLocation, setIsAddEmergencyOpen }: MapClickHandler
                 });
 
                 // Trigger the Toast message with the location display name
-                ToastMessage("Location Name", data.setLocation.display_name, setIsAddEmergencyOpen);
+                ToastMessage("Location Name", data.setLocation.display_name, setIsEmergencyOpen);
 
             }).catch(() => console.error("Something went wrong"));
         }
