@@ -88,9 +88,9 @@ export function NavActions() {
             <SidebarContent>
               <div className="flex items-center gap-4 p-4">
                 <Image className="w-10 h-10 rounded-full" src={user?.image || "/default-avatar.png"} width={200} height={200} alt="avatar not found" />
-                <div className="font-medium dark:text-white">
+                <div className="font-medium">
                   <div>{user?.name}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">{user?.role.toLowerCase()}</div>
+                  <div className="text-xs text-gray-500">{user?.role.toLowerCase()}</div>
                 </div>
               </div>
               {data.map((group, index) => (

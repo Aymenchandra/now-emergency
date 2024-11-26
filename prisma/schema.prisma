@@ -33,16 +33,17 @@ enum userRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
-  image         String?
-  password      String?
-  role          userRole  @default(USER)
-  accounts      Account[]
-  isTwoFactorEnabled Boolean @default(false)
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?              @map("email_verified")
+  image                 String?
+  password              String?
+  role                  userRole               @default(USER)
+  accounts              Account[]
+  isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation twoFactorConfirmation?
+  Emergency             Emergency[]
 }
 
 model VerificationToken {
@@ -77,7 +78,32 @@ model twoFactorConfirmation {
   id String @id @default(cuid())
 
   userId String
-  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
+}
+
+enum emergencyType {
+  VIOLENCE
+  FIRE
+  OTHER
+}
+
+enum emergencyStatus {
+  HELP
+  PENDING
+  DONE
+}
+
+model Emergency {
+  id          String          @id @default(cuid())
+  title       String
+  description String
+  country     String
+  governorate String
+  position    Float[]
+  type        emergencyType   @default(OTHER)
+  userId      String // This is the foreign key to the User model
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status      emergencyStatus @default(HELP)
 }

@@ -10,7 +10,7 @@ import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { multideleteUserSchema } from "@/schemas/data-table-user-schema"
+import { multideleteSchema } from "@/schemas/index"
 import { deleteMultiUser } from "@/actions/user/deleteMultiUser"
 
 export const MultiDeleteUserForm = ({ idList, setIsOpen }: { idList: string[], setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
@@ -19,14 +19,14 @@ export const MultiDeleteUserForm = ({ idList, setIsOpen }: { idList: string[], s
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
 
-  const form = useForm<z.infer<typeof multideleteUserSchema>>({
-    resolver: zodResolver(multideleteUserSchema),
+  const form = useForm<z.infer<typeof multideleteSchema>>({
+    resolver: zodResolver(multideleteSchema),
     defaultValues: {
       idList: idList
     }
   })
 
-  const onSubmit = (payload: z.infer<typeof multideleteUserSchema>) => {
+  const onSubmit = (payload: z.infer<typeof multideleteSchema>) => {
     setError("");
     setSuccess("");
     startTransition(() => {

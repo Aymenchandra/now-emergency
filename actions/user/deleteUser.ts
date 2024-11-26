@@ -2,25 +2,25 @@
 import * as z from "zod"
 import { db } from "@/lib/db"
 import { getUserById } from "@/data/user"
-import { deleteUserSchema } from "@/schemas/data-table-user-schema"
+import { deleteSchema } from "@/schemas/index"
 
 
-export const deleteUser = async (payload: z.infer<typeof deleteUserSchema>) => {
+export const deleteUser = async (payload: z.infer<typeof deleteSchema>) => {
 
-    const validatedFields = deleteUserSchema.safeParse(payload);
+    const validatedFields = deleteSchema.safeParse(payload);
 
     if (!validatedFields.success) {
         return { error: "Invalid fields!" };
     }
 
-    const user = await getUserById(payload.id);
+    const user = await getUserById(validatedFields.data.id);
 
     if (!user) {
         return { error: "User Not Found" }
     }
     
     await db.user.delete({
-        where: { id: payload.id },
+        where: { id: validatedFields.data.id },
     })
     
     return { success: "User Deleted Successfully!" }

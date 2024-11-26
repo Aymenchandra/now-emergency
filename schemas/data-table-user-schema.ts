@@ -28,10 +28,3 @@ export const editUserSchema = z.object({
   isTwoFactorEnabled : z.optional(z.boolean())
 })
 
-export const deleteUserSchema = z.object({
-  id: z.string()
-});
-
-export const multideleteUserSchema = z.object({
-  idList: z.string().array()
-});

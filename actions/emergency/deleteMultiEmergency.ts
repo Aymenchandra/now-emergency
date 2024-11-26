@@ -4,7 +4,7 @@ import { db } from "@/lib/db"
 import { multideleteSchema } from "@/schemas/index"
 
 
-export const deleteMultiUser = async (payload: z.infer<typeof multideleteSchema>) => {
+export const deleteMultiEmergency = async (payload: z.infer<typeof multideleteSchema>) => {
 
     const validatedFields = multideleteSchema.safeParse(payload);
 
@@ -17,21 +17,21 @@ export const deleteMultiUser = async (payload: z.infer<typeof multideleteSchema>
     }
 
     try {
-        const result = await db.user.deleteMany({
+        const result = await db.emergency.deleteMany({
             where: {
                 id: {
-                    in: validatedFields.data.idList,
+                    in: payload.idList,
                 },
             },
         });
 
         if (result.count === 0) {
-            return { error: "No users found with the provided IDs" };
+            return { error: "No emergency found with the provided IDs" };
         }
 
-        return { success: `${result.count} user(s) deleted successfully` };
+        return { success: `${result.count} emergency(s) deleted successfully` };
     } catch (error) {
-        return { error: `Failed to delete users:` };
+        return { error: `Failed to delete emergency:` };
     }
 
 }

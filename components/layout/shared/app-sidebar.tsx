@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import {
+  Flag,
   Siren,
   Sparkles,
   User,
@@ -33,6 +34,11 @@ const data = {
       title: "Emergency",
       url: "/emergency",
       icon: Siren,
+    },
+    {
+      title: "Reports",
+      url: "/reports",
+      icon: Flag,
     },
     {
       title: "Users",

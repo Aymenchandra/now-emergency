@@ -1,40 +1,47 @@
 import { fetchLocationDetails } from '@/actions/map';
+import { ToastMessage } from '@/lib/toast-message';
 import { LatLngTuple } from 'leaflet';
 import { Dispatch, SetStateAction } from 'react';
 import { useMapEvents } from 'react-leaflet';
-import { toast } from 'sonner';
 
 interface MapClickHandlerProps {
-    setPosition: Dispatch<SetStateAction<LatLngTuple | null>>;
-    setPopupContent: Dispatch<SetStateAction<string | null>>;
-    setError?: Dispatch<SetStateAction<string | undefined>>;
+    setLocation: Dispatch<SetStateAction<{
+        position: LatLngTuple | null;
+        country: string | null;
+        governorate: string | null;
+        popupContent: string | null;
+        display_name: string | null;
+    }>>;
+    setIsAddEmergencyOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const MapClickHandler = ({ setPosition, setPopupContent, setError }: MapClickHandlerProps) => {
+const MapClickHandler = ({ setLocation, setIsAddEmergencyOpen }: MapClickHandlerProps) => {
     useMapEvents({
         click(e) {
             const { lat, lng } = e.latlng;
 
-            // Check if setPosition is defined before calling it
-            if (setPosition) {
-                setPosition([lat, lng]);
-            }
-
+            // Fetch location details and set the location
             fetchLocationDetails(lat, lng).then((data) => {
                 if (data?.error) {
                     return;
                 }
-                setPopupContent(data.setPopupContent || 'Unknown location');
-                toast.success("Location Name", {
-                    description: data?.setDisplayName,
-                    actionButtonStyle: {
-                        background: "red"
-                    },
-                    action: {
-                        label: "create",
-                        onClick: () => console.log("create")
-                    }
+
+                if (!data?.setLocation) {
+                    return;
+                }
+
+                // Update the location state with the fetched data
+                setLocation({
+                    position: [lat, lng], // This ensures position is always a LatLngTuple
+                    country: data.setLocation.country,
+                    governorate: data.setLocation.governorate,
+                    popupContent: data.setLocation.popupContent,
+                    display_name: data.setLocation.display_name,
                 });
+
+                // Trigger the Toast message with the location display name
+                ToastMessage("Location Name", data.setLocation.display_name, setIsAddEmergencyOpen);
+
             }).catch(() => console.error("Something went wrong"));
         }
     });
