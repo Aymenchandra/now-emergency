@@ -12,9 +12,10 @@ import { useState } from "react";
 import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
-import { EditUserForm } from "@/components/layout/users-crud-forms/edit-user-form";
-import { DeleteUserForm } from "@/components/layout/users-crud-forms/delete-user-form";
+import { EditUserForm } from "@/components/layout/crud-forms/users/edit-user-form";
 import { User } from "@prisma/client";
+import { DeleteForm } from "@/components/layout/crud-forms/delete-form";
+import { layoutEntity } from "@/lib/layout-entity";
 
 interface RowData<T> extends User{
   id: string;
@@ -47,7 +48,7 @@ export function DataTableRowActions<TData extends RowData<string>,User>({
         title="Delete User"
         description="Are you sure you want to delete this user?"
       >
-        <DeleteUserForm idUser={row.original.id} setIsOpen={setIsDeleteOpen} />
+        <DeleteForm id={row.original.id} setIsOpen={setIsDeleteOpen} layout={layoutEntity.USERS} />
       </ResponsiveDialog>
 
       <DropdownMenu>

@@ -13,9 +13,10 @@ import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 
-import { DeleteEmergencyForm } from "@/components/layout/emergency-crud-forms/delete-emergency-form";
 import { useRouter } from "next/navigation";
 import { Emergency } from "@prisma/client";
+import { DeleteForm } from "@/components/layout/crud-forms/delete-form";
+import { layoutEntity } from "@/lib/layout-entity";
 
 interface RowData<T> extends Emergency{
   id: string;
@@ -39,7 +40,7 @@ export function DataTableRowActions<TData extends RowData<string>,User>({
         title="Delete Emergency"
         description="Are you sure you want to delete this emergency?"
       >
-        <DeleteEmergencyForm idEmergency={row.original.id} setIsOpen={setIsDeleteOpen} />
+        <DeleteForm id={row.original.id} setIsOpen={setIsDeleteOpen} layout={layoutEntity.EMERGENCIES} />
       </ResponsiveDialog>
 
       <DropdownMenu>

@@ -23,7 +23,7 @@ import MapClickHandler from "./mapClickHandler"
 import MapUpdater from "./mapUpdater"
 import { ToastMessage } from "@/lib/toast-message"
 import { ResponsiveDialog } from "../responsive-dialog";
-import { EmergencyForm } from "../layout/emergency-crud-forms/emergency-form";
+import { EmergencyForm } from "../layout/crud-forms/emergency/emergency-form";
 import { Emergency } from "@prisma/client";
 
 // Default location for initial load (when geolocation is unavailable)
@@ -65,7 +65,7 @@ export const Map = ({ upDateEmergency }: MapProps) => {
         iconUrl: "/localisation-marker.png",
         iconSize: [38, 38],
     });
-    
+
     const fetchAndSetLocation = (latitude: number, longitude: number) => {
         fetchLocationDetails(latitude, longitude).then((data) => {
             if (data.error) {
@@ -94,21 +94,26 @@ export const Map = ({ upDateEmergency }: MapProps) => {
 
     // Fetch user's geolocation or fallback to default position
     const getCurrentLocation = () => {
-        if(upDateEmergency){
-            // data already in database in case we update emergency
-            fetchAndSetLocation(upDateEmergency.position[0], upDateEmergency.position[1]);
-        }
-        else if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => fetchAndSetLocation(position.coords.latitude, position.coords.longitude),
-                () => {
-                    console.error("Error getting location");
-                    fetchAndSetLocation(defaults.posix[0], defaults.posix[1]);
-                }
-            );
-        } else {
-            console.error("Geolocation is not supported by this browser.");
-            fetchAndSetLocation(defaults.posix[0], defaults.posix[1]);
+        switch (true) {
+            case upDateEmergency !== undefined:
+                // data already in database in case we update emergency
+                fetchAndSetLocation(upDateEmergency.position[0], upDateEmergency.position[1]);
+                break;
+
+            case navigator.geolocation !== undefined:
+                navigator.geolocation.getCurrentPosition(
+                    (position) => fetchAndSetLocation(position.coords.latitude, position.coords.longitude),
+                    () => {
+                        console.error("Error getting location");
+                        fetchAndSetLocation(defaults.posix[0], defaults.posix[1]);
+                    }
+                );
+                break;
+
+            default:
+                console.error("Geolocation is not supported by this browser.");
+                fetchAndSetLocation(defaults.posix[0], defaults.posix[1]);
+                break;
         }
     };
 
@@ -196,16 +201,16 @@ export const Map = ({ upDateEmergency }: MapProps) => {
             <ResponsiveDialog
                 isOpen={isEmergencyOpen}
                 setIsOpen={setIsEmergencyOpen}
-                title="Add Emergency"
+                title="Emergency"
                 description={location.display_name as string}
             >
                 <EmergencyForm
                     setIsOpen={setIsEmergencyOpen}
                     location={{ ...location }}
-                    emergencyInfo={{ 
-                        id: upDateEmergency?.id || null, 
-                        title: upDateEmergency?.title || null, 
-                        description: upDateEmergency?.description || null, 
+                    emergencyInfo={{
+                        id: upDateEmergency?.id || null,
+                        title: upDateEmergency?.title || null,
+                        description: upDateEmergency?.description || null,
                         type: upDateEmergency?.type || null
                     }}
                 />

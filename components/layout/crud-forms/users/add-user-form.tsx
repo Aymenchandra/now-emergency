@@ -21,7 +21,7 @@ import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2 } from 'lucide-react';
-import { addUser } from '@/actions/user/addUser';
+import { addUser } from '@/actions/crud/user/addUser';
 import { useRouter } from 'next/navigation';
 
 export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boolean>>;}) => {

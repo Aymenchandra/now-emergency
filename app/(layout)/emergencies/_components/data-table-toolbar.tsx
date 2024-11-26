@@ -13,7 +13,8 @@ import { CalendarDatePicker } from "@/components/calendar-date-picker";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 import Link from "next/link";
 import { status, type } from "./toolbar-filtred-data";
-import { MultiDeleteEmergencyForm } from "@/components/layout/emergency-crud-forms/multi-emergency-form";
+import { DeleteManyForm } from "@/components/layout/crud-forms/deleteMany";
+import { layoutEntity } from "@/lib/layout-entity";
 
 interface RowData<T> {
   id: string;
@@ -106,7 +107,7 @@ export function DataTableToolbar<TData extends RowData<string>>({
               title="Delete All Emergencies"
               description={`Are you sure you want to delete these Emergencies (${table.getFilteredSelectedRowModel().rows.length})`}
             >
-              <MultiDeleteEmergencyForm idList={Object.values(table.getSelectedRowModel().rowsById).map(item => item.original.id)} setIsOpen={setIsMultiDeleteOpen} />
+              <DeleteManyForm idList={Object.values(table.getSelectedRowModel().rowsById).map(item => item.original.id)} setIsOpen={setIsMultiDeleteOpen} layout={layoutEntity.EMERGENCIES} />
             </ResponsiveDialog>
           </>
         ) : null}

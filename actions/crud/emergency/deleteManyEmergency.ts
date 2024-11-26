@@ -1,26 +1,14 @@
 "use server"
-import * as z from "zod"
 import { db } from "@/lib/db"
-import { multideleteSchema } from "@/schemas/index"
 
 
-export const deleteMultiEmergency = async (payload: z.infer<typeof multideleteSchema>) => {
-
-    const validatedFields = multideleteSchema.safeParse(payload);
-
-    if (!validatedFields.success) {
-        return { error: "Invalid fields!" };
-    }
-
-    if (payload.idList.length === 0) {
-        return { error: "No IDs provided to delete" };
-    }
+export const deleteManyEmergency = async (idList : string[]) => {
 
     try {
         const result = await db.emergency.deleteMany({
             where: {
                 id: {
-                    in: payload.idList,
+                    in: idList,
                 },
             },
         });

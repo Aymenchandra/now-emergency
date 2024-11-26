@@ -11,9 +11,10 @@ import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { deleteSchema } from "@/schemas/index"
-import { deleteUser } from "@/actions/user/deleteUser"
+import { deleteEntity } from "@/actions/crud/delete"
+import { layoutEntity } from "@/lib/layout-entity"
 
-export const DeleteUserForm = ({ idUser, setIsOpen }: { idUser: string, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+export const DeleteForm = ({ id, setIsOpen,layout }: { id: string, setIsOpen: Dispatch<SetStateAction<boolean>>,layout : layoutEntity }) => {
   const router = useRouter()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
@@ -22,7 +23,7 @@ export const DeleteUserForm = ({ idUser, setIsOpen }: { idUser: string, setIsOpe
   const form = useForm<z.infer<typeof deleteSchema>>({
     resolver: zodResolver(deleteSchema),
     defaultValues: {
-      id: idUser
+      id: id
     }
   })
 
@@ -30,7 +31,7 @@ export const DeleteUserForm = ({ idUser, setIsOpen }: { idUser: string, setIsOpe
     setError("");
     setSuccess("");
     startTransition(() => {
-      deleteUser(payload)
+      deleteEntity(payload,layout)
         .then((data) => {
           if (data.error) {
             setError(data.error)

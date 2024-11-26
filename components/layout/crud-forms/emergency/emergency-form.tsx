@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from 'lucide-react';
-import { Emergency } from '@/actions/emergency/Emergency';
+import { Emergency } from '@/actions/crud/emergency/Emergency';
 import { useRouter } from 'next/navigation';
 import { Textarea } from '@/components/ui/textarea';
 import { useCurrentUser } from '@/hooks/use-current-user';
@@ -73,9 +73,9 @@ export const EmergencyForm = ({ setIsOpen, location, emergencyInfo }: EmergencyF
         .then((data) => {
           if (data.success) {
             setSuccess(data.success)
-            router.refresh()
             try {
               setIsOpen(false);
+              router.push('/emergencies')
             } catch (error) {
               console.log(error);
             }

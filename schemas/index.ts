@@ -5,7 +5,7 @@ export const deleteSchema = z.object({
     id: z.string()
 });
 
-export const multideleteSchema = z.object({
+export const deleteManySchema = z.object({
     idList: z.string().array()
 });
 

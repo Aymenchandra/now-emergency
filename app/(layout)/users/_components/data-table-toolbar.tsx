@@ -12,8 +12,9 @@ import { DataTableViewOptions } from "@/components/data-table-components/data-ta
 import { CirclePlus, TrashIcon } from "lucide-react";
 import { CalendarDatePicker } from "@/components/calendar-date-picker";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
-import { AddUserForm } from "@/components/layout/users-crud-forms/add-user-form";
-import { MultiDeleteUserForm } from "@/components/layout/users-crud-forms/multi-delete-user-form";
+import { AddUserForm } from "@/components/layout/crud-forms/users/add-user-form";
+import { DeleteManyForm } from "@/components/layout/crud-forms/deleteMany";
+import { layoutEntity } from "@/lib/layout-entity";
 
 interface RowData<T> {
   id: string;
@@ -91,7 +92,7 @@ export function DataTableToolbar<TData extends RowData<string>>({
               title="Delete All Users"
               description={`Are you sure you want to delete these selected Users (${table.getFilteredSelectedRowModel().rows.length})`}
             >
-              <MultiDeleteUserForm idList={Object.values(table.getSelectedRowModel().rowsById).map(item => item.original.id)} setIsOpen={setIsMultiDeleteOpen} />
+              <DeleteManyForm idList={Object.values(table.getSelectedRowModel().rowsById).map(item => item.original.id)} setIsOpen={setIsMultiDeleteOpen} layout={layoutEntity.USERS} />
             </ResponsiveDialog>
           </>
         ) : null}
