@@ -27,7 +27,7 @@ import {
 
 import { DataTablePagination } from "@/components/data-table-components/data-table-pagination";
 import { DataTableToolbar } from "@/app/(layout)/users/_components/data-table-toolbar";
-import { User } from "@/components/layout/features/users";
+import { User } from "@prisma/client";
 
 
 interface RowData<T> extends User {

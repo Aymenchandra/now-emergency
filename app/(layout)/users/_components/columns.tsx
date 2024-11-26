@@ -6,7 +6,7 @@ import { DataTableRowActions } from "./data-table-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { User } from "@/components/layout/features/users";
+import { User } from "@prisma/client";
 
 export const columns: ColumnDef<User>[] = [
   {

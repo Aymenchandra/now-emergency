@@ -13,11 +13,11 @@ import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 
-import { Report } from "@/components/layout/features/reports";
 import { DeleteEmergencyForm } from "@/components/layout/emergency-crud-forms/delete-emergency-form";
 import { useRouter } from "next/navigation";
+import { Emergency } from "@prisma/client";
 
-interface RowData<T> extends Report{
+interface RowData<T> extends Emergency{
   id: string;
 }
 

@@ -8,7 +8,6 @@ interface profileProps {
 
 export const Settings = ({
     user,
-    label
 }: profileProps) => {
     return (
         <div>

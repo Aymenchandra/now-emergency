@@ -26,11 +26,11 @@ import {
 } from "@/components/ui/table";
 
 import { DataTablePagination } from "@/components/data-table-components/data-table-pagination";
-import { DataTableToolbar } from "@/app/(layout)/reports/_components/data-table-toolbar";
-import { Report } from "@/components/layout/features/reports";
+import { DataTableToolbar } from "@/app/(layout)/emergencies/_components/data-table-toolbar";
+import { Emergency } from "@prisma/client";
 
 
-interface RowData<T> extends Report {
+interface RowData<T> extends Emergency {
   id: string;
 }
 

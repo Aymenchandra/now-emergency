@@ -24,7 +24,7 @@ import MapUpdater from "./mapUpdater"
 import { ToastMessage } from "@/lib/toast-message"
 import { ResponsiveDialog } from "../responsive-dialog";
 import { EmergencyForm } from "../layout/emergency-crud-forms/emergency-form";
-import { Report } from "../layout/features/reports";
+import { Emergency } from "@prisma/client";
 
 // Default location for initial load (when geolocation is unavailable)
 const defaults = {
@@ -32,7 +32,7 @@ const defaults = {
     zoom: 13,
 }
 interface MapProps {
-    upDateEmergency?: Report;
+    upDateEmergency?: Emergency;
 };
 
 export const Map = ({ upDateEmergency }: MapProps) => {

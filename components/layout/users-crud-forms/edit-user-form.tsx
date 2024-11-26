@@ -18,13 +18,12 @@ import { Input } from "@/components/ui/input"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { userRole } from "@prisma/client"
+import { User, userRole } from "@prisma/client"
 import { Switch } from "@/components/ui/switch"
 import { editUser } from "@/actions/user/editUser"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { editUserSchema } from "@/schemas/data-table-user-schema"
-import { User } from "@/components/layout/features/users"
 
 export const EditUserForm = ({ user,setIsOpen }: { user: User, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const router = useRouter()  

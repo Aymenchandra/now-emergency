@@ -14,7 +14,7 @@ import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 import { EditUserForm } from "@/components/layout/users-crud-forms/edit-user-form";
 import { DeleteUserForm } from "@/components/layout/users-crud-forms/delete-user-form";
-import { User } from "@/components/layout/features/users";
+import { User } from "@prisma/client";
 
 interface RowData<T> extends User{
   id: string;

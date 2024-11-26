@@ -3,7 +3,6 @@
 import * as React from "react"
 import {
   Flag,
-  Siren,
   Sparkles,
   User,
   Users,
@@ -20,24 +19,14 @@ import Image from "next/image"
 
 const data = {
   navMain: [
-    // {
-    //   title: "Client",
-    //   url: "/client",
-    //   icon: Search,
-    // },
     {
       title: "Server",
       url: "/server",
       icon: Sparkles,
     },
     {
-      title: "Emergency",
-      url: "/emergency",
-      icon: Siren,
-    },
-    {
-      title: "Reports",
-      url: "/reports",
+      title: "Emergencies",
+      url: "/emergencies",
       icon: Flag,
     },
     {
