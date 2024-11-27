@@ -114,7 +114,9 @@ export const Profile = () => {
                 )}></FormField>
               </>
             )}
-            <FormField control={form.control} name="role" render={({ field }) => (
+            {user?.role === userRole.ADMIN && (
+              <>
+                <FormField control={form.control} name="role" render={({ field }) => (
               <FormItem>
                 <FormLabel>Role</FormLabel>
                 <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
@@ -137,6 +139,9 @@ export const Profile = () => {
               </FormItem>
             )}>
             </FormField>
+              </>
+            )}
+            
             {user?.isOAuth === false && (
               <FormField control={form.control} name="isTwoFactorEnabled" render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">

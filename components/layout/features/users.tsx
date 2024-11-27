@@ -5,10 +5,9 @@ import { LayoutView } from "@/components/layout/layout-view";
 import { User } from "@prisma/client";
 
 
-async function getData(): Promise <User[]> {
-  return db.user.findMany()
+const getData = async (): Promise<User[]> => {
+  return db.user.findMany();
 }
-
 export const Users = async () => {
   const data = await getData();
   return (
