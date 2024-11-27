@@ -14,11 +14,10 @@ import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 
 import { useRouter } from "next/navigation";
-import { Emergency } from "@prisma/client";
 import { DeleteForm } from "@/components/layout/crud-forms/delete-form";
 import { layoutEntity } from "@/lib/layout-entity";
 
-interface RowData<T> extends Emergency{
+interface RowData<T>{
   id: string;
 }
 
@@ -26,7 +25,7 @@ interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
-export function DataTableRowActions<TData extends RowData<string>,User>({
+export function DataTableRowActions<TData extends RowData<string>>({
   row
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter()

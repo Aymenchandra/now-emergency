@@ -27,10 +27,9 @@ import {
 
 import { DataTablePagination } from "@/components/data-table-components/data-table-pagination";
 import { DataTableToolbar } from "@/app/(layout)/emergencies/_components/data-table-toolbar";
-import { Emergency } from "@prisma/client";
 
 
-interface RowData<T> extends Emergency {
+interface RowData<T> {
   id: string;
 }
 
@@ -131,4 +130,20 @@ export function DataTable<TData extends RowData<string>, TValue> ({
       <DataTablePagination table={table} />
     </div>
   );
+}
+
+export function UserDataTable<TData extends RowData<string>, TValue> ({
+  columns,
+  data,
+}: DataTableProps<TData, TValue>) {
+
+  return DataTable({columns,data})
+}
+
+export function AdminDataTable<TData extends RowData<string>, TValue> ({
+  columns,
+  data,
+}: DataTableProps<TData, TValue>) {
+
+  return DataTable({columns,data})
 }
