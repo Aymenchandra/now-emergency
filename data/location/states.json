@@ -1,0 +1,3362 @@
+[
+    {
+        "id": 1,
+        "name": "Algeria",
+        "country_id": 1
+    },
+    {
+        "id": 2,
+        "name": "Adrar",
+        "country_id": 1
+    },
+    {
+        "id": 3,
+        "name": "Chlef",
+        "country_id": 1
+    },
+    {
+        "id": 4,
+        "name": "Laghouat",
+        "country_id": 1
+    },
+    {
+        "id": 5,
+        "name": "Oum El Bouaghi",
+        "country_id": 1
+    },
+    {
+        "id": 6,
+        "name": "Batna",
+        "country_id": 1
+    },
+    {
+        "id": 7,
+        "name": "Béjaïa",
+        "country_id": 1
+    },
+    {
+        "id": 8,
+        "name": "Biskra",
+        "country_id": 1
+    },
+    {
+        "id": 9,
+        "name": "Blida",
+        "country_id": 1
+    },
+    {
+        "id": 10,
+        "name": "Bouira",
+        "country_id": 1
+    },
+    {
+        "id": 11,
+        "name": "Tamanrasset",
+        "country_id": 1
+    },
+    {
+        "id": 12,
+        "name": "Tébessa",
+        "country_id": 1
+    },
+    {
+        "id": 13,
+        "name": "Tlemcen",
+        "country_id": 1
+    },
+    {
+        "id": 14,
+        "name": "Tiaret",
+        "country_id": 1
+    },
+    {
+        "id": 15,
+        "name": "Tizi Ouzou",
+        "country_id": 1
+    },
+    {
+        "id": 16,
+        "name": "Algiers",
+        "country_id": 1
+    },
+    {
+        "id": 17,
+        "name": "Djelfa",
+        "country_id": 1
+    },
+    {
+        "id": 18,
+        "name": "Jijel",
+        "country_id": 1
+    },
+    {
+        "id": 19,
+        "name": "Sétif",
+        "country_id": 1
+    },
+    {
+        "id": 20,
+        "name": "Saïda",
+        "country_id": 1
+    },
+    {
+        "id": 21,
+        "name": "Skikda",
+        "country_id": 1
+    },
+    {
+        "id": 22,
+        "name": "Sidi Bel Abbès",
+        "country_id": 1
+    },
+    {
+        "id": 23,
+        "name": "Annaba",
+        "country_id": 1
+    },
+    {
+        "id": 24,
+        "name": "Guelma",
+        "country_id": 1
+    },
+    {
+        "id": 25,
+        "name": "Constantine",
+        "country_id": 1
+    },
+    {
+        "id": 26,
+        "name": "Médéa",
+        "country_id": 1
+    },
+    {
+        "id": 27,
+        "name": "Mostaganem",
+        "country_id": 1
+    },
+    {
+        "id": 28,
+        "name": "M'Sila",
+        "country_id": 1
+    },
+    {
+        "id": 29,
+        "name": "Mascara",
+        "country_id": 1
+    },
+    {
+        "id": 30,
+        "name": "Ouargla",
+        "country_id": 1
+    },
+    {
+        "id": 31,
+        "name": "Oran",
+        "country_id": 1
+    },
+    {
+        "id": 32,
+        "name": "El Bayadh",
+        "country_id": 1
+    },
+    {
+        "id": 33,
+        "name": "El Tarf",
+        "country_id": 1
+    },
+    {
+        "id": 34,
+        "name": "Tindouf",
+        "country_id": 1
+    },
+    {
+        "id": 35,
+        "name": "Tissemsilt",
+        "country_id": 1
+    },
+    {
+        "id": 36,
+        "name": "El Oued",
+        "country_id": 1
+    },
+    {
+        "id": 37,
+        "name": "Khenchela",
+        "country_id": 1
+    },
+    {
+        "id": 38,
+        "name": "Souk Ahras",
+        "country_id": 1
+    },
+    {
+        "id": 39,
+        "name": "Blida",
+        "country_id": 1
+    },
+    {
+        "id": 40,
+        "name": "Boumerdès",
+        "country_id": 1
+    },
+    {
+        "id": 41,
+        "name": "Chlef",
+        "country_id": 1
+    },
+    {
+        "id": 42,
+        "name": "Annaba",
+        "country_id": 1
+    },
+    {
+        "id": 43,
+        "name": "Bengo",
+        "country_id": 2
+    },
+    {
+        "id": 44,
+        "name": "Benguela",
+        "country_id": 2
+    },
+    {
+        "id": 45,
+        "name": "Bié",
+        "country_id": 2
+    },
+    {
+        "id": 46,
+        "name": "Cabinda",
+        "country_id": 2
+    },
+    {
+        "id": 47,
+        "name": "Cuanza Norte",
+        "country_id": 2
+    },
+    {
+        "id": 48,
+        "name": "Cuanza Sul",
+        "country_id": 2
+    },
+    {
+        "id": 49,
+        "name": "Cunene",
+        "country_id": 2
+    },
+    {
+        "id": 50,
+        "name": "Huambo",
+        "country_id": 2
+    },
+    {
+        "id": 51,
+        "name": "Huíla",
+        "country_id": 2
+    },
+    {
+        "id": 52,
+        "name": "Kwanza Norte",
+        "country_id": 2
+    },
+    {
+        "id": 53,
+        "name": "Kwanza Sul",
+        "country_id": 2
+    },
+    {
+        "id": 54,
+        "name": "Luanda",
+        "country_id": 2
+    },
+    {
+        "id": 55,
+        "name": "Malanje",
+        "country_id": 2
+    },
+    {
+        "id": 56,
+        "name": "Moxico",
+        "country_id": 2
+    },
+    {
+        "id": 57,
+        "name": "Namibe",
+        "country_id": 2
+    },
+    {
+        "id": 58,
+        "name": "Uíge",
+        "country_id": 2
+    },
+    {
+        "id": 59,
+        "name": "Zaire",
+        "country_id": 2
+    },
+    {
+        "id": 60,
+        "name": "Alibori",
+        "country_id": 3
+    },
+    {
+        "id": 61,
+        "name": "Atakora",
+        "country_id": 3
+    },
+    {
+        "id": 62,
+        "name": "Atlantique",
+        "country_id": 3
+    },
+    {
+        "id": 63,
+        "name": "Borgou",
+        "country_id": 3
+    },
+    {
+        "id": 64,
+        "name": "Collines",
+        "country_id": 3
+    },
+    {
+        "id": 65,
+        "name": "Donga",
+        "country_id": 3
+    },
+    {
+        "id": 66,
+        "name": "Kouffo",
+        "country_id": 3
+    },
+    {
+        "id": 67,
+        "name": "Littoral",
+        "country_id": 3
+    },
+    {
+        "id": 68,
+        "name": "Mono",
+        "country_id": 3
+    },
+    {
+        "id": 69,
+        "name": "Ouémé",
+        "country_id": 3
+    },
+    {
+        "id": 70,
+        "name": "Plateau",
+        "country_id": 3
+    },
+    {
+        "id": 71,
+        "name": "Zou",
+        "country_id": 3
+    },
+    {
+        "id": 72,
+        "name": "Central",
+        "country_id": 4
+    },
+    {
+        "id": 73,
+        "name": "Ghanzi",
+        "country_id": 4
+    },
+    {
+        "id": 74,
+        "name": "Kgalagadi",
+        "country_id": 4
+    },
+    {
+        "id": 75,
+        "name": "Kgatleng",
+        "country_id": 4
+    },
+    {
+        "id": 76,
+        "name": "Kweneng",
+        "country_id": 4
+    },
+    {
+        "id": 77,
+        "name": "North-East",
+        "country_id": 4
+    },
+    {
+        "id": 78,
+        "name": "North-West",
+        "country_id": 4
+    },
+    {
+        "id": 79,
+        "name": "South-East",
+        "country_id": 4
+    },
+    {
+        "id": 80,
+        "name": "Southern",
+        "country_id": 4
+    },
+    {
+        "id": 81,
+        "name": "Boucle du Mouhoun",
+        "country_id": 5
+    },
+    {
+        "id": 82,
+        "name": "Cascades",
+        "country_id": 5
+    },
+    {
+        "id": 83,
+        "name": "Centre",
+        "country_id": 5
+    },
+    {
+        "id": 84,
+        "name": "Centre-Est",
+        "country_id": 5
+    },
+    {
+        "id": 85,
+        "name": "Centre-Nord",
+        "country_id": 5
+    },
+    {
+        "id": 86,
+        "name": "Centre-Ouest",
+        "country_id": 5
+    },
+    {
+        "id": 87,
+        "name": "Centre-Sud",
+        "country_id": 5
+    },
+    {
+        "id": 88,
+        "name": "Est",
+        "country_id": 5
+    },
+    {
+        "id": 89,
+        "name": "Hauts-Bassins",
+        "country_id": 5
+    },
+    {
+        "id": 90,
+        "name": "Nord",
+        "country_id": 5
+    },
+    {
+        "id": 91,
+        "name": "Sahel",
+        "country_id": 5
+    },
+    {
+        "id": 92,
+        "name": "Sud-Ouest",
+        "country_id": 5
+    },
+    {
+        "id": 93,
+        "name": "Bubanza",
+        "country_id": 6
+    },
+    {
+        "id": 94,
+        "name": "Bujumbura Mairie",
+        "country_id": 6
+    },
+    {
+        "id": 95,
+        "name": "Bujumbura Rural",
+        "country_id": 6
+    },
+    {
+        "id": 96,
+        "name": "Cankuzo",
+        "country_id": 6
+    },
+    {
+        "id": 97,
+        "name": "Cibitoke",
+        "country_id": 6
+    },
+    {
+        "id": 98,
+        "name": "Gitega",
+        "country_id": 6
+    },
+    {
+        "id": 99,
+        "name": "Karuzi",
+        "country_id": 6
+    },
+    {
+        "id": 100,
+        "name": "Kayanza",
+        "country_id": 6
+    },
+    {
+        "id": 101,
+        "name": "Kirundo",
+        "country_id": 6
+    },
+    {
+        "id": 102,
+        "name": "Makamba",
+        "country_id": 6
+    },
+    {
+        "id": 103,
+        "name": "Muramvya",
+        "country_id": 6
+    },
+    {
+        "id": 104,
+        "name": "Muyinga",
+        "country_id": 6
+    },
+    {
+        "id": 105,
+        "name": "Ngozi",
+        "country_id": 6
+    },
+    {
+        "id": 106,
+        "name": "Ruyigi",
+        "country_id": 6
+    },
+    {
+        "id": 107,
+        "name": "Boa Vista",
+        "country_id": 7
+    },
+    {
+        "id": 108,
+        "name": "Brava",
+        "country_id": 7
+    },
+    {
+        "id": 109,
+        "name": "Fogo",
+        "country_id": 7
+    },
+    {
+        "id": 110,
+        "name": "Maio",
+        "country_id": 7
+    },
+    {
+        "id": 111,
+        "name": "Praia",
+        "country_id": 7
+    },
+    {
+        "id": 112,
+        "name": "Sal",
+        "country_id": 7
+    },
+    {
+        "id": 113,
+        "name": "Santiago",
+        "country_id": 7
+    },
+    {
+        "id": 114,
+        "name": "Santo Antão",
+        "country_id": 7
+    },
+    {
+        "id": 115,
+        "name": "São Nicolau",
+        "country_id": 7
+    },
+    {
+        "id": 116,
+        "name": "São Vicente",
+        "country_id": 7
+    },
+    {
+        "id": 117,
+        "name": "Adamawa",
+        "country_id": 8
+    },
+    {
+        "id": 118,
+        "name": "Central",
+        "country_id": 8
+    },
+    {
+        "id": 119,
+        "name": "East",
+        "country_id": 8
+    },
+    {
+        "id": 120,
+        "name": "Far North",
+        "country_id": 8
+    },
+    {
+        "id": 121,
+        "name": "Littoral",
+        "country_id": 8
+    },
+    {
+        "id": 122,
+        "name": "North",
+        "country_id": 8
+    },
+    {
+        "id": 123,
+        "name": "North-West",
+        "country_id": 8
+    },
+    {
+        "id": 124,
+        "name": "South",
+        "country_id": 8
+    },
+    {
+        "id": 125,
+        "name": "South-West",
+        "country_id": 8
+    },
+    {
+        "id": 126,
+        "name": "West",
+        "country_id": 8
+    },
+    {
+        "id": 127,
+        "name": "Bamingui-Bangoran",
+        "country_id": 9
+    },
+    {
+        "id": 128,
+        "name": "Bangui",
+        "country_id": 9
+    },
+    {
+        "id": 129,
+        "name": "Basse-Kotto",
+        "country_id": 9
+    },
+    {
+        "id": 130,
+        "name": "Haut-Mbomou",
+        "country_id": 9
+    },
+    {
+        "id": 131,
+        "name": "Haut-Kotto",
+        "country_id": 9
+    },
+    {
+        "id": 132,
+        "name": "Kémo",
+        "country_id": 9
+    },
+    {
+        "id": 133,
+        "name": "Lobaye",
+        "country_id": 9
+    },
+    {
+        "id": 134,
+        "name": "Mambéré-Kadéï",
+        "country_id": 9
+    },
+    {
+        "id": 135,
+        "name": "Mbomou",
+        "country_id": 9
+    },
+    {
+        "id": 136,
+        "name": "Nana-Mambéré",
+        "country_id": 9
+    },
+    {
+        "id": 137,
+        "name": "Nana-Grébizi",
+        "country_id": 9
+    },
+    {
+        "id": 138,
+        "name": "Ombella-Mpoko",
+        "country_id": 9
+    },
+    {
+        "id": 139,
+        "name": "Sangha-Mbaéré",
+        "country_id": 9
+    },
+    {
+        "id": 140,
+        "name": "Vakaga",
+        "country_id": 9
+    },
+    {
+        "id": 141,
+        "name": "Abéché",
+        "country_id": 10
+    },
+    {
+        "id": 142,
+        "name": "Batha",
+        "country_id": 10
+    },
+    {
+        "id": 143,
+        "name": "Biltine",
+        "country_id": 10
+    },
+    {
+        "id": 144,
+        "name": "Chari-Baguirmi",
+        "country_id": 10
+    },
+    {
+        "id": 145,
+        "name": "Guéra",
+        "country_id": 10
+    },
+    {
+        "id": 146,
+        "name": "Kanem",
+        "country_id": 10
+    },
+    {
+        "id": 147,
+        "name": "Lac",
+        "country_id": 10
+    },
+    {
+        "id": 148,
+        "name": "Logone Occidental",
+        "country_id": 10
+    },
+    {
+        "id": 149,
+        "name": "Logone Oriental",
+        "country_id": 10
+    },
+    {
+        "id": 150,
+        "name": "Mandoul",
+        "country_id": 10
+    },
+    {
+        "id": 151,
+        "name": "Mayo-Kebbi Est",
+        "country_id": 10
+    },
+    {
+        "id": 152,
+        "name": "Mayo-Kebbi Ouest",
+        "country_id": 10
+    },
+    {
+        "id": 153,
+        "name": "Mounts de Lam",
+        "country_id": 10
+    },
+    {
+        "id": 154,
+        "name": "Ouaddaï",
+        "country_id": 10
+    },
+    {
+        "id": 155,
+        "name": "Salamat",
+        "country_id": 10
+    },
+    {
+        "id": 156,
+        "name": "Sila",
+        "country_id": 10
+    },
+    {
+        "id": 157,
+        "name": "Tandjilé",
+        "country_id": 10
+    },
+    {
+        "id": 158,
+        "name": "Tchad",
+        "country_id": 10
+    },
+    {
+        "id": 159,
+        "name": "Wadi Fira",
+        "country_id": 10
+    },
+    {
+        "id": 160,
+        "name": "Anjouan",
+        "country_id": 11
+    },
+    {
+        "id": 161,
+        "name": "Grande Comore",
+        "country_id": 11
+    },
+    {
+        "id": 162,
+        "name": "Mohéli",
+        "country_id": 11
+    },
+    {
+        "id": 163,
+        "name": "Bouenza",
+        "country_id": 12
+    },
+    {
+        "id": 164,
+        "name": "Brazzaville",
+        "country_id": 12
+    },
+    {
+        "id": 165,
+        "name": "Cuvette",
+        "country_id": 12
+    },
+    {
+        "id": 166,
+        "name": "Cuvette-Ouest",
+        "country_id": 12
+    },
+    {
+        "id": 167,
+        "name": "Kouilou",
+        "country_id": 12
+    },
+    {
+        "id": 168,
+        "name": "Likouala",
+        "country_id": 12
+    },
+    {
+        "id": 169,
+        "name": "Niari",
+        "country_id": 12
+    },
+    {
+        "id": 170,
+        "name": "Plateaux",
+        "country_id": 12
+    },
+    {
+        "id": 171,
+        "name": "Pool",
+        "country_id": 12
+    },
+    {
+        "id": 172,
+        "name": "Sangha",
+        "country_id": 12
+    },
+    {
+        "id": 173,
+        "name": "Bas-Uele",
+        "country_id": 13
+    },
+    {
+        "id": 174,
+        "name": "Haut-Uele",
+        "country_id": 13
+    },
+    {
+        "id": 175,
+        "name": "Ituri",
+        "country_id": 13
+    },
+    {
+        "id": 176,
+        "name": "Kasaï",
+        "country_id": 13
+    },
+    {
+        "id": 177,
+        "name": "Kasaï-Central",
+        "country_id": 13
+    },
+    {
+        "id": 178,
+        "name": "Kasaï-Oriental",
+        "country_id": 13
+    },
+    {
+        "id": 179,
+        "name": "Katanga",
+        "country_id": 13
+    },
+    {
+        "id": 180,
+        "name": "Kinshasa",
+        "country_id": 13
+    },
+    {
+        "id": 181,
+        "name": "Kwilu",
+        "country_id": 13
+    },
+    {
+        "id": 182,
+        "name": "Kwando-Kwando",
+        "country_id": 13
+    },
+    {
+        "id": 183,
+        "name": "Mai-Ndombe",
+        "country_id": 13
+    },
+    {
+        "id": 184,
+        "name": "Maniema",
+        "country_id": 13
+    },
+    {
+        "id": 185,
+        "name": "Mongala",
+        "country_id": 13
+    },
+    {
+        "id": 186,
+        "name": "Nord-Kivu",
+        "country_id": 13
+    },
+    {
+        "id": 187,
+        "name": "Nord-Ubangi",
+        "country_id": 13
+    },
+    {
+        "id": 188,
+        "name": "Sankuru",
+        "country_id": 13
+    },
+    {
+        "id": 189,
+        "name": "Sud-Kivu",
+        "country_id": 13
+    },
+    {
+        "id": 190,
+        "name": "Sud-Ubangi",
+        "country_id": 13
+    },
+    {
+        "id": 191,
+        "name": "Tshuapa",
+        "country_id": 13
+    },
+    {
+        "id": 192,
+        "name": "Ali Sabieh",
+        "country_id": 14
+    },
+    {
+        "id": 193,
+        "name": "Arta",
+        "country_id": 14
+    },
+    {
+        "id": 194,
+        "name": "Dikhil",
+        "country_id": 14
+    },
+    {
+        "id": 195,
+        "name": "Djibouti",
+        "country_id": 14
+    },
+    {
+        "id": 196,
+        "name": "Obock",
+        "country_id": 14
+    },
+    {
+        "id": 197,
+        "name": "Tadjourah",
+        "country_id": 14
+    },
+    {
+        "id": 198,
+        "name": "Alexandria",
+        "country_id": 15
+    },
+    {
+        "id": 199,
+        "name": "Aswan",
+        "country_id": 15
+    },
+    {
+        "id": 200,
+        "name": "Asyut",
+        "country_id": 15
+    },
+    {
+        "id": 201,
+        "name": "Beheira",
+        "country_id": 15
+    },
+    {
+        "id": 202,
+        "name": "Beni Suef",
+        "country_id": 15
+    },
+    {
+        "id": 203,
+        "name": "Cairo",
+        "country_id": 15
+    },
+    {
+        "id": 204,
+        "name": "Dakahlia",
+        "country_id": 15
+    },
+    {
+        "id": 205,
+        "name": "Damietta",
+        "country_id": 15
+    },
+    {
+        "id": 206,
+        "name": "Faiyum",
+        "country_id": 15
+    },
+    {
+        "id": 207,
+        "name": "Gharbia",
+        "country_id": 15
+    },
+    {
+        "id": 208,
+        "name": "Giza",
+        "country_id": 15
+    },
+    {
+        "id": 209,
+        "name": "Ismailia",
+        "country_id": 15
+    },
+    {
+        "id": 210,
+        "name": "Kafr El Sheikh",
+        "country_id": 15
+    },
+    {
+        "id": 211,
+        "name": "Luxor",
+        "country_id": 15
+    },
+    {
+        "id": 212,
+        "name": "Matruh",
+        "country_id": 15
+    },
+    {
+        "id": 213,
+        "name": "Minya",
+        "country_id": 15
+    },
+    {
+        "id": 214,
+        "name": "Monufia",
+        "country_id": 15
+    },
+    {
+        "id": 215,
+        "name": "New Valley",
+        "country_id": 15
+    },
+    {
+        "id": 216,
+        "name": "North Sinai",
+        "country_id": 15
+    },
+    {
+        "id": 217,
+        "name": "Port Said",
+        "country_id": 15
+    },
+    {
+        "id": 218,
+        "name": "Qalyubia",
+        "country_id": 15
+    },
+    {
+        "id": 219,
+        "name": "Qena",
+        "country_id": 15
+    },
+    {
+        "id": 220,
+        "name": "Red Sea",
+        "country_id": 15
+    },
+    {
+        "id": 221,
+        "name": "Sharqia",
+        "country_id": 15
+    },
+    {
+        "id": 222,
+        "name": "Sohag",
+        "country_id": 15
+    },
+    {
+        "id": 223,
+        "name": "South Sinai",
+        "country_id": 15
+    },
+    {
+        "id": 224,
+        "name": "Suez",
+        "country_id": 15
+    },
+    {
+        "id": 225,
+        "name": "Annobón",
+        "country_id": 16
+    },
+    {
+        "id": 226,
+        "name": "Bioko Norte",
+        "country_id": 16
+    },
+    {
+        "id": 227,
+        "name": "Bioko Sur",
+        "country_id": 16
+    },
+    {
+        "id": 228,
+        "name": "Centro Sur",
+        "country_id": 16
+    },
+    {
+        "id": 229,
+        "name": "Kie-Ntem",
+        "country_id": 16
+    },
+    {
+        "id": 230,
+        "name": "Litoral",
+        "country_id": 16
+    },
+    {
+        "id": 231,
+        "name": "Wele-Nzas",
+        "country_id": 16
+    },
+    {
+        "id": 232,
+        "name": "Anseba",
+        "country_id": 17
+    },
+    {
+        "id": 233,
+        "name": "Central Region",
+        "country_id": 17
+    },
+    {
+        "id": 234,
+        "name": "Debub",
+        "country_id": 17
+    },
+    {
+        "id": 235,
+        "name": "Gash-Barka",
+        "country_id": 17
+    },
+    {
+        "id": 236,
+        "name": "Maekel",
+        "country_id": 17
+    },
+    {
+        "id": 237,
+        "name": "Northern Red Sea",
+        "country_id": 17
+    },
+    {
+        "id": 238,
+        "name": "Southern Red Sea",
+        "country_id": 17
+    },
+    {
+        "id": 239,
+        "name": "Hhohho",
+        "country_id": 18
+    },
+    {
+        "id": 240,
+        "name": "Lubombo",
+        "country_id": 18
+    },
+    {
+        "id": 241,
+        "name": "Manzini",
+        "country_id": 18
+    },
+    {
+        "id": 242,
+        "name": "Shiselweni",
+        "country_id": 18
+    },
+    {
+        "id": 243,
+        "name": "Addis Ababa",
+        "country_id": 19
+    },
+    {
+        "id": 244,
+        "name": "Afar",
+        "country_id": 19
+    },
+    {
+        "id": 245,
+        "name": "Amhara",
+        "country_id": 19
+    },
+    {
+        "id": 246,
+        "name": "Benishangul-Gumuz",
+        "country_id": 19
+    },
+    {
+        "id": 247,
+        "name": "Dire Dawa",
+        "country_id": 19
+    },
+    {
+        "id": 248,
+        "name": "Gambela",
+        "country_id": 19
+    },
+    {
+        "id": 249,
+        "name": "Harari",
+        "country_id": 19
+    },
+    {
+        "id": 250,
+        "name": "Oromia",
+        "country_id": 19
+    },
+    {
+        "id": 251,
+        "name": "Sidama",
+        "country_id": 19
+    },
+    {
+        "id": 252,
+        "name": "Southern Nations, Nationalities, and Peoples' Region",
+        "country_id": 19
+    },
+    {
+        "id": 253,
+        "name": "Tigray",
+        "country_id": 19
+    },
+    {
+        "id": 254,
+        "name": "Estuaire",
+        "country_id": 20
+    },
+    {
+        "id": 255,
+        "name": "Haut-Ogooué",
+        "country_id": 20
+    },
+    {
+        "id": 256,
+        "name": "Moyen-Ogooué",
+        "country_id": 20
+    },
+    {
+        "id": 257,
+        "name": "Ngounié",
+        "country_id": 20
+    },
+    {
+        "id": 258,
+        "name": "Nyanga",
+        "country_id": 20
+    },
+    {
+        "id": 259,
+        "name": "Ogooué-Ivindo",
+        "country_id": 20
+    },
+    {
+        "id": 260,
+        "name": "Ogooué-Lolo",
+        "country_id": 20
+    },
+    {
+        "id": 261,
+        "name": "Ogooué-Maritime",
+        "country_id": 20
+    },
+    {
+        "id": 262,
+        "name": "Woleu-Ntem",
+        "country_id": 20
+    },
+    {
+        "id": 263,
+        "name": "Banjul",
+        "country_id": 21
+    },
+    {
+        "id": 264,
+        "name": "Lower River",
+        "country_id": 21
+    },
+    {
+        "id": 265,
+        "name": "MacCarthy Island",
+        "country_id": 21
+    },
+    {
+        "id": 266,
+        "name": "North Bank",
+        "country_id": 21
+    },
+    {
+        "id": 267,
+        "name": "Upper River",
+        "country_id": 21
+    },
+    {
+        "id": 268,
+        "name": "Western",
+        "country_id": 21
+    },
+    {
+        "id": 269,
+        "name": "Ashanti",
+        "country_id": 22
+    },
+    {
+        "id": 270,
+        "name": "Brong-Ahafo",
+        "country_id": 22
+    },
+    {
+        "id": 271,
+        "name": "Central",
+        "country_id": 22
+    },
+    {
+        "id": 272,
+        "name": "Eastern",
+        "country_id": 22
+    },
+    {
+        "id": 273,
+        "name": "Greater Accra",
+        "country_id": 22
+    },
+    {
+        "id": 274,
+        "name": "Northern",
+        "country_id": 22
+    },
+    {
+        "id": 275,
+        "name": "Volta",
+        "country_id": 22
+    },
+    {
+        "id": 276,
+        "name": "Western",
+        "country_id": 22
+    },
+    {
+        "id": 277,
+        "name": "Upper East",
+        "country_id": 22
+    },
+    {
+        "id": 278,
+        "name": "Upper West",
+        "country_id": 22
+    },
+    {
+        "id": 279,
+        "name": "Boké",
+        "country_id": 23
+    },
+    {
+        "id": 280,
+        "name": "Conakry",
+        "country_id": 23
+    },
+    {
+        "id": 281,
+        "name": "Faranah",
+        "country_id": 23
+    },
+    {
+        "id": 282,
+        "name": "Kankan",
+        "country_id": 23
+    },
+    {
+        "id": 283,
+        "name": "Kindia",
+        "country_id": 23
+    },
+    {
+        "id": 284,
+        "name": "Labé",
+        "country_id": 23
+    },
+    {
+        "id": 285,
+        "name": "Mamou",
+        "country_id": 23
+    },
+    {
+        "id": 286,
+        "name": "Nzérékoré",
+        "country_id": 23
+    },
+    {
+        "id": 287,
+        "name": "Bafatá",
+        "country_id": 24
+    },
+    {
+        "id": 288,
+        "name": "Biombo",
+        "country_id": 24
+    },
+    {
+        "id": 289,
+        "name": "Bolama",
+        "country_id": 24
+    },
+    {
+        "id": 290,
+        "name": "Cacheu",
+        "country_id": 24
+    },
+    {
+        "id": 291,
+        "name": "Gabu",
+        "country_id": 24
+    },
+    {
+        "id": 292,
+        "name": "Oio",
+        "country_id": 24
+    },
+    {
+        "id": 293,
+        "name": "Quinara",
+        "country_id": 24
+    },
+    {
+        "id": 294,
+        "name": "Tombali",
+        "country_id": 24
+    },
+    {
+        "id": 295,
+        "name": "Abidjan",
+        "country_id": 25
+    },
+    {
+        "id": 296,
+        "name": "Agneby-Tiassa",
+        "country_id": 25
+    },
+    {
+        "id": 297,
+        "name": "Bélier",
+        "country_id": 25
+    },
+    {
+        "id": 298,
+        "name": "Denguélé",
+        "country_id": 25
+    },
+    {
+        "id": 299,
+        "name": "Gôh-Djiboua",
+        "country_id": 25
+    },
+    {
+        "id": 300,
+        "name": "Lacs",
+        "country_id": 25
+    },
+    {
+        "id": 301,
+        "name": "Marahoué",
+        "country_id": 25
+    },
+    {
+        "id": 302,
+        "name": "Montagnes",
+        "country_id": 25
+    },
+    {
+        "id": 303,
+        "name": "Sassandra-Marahoué",
+        "country_id": 25
+    },
+    {
+        "id": 304,
+        "name": "Savanes",
+        "country_id": 25
+    },
+    {
+        "id": 305,
+        "name": "Sud-Bandama",
+        "country_id": 25
+    },
+    {
+        "id": 306,
+        "name": "Sud-Comoé",
+        "country_id": 25
+    },
+    {
+        "id": 307,
+        "name": "Vallée du Bandama",
+        "country_id": 25
+    },
+    {
+        "id": 308,
+        "name": "Zanzan",
+        "country_id": 25
+    },
+    {
+        "id": 309,
+        "name": "Bomet",
+        "country_id": 26
+    },
+    {
+        "id": 310,
+        "name": "Bungoma",
+        "country_id": 26
+    },
+    {
+        "id": 311,
+        "name": "Busia",
+        "country_id": 26
+    },
+    {
+        "id": 312,
+        "name": "Elgeyo-Marakwet",
+        "country_id": 26
+    },
+    {
+        "id": 313,
+        "name": "Embu",
+        "country_id": 26
+    },
+    {
+        "id": 314,
+        "name": "Garissa",
+        "country_id": 26
+    },
+    {
+        "id": 315,
+        "name": "Homa Bay",
+        "country_id": 26
+    },
+    {
+        "id": 316,
+        "name": "Isiolo",
+        "country_id": 26
+    },
+    {
+        "id": 317,
+        "name": "Kajiado",
+        "country_id": 26
+    },
+    {
+        "id": 318,
+        "name": "Kakamega",
+        "country_id": 26
+    },
+    {
+        "id": 319,
+        "name": "Kiambu",
+        "country_id": 26
+    },
+    {
+        "id": 320,
+        "name": "Kilifi",
+        "country_id": 26
+    },
+    {
+        "id": 321,
+        "name": "Kirinyaga",
+        "country_id": 26
+    },
+    {
+        "id": 322,
+        "name": "Kisii",
+        "country_id": 26
+    },
+    {
+        "id": 323,
+        "name": "Kisumu",
+        "country_id": 26
+    },
+    {
+        "id": 324,
+        "name": "Kitui",
+        "country_id": 26
+    },
+    {
+        "id": 325,
+        "name": "Kwale",
+        "country_id": 26
+    },
+    {
+        "id": 326,
+        "name": "Laikipia",
+        "country_id": 26
+    },
+    {
+        "id": 327,
+        "name": "Lamu",
+        "country_id": 26
+    },
+    {
+        "id": 328,
+        "name": "Machakos",
+        "country_id": 26
+    },
+    {
+        "id": 329,
+        "name": "Makueni",
+        "country_id": 26
+    },
+    {
+        "id": 330,
+        "name": "Mandera",
+        "country_id": 26
+    },
+    {
+        "id": 331,
+        "name": "Meru",
+        "country_id": 26
+    },
+    {
+        "id": 332,
+        "name": "Migori",
+        "country_id": 26
+    },
+    {
+        "id": 333,
+        "name": "Mombasa",
+        "country_id": 26
+    },
+    {
+        "id": 334,
+        "name": "Mount Kenya",
+        "country_id": 26
+    },
+    {
+        "id": 335,
+        "name": "Nairobi",
+        "country_id": 26
+    },
+    {
+        "id": 336,
+        "name": "Berea",
+        "country_id": 27
+    },
+    {
+        "id": 337,
+        "name": "Butha-Buthe",
+        "country_id": 27
+    },
+    {
+        "id": 338,
+        "name": "Leribe",
+        "country_id": 27
+    },
+    {
+        "id": 339,
+        "name": "Mafeteng",
+        "country_id": 27
+    },
+    {
+        "id": 340,
+        "name": "Maseru",
+        "country_id": 27
+    },
+    {
+        "id": 341,
+        "name": "Mohale's Hoek",
+        "country_id": 27
+    },
+    {
+        "id": 342,
+        "name": "Mokhotlong",
+        "country_id": 27
+    },
+    {
+        "id": 343,
+        "name": "Qacha's Nek",
+        "country_id": 27
+    },
+    {
+        "id": 344,
+        "name": "Quthing",
+        "country_id": 27
+    },
+    {
+        "id": 345,
+        "name": "Thaba-Tseka",
+        "country_id": 27
+    },
+    {
+        "id": 346,
+        "name": "Bomi",
+        "country_id": 28
+    },
+    {
+        "id": 347,
+        "name": "Bong",
+        "country_id": 28
+    },
+    {
+        "id": 348,
+        "name": "Gbarpolu",
+        "country_id": 28
+    },
+    {
+        "id": 349,
+        "name": "Grand Bassa",
+        "country_id": 28
+    },
+    {
+        "id": 350,
+        "name": "Grand Cape Mount",
+        "country_id": 28
+    },
+    {
+        "id": 351,
+        "name": "Grand Gedeh",
+        "country_id": 28
+    },
+    {
+        "id": 352,
+        "name": "Grand Kru",
+        "country_id": 28
+    },
+    {
+        "id": 353,
+        "name": "Lofa",
+        "country_id": 28
+    },
+    {
+        "id": 354,
+        "name": "Margibi",
+        "country_id": 28
+    },
+    {
+        "id": 355,
+        "name": "Maryland",
+        "country_id": 28
+    },
+    {
+        "id": 356,
+        "name": "Montserrado",
+        "country_id": 28
+    },
+    {
+        "id": 357,
+        "name": "Nimba",
+        "country_id": 28
+    },
+    {
+        "id": 358,
+        "name": "River Cess",
+        "country_id": 28
+    },
+    {
+        "id": 359,
+        "name": "River Gee",
+        "country_id": 28
+    },
+    {
+        "id": 360,
+        "name": "Sinoe",
+        "country_id": 28
+    },
+    {
+        "id": 361,
+        "name": "Ajdabiya",
+        "country_id": 29
+    },
+    {
+        "id": 362,
+        "name": "Al Butnan",
+        "country_id": 29
+    },
+    {
+        "id": 363,
+        "name": "Al Jabal al Akhdar",
+        "country_id": 29
+    },
+    {
+        "id": 364,
+        "name": "Al Jufrah",
+        "country_id": 29
+    },
+    {
+        "id": 365,
+        "name": "Al Kufrah",
+        "country_id": 29
+    },
+    {
+        "id": 366,
+        "name": "Al Wahat",
+        "country_id": 29
+    },
+    {
+        "id": 367,
+        "name": "Az Zawiya",
+        "country_id": 29
+    },
+    {
+        "id": 368,
+        "name": "Benghazi",
+        "country_id": 29
+    },
+    {
+        "id": 369,
+        "name": "Darna",
+        "country_id": 29
+    },
+    {
+        "id": 370,
+        "name": "Gharyan",
+        "country_id": 29
+    },
+    {
+        "id": 371,
+        "name": "Misrata",
+        "country_id": 29
+    },
+    {
+        "id": 372,
+        "name": "Murzuq",
+        "country_id": 29
+    },
+    {
+        "id": 373,
+        "name": "Nalut",
+        "country_id": 29
+    },
+    {
+        "id": 374,
+        "name": "Sabratha",
+        "country_id": 29
+    },
+    {
+        "id": 375,
+        "name": "Sirte",
+        "country_id": 29
+    },
+    {
+        "id": 376,
+        "name": "Tarhuna",
+        "country_id": 29
+    },
+    {
+        "id": 377,
+        "name": "Tripoli",
+        "country_id": 29
+    },
+    {
+        "id": 378,
+        "name": "Antananarivo",
+        "country_id": 30
+    },
+    {
+        "id": 379,
+        "name": "Antsiranana",
+        "country_id": 30
+    },
+    {
+        "id": 380,
+        "name": "Fianarantsoa",
+        "country_id": 30
+    },
+    {
+        "id": 381,
+        "name": "Mahajanga",
+        "country_id": 30
+    },
+    {
+        "id": 382,
+        "name": "Toamasina",
+        "country_id": 30
+    },
+    {
+        "id": 383,
+        "name": "Toliara",
+        "country_id": 30
+    },
+    {
+        "id": 384,
+        "name": "Balaka",
+        "country_id": 31
+    },
+    {
+        "id": 385,
+        "name": "Blantyre",
+        "country_id": 31
+    },
+    {
+        "id": 386,
+        "name": "Chikwawa",
+        "country_id": 31
+    },
+    {
+        "id": 387,
+        "name": "Chiradzulu",
+        "country_id": 31
+    },
+    {
+        "id": 388,
+        "name": "Dedza",
+        "country_id": 31
+    },
+    {
+        "id": 389,
+        "name": "Dowa",
+        "country_id": 31
+    },
+    {
+        "id": 390,
+        "name": "Karonga",
+        "country_id": 31
+    },
+    {
+        "id": 391,
+        "name": "Kasungu",
+        "country_id": 31
+    },
+    {
+        "id": 392,
+        "name": "Lilongwe",
+        "country_id": 31
+    },
+    {
+        "id": 393,
+        "name": "Machinga",
+        "country_id": 31
+    },
+    {
+        "id": 394,
+        "name": "Mangochi",
+        "country_id": 31
+    },
+    {
+        "id": 395,
+        "name": "Mulanje",
+        "country_id": 31
+    },
+    {
+        "id": 396,
+        "name": "Mchinji",
+        "country_id": 31
+    },
+    {
+        "id": 397,
+        "name": "Neno",
+        "country_id": 31
+    },
+    {
+        "id": 398,
+        "name": "Nsanje",
+        "country_id": 31
+    },
+    {
+        "id": 399,
+        "name": "Ntcheu",
+        "country_id": 31
+    },
+    {
+        "id": 400,
+        "name": "Ntchisi",
+        "country_id": 31
+    },
+    {
+        "id": 401,
+        "name": "Phalombe",
+        "country_id": 31
+    },
+    {
+        "id": 402,
+        "name": "Rumphi",
+        "country_id": 31
+    },
+    {
+        "id": 403,
+        "name": "Salima",
+        "country_id": 31
+    },
+    {
+        "id": 404,
+        "name": "Zomba",
+        "country_id": 31
+    },
+    {
+        "id": 405,
+        "name": "Bamako",
+        "country_id": 32
+    },
+    {
+        "id": 406,
+        "name": "Gao",
+        "country_id": 32
+    },
+    {
+        "id": 407,
+        "name": "Kidal",
+        "country_id": 32
+    },
+    {
+        "id": 408,
+        "name": "Koulikoro",
+        "country_id": 32
+    },
+    {
+        "id": 409,
+        "name": "Mopti",
+        "country_id": 32
+    },
+    {
+        "id": 410,
+        "name": "Ségou",
+        "country_id": 32
+    },
+    {
+        "id": 411,
+        "name": "Sikasso",
+        "country_id": 32
+    },
+    {
+        "id": 412,
+        "name": "Taoudénit",
+        "country_id": 32
+    },
+    {
+        "id": 413,
+        "name": "Tombouctou",
+        "country_id": 32
+    },
+    {
+        "id": 414,
+        "name": "Adrar",
+        "country_id": 33
+    },
+    {
+        "id": 415,
+        "name": "Assaba",
+        "country_id": 33
+    },
+    {
+        "id": 416,
+        "name": "Brakna",
+        "country_id": 33
+    },
+    {
+        "id": 417,
+        "name": "Gorgol",
+        "country_id": 33
+    },
+    {
+        "id": 418,
+        "name": "Guidimaka",
+        "country_id": 33
+    },
+    {
+        "id": 419,
+        "name": "Hodh Ech Chargui",
+        "country_id": 33
+    },
+    {
+        "id": 420,
+        "name": "Hodh El Gharbi",
+        "country_id": 33
+    },
+    {
+        "id": 421,
+        "name": "Inchiri",
+        "country_id": 33
+    },
+    {
+        "id": 422,
+        "name": "Nouakchott",
+        "country_id": 33
+    },
+    {
+        "id": 423,
+        "name": "Nouadhibou",
+        "country_id": 33
+    },
+    {
+        "id": 424,
+        "name": "Tagant",
+        "country_id": 33
+    },
+    {
+        "id": 425,
+        "name": "Tiris Zemmour",
+        "country_id": 33
+    },
+    {
+        "id": 426,
+        "name": "Agalega",
+        "country_id": 34
+    },
+    {
+        "id": 427,
+        "name": "Flacq",
+        "country_id": 34
+    },
+    {
+        "id": 428,
+        "name": "Grand Port",
+        "country_id": 34
+    },
+    {
+        "id": 429,
+        "name": "Moka",
+        "country_id": 34
+    },
+    {
+        "id": 430,
+        "name": "Pamplemousses",
+        "country_id": 34
+    },
+    {
+        "id": 431,
+        "name": "Plaines Wilhems",
+        "country_id": 34
+    },
+    {
+        "id": 432,
+        "name": "Port Louis",
+        "country_id": 34
+    },
+    {
+        "id": 433,
+        "name": "Riviere du Rempart",
+        "country_id": 34
+    },
+    {
+        "id": 434,
+        "name": "Savanne",
+        "country_id": 34
+    },
+    {
+        "id": 435,
+        "name": "Agadir-Ida Ou Tanane",
+        "country_id": 35
+    },
+    {
+        "id": 436,
+        "name": "Al Haouz",
+        "country_id": 35
+    },
+    {
+        "id": 437,
+        "name": "Azilal",
+        "country_id": 35
+    },
+    {
+        "id": 438,
+        "name": "Beni Mellal",
+        "country_id": 35
+    },
+    {
+        "id": 439,
+        "name": "Casablanca-Settat",
+        "country_id": 35
+    },
+    {
+        "id": 440,
+        "name": "Chaouia-Ouardigha",
+        "country_id": 35
+    },
+    {
+        "id": 441,
+        "name": "Draa-Tafilalet",
+        "country_id": 35
+    },
+    {
+        "id": 442,
+        "name": "Fès-Meknès",
+        "country_id": 35
+    },
+    {
+        "id": 443,
+        "name": "Gharb-Chrarda-Beni Hssen",
+        "country_id": 35
+    },
+    {
+        "id": 444,
+        "name": "Guelmim-Es Semara",
+        "country_id": 35
+    },
+    {
+        "id": 445,
+        "name": "Laâyoune-Sakia El Hamra",
+        "country_id": 35
+    },
+    {
+        "id": 446,
+        "name": "Marrakech-Tensift-El Haouz",
+        "country_id": 35
+    },
+    {
+        "id": 447,
+        "name": "Meknès",
+        "country_id": 35
+    },
+    {
+        "id": 448,
+        "name": "Oriental",
+        "country_id": 35
+    },
+    {
+        "id": 449,
+        "name": "Rabat-Salé-Zemmour-Zaër",
+        "country_id": 35
+    },
+    {
+        "id": 450,
+        "name": "Souss-Massa-Draa",
+        "country_id": 35
+    },
+    {
+        "id": 451,
+        "name": "Tanger-Tétouan",
+        "country_id": 35
+    },
+    {
+        "id": 452,
+        "name": "Cabo Delgado",
+        "country_id": 36
+    },
+    {
+        "id": 453,
+        "name": "Gaza",
+        "country_id": 36
+    },
+    {
+        "id": 454,
+        "name": "Inhambane",
+        "country_id": 36
+    },
+    {
+        "id": 455,
+        "name": "Manica",
+        "country_id": 36
+    },
+    {
+        "id": 456,
+        "name": "Maputo",
+        "country_id": 36
+    },
+    {
+        "id": 457,
+        "name": "Maputo City",
+        "country_id": 36
+    },
+    {
+        "id": 458,
+        "name": "Nampula",
+        "country_id": 36
+    },
+    {
+        "id": 459,
+        "name": "Niassa",
+        "country_id": 36
+    },
+    {
+        "id": 460,
+        "name": "Sofala",
+        "country_id": 36
+    },
+    {
+        "id": 461,
+        "name": "Tete",
+        "country_id": 36
+    },
+    {
+        "id": 462,
+        "name": "Zambézia",
+        "country_id": 36
+    },
+    {
+        "id": 463,
+        "name": "Caprivi",
+        "country_id": 37
+    },
+    {
+        "id": 464,
+        "name": "Erongo",
+        "country_id": 37
+    },
+    {
+        "id": 465,
+        "name": "Hardap",
+        "country_id": 37
+    },
+    {
+        "id": 466,
+        "name": "Karas",
+        "country_id": 37
+    },
+    {
+        "id": 467,
+        "name": "Kavango",
+        "country_id": 37
+    },
+    {
+        "id": 468,
+        "name": "Khomas",
+        "country_id": 37
+    },
+    {
+        "id": 469,
+        "name": "Kunene",
+        "country_id": 37
+    },
+    {
+        "id": 470,
+        "name": "Ohangwena",
+        "country_id": 37
+    },
+    {
+        "id": 471,
+        "name": "Omusati",
+        "country_id": 37
+    },
+    {
+        "id": 472,
+        "name": "Oshana",
+        "country_id": 37
+    },
+    {
+        "id": 473,
+        "name": "Oshikoto",
+        "country_id": 37
+    },
+    {
+        "id": 474,
+        "name": "Otjozondjupa",
+        "country_id": 37
+    },
+    {
+        "id": 475,
+        "name": "Agadez",
+        "country_id": 38
+    },
+    {
+        "id": 476,
+        "name": "Diffa",
+        "country_id": 38
+    },
+    {
+        "id": 477,
+        "name": "Dosso",
+        "country_id": 38
+    },
+    {
+        "id": 478,
+        "name": "Maradi",
+        "country_id": 38
+    },
+    {
+        "id": 479,
+        "name": "Niamey",
+        "country_id": 38
+    },
+    {
+        "id": 480,
+        "name": "Tahoua",
+        "country_id": 38
+    },
+    {
+        "id": 481,
+        "name": "Tillabéri",
+        "country_id": 38
+    },
+    {
+        "id": 482,
+        "name": "Zinder",
+        "country_id": 38
+    },
+    {
+        "id": 483,
+        "name": "Abia",
+        "country_id": 39
+    },
+    {
+        "id": 484,
+        "name": "Adamawa",
+        "country_id": 39
+    },
+    {
+        "id": 485,
+        "name": "Akwa Ibom",
+        "country_id": 39
+    },
+    {
+        "id": 486,
+        "name": "Anambra",
+        "country_id": 39
+    },
+    {
+        "id": 487,
+        "name": "Bauchi",
+        "country_id": 39
+    },
+    {
+        "id": 488,
+        "name": "Bayelsa",
+        "country_id": 39
+    },
+    {
+        "id": 489,
+        "name": "Benue",
+        "country_id": 39
+    },
+    {
+        "id": 490,
+        "name": "Borno",
+        "country_id": 39
+    },
+    {
+        "id": 491,
+        "name": "Cross River",
+        "country_id": 39
+    },
+    {
+        "id": 492,
+        "name": "Delta",
+        "country_id": 39
+    },
+    {
+        "id": 493,
+        "name": "Ebonyi",
+        "country_id": 39
+    },
+    {
+        "id": 494,
+        "name": "Edo",
+        "country_id": 39
+    },
+    {
+        "id": 495,
+        "name": "Ekiti",
+        "country_id": 39
+    },
+    {
+        "id": 496,
+        "name": "Enugu",
+        "country_id": 39
+    },
+    {
+        "id": 497,
+        "name": "Gombe",
+        "country_id": 39
+    },
+    {
+        "id": 498,
+        "name": "Imo",
+        "country_id": 39
+    },
+    {
+        "id": 499,
+        "name": "Jigawa",
+        "country_id": 39
+    },
+    {
+        "id": 500,
+        "name": "Kaduna",
+        "country_id": 39
+    },
+    {
+        "id": 501,
+        "name": "Kano",
+        "country_id": 39
+    },
+    {
+        "id": 502,
+        "name": "Katsina",
+        "country_id": 39
+    },
+    {
+        "id": 503,
+        "name": "Kebbi",
+        "country_id": 39
+    },
+    {
+        "id": 504,
+        "name": "Kogi",
+        "country_id": 39
+    },
+    {
+        "id": 505,
+        "name": "Kwara",
+        "country_id": 39
+    },
+    {
+        "id": 506,
+        "name": "Lagos",
+        "country_id": 39
+    },
+    {
+        "id": 507,
+        "name": "Nasarawa",
+        "country_id": 39
+    },
+    {
+        "id": 508,
+        "name": "Niger",
+        "country_id": 39
+    },
+    {
+        "id": 509,
+        "name": "Ogun",
+        "country_id": 39
+    },
+    {
+        "id": 510,
+        "name": "Ondo",
+        "country_id": 39
+    },
+    {
+        "id": 511,
+        "name": "Osun",
+        "country_id": 39
+    },
+    {
+        "id": 512,
+        "name": "Oyo",
+        "country_id": 39
+    },
+    {
+        "id": 513,
+        "name": "Plateau",
+        "country_id": 39
+    },
+    {
+        "id": 514,
+        "name": "Rivers",
+        "country_id": 39
+    },
+    {
+        "id": 515,
+        "name": "Sokoto",
+        "country_id": 39
+    },
+    {
+        "id": 516,
+        "name": "Taraba",
+        "country_id": 39
+    },
+    {
+        "id": 517,
+        "name": "Yobe",
+        "country_id": 39
+    },
+    {
+        "id": 518,
+        "name": "Zamfara",
+        "country_id": 39
+    },
+    {
+        "id": 519,
+        "name": "Eastern",
+        "country_id": 40
+    },
+    {
+        "id": 520,
+        "name": "Kigali City",
+        "country_id": 40
+    },
+    {
+        "id": 521,
+        "name": "Northern",
+        "country_id": 40
+    },
+    {
+        "id": 522,
+        "name": "Western",
+        "country_id": 40
+    },
+    {
+        "id": 523,
+        "name": "Southern",
+        "country_id": 40
+    },
+    {
+        "id": 524,
+        "name": "Água Grande",
+        "country_id": 41
+    },
+    {
+        "id": 525,
+        "name": "Caué",
+        "country_id": 41
+    },
+    {
+        "id": 526,
+        "name": "Lembá",
+        "country_id": 41
+    },
+    {
+        "id": 527,
+        "name": "Me-Zóchi",
+        "country_id": 41
+    },
+    {
+        "id": 528,
+        "name": "Príncipe",
+        "country_id": 41
+    },
+    {
+        "id": 529,
+        "name": "Dakar",
+        "country_id": 42
+    },
+    {
+        "id": 530,
+        "name": "Diourbel",
+        "country_id": 42
+    },
+    {
+        "id": 531,
+        "name": "Fatick",
+        "country_id": 42
+    },
+    {
+        "id": 532,
+        "name": "Kaolack",
+        "country_id": 42
+    },
+    {
+        "id": 533,
+        "name": "Kedougou",
+        "country_id": 42
+    },
+    {
+        "id": 534,
+        "name": "Kolda",
+        "country_id": 42
+    },
+    {
+        "id": 535,
+        "name": "Louga",
+        "country_id": 42
+    },
+    {
+        "id": 536,
+        "name": "Matam",
+        "country_id": 42
+    },
+    {
+        "id": 537,
+        "name": "Saint-Louis",
+        "country_id": 42
+    },
+    {
+        "id": 538,
+        "name": "Tambacounda",
+        "country_id": 42
+    },
+    {
+        "id": 539,
+        "name": "Thiès",
+        "country_id": 42
+    },
+    {
+        "id": 540,
+        "name": "Ziguinchor",
+        "country_id": 42
+    },
+    {
+        "id": 541,
+        "name": "Anse Aux Pins",
+        "country_id": 43
+    },
+    {
+        "id": 542,
+        "name": "Anse Boileau",
+        "country_id": 43
+    },
+    {
+        "id": 543,
+        "name": "Baie Lazare",
+        "country_id": 43
+    },
+    {
+        "id": 544,
+        "name": "Baie Sainte Anne",
+        "country_id": 43
+    },
+    {
+        "id": 545,
+        "name": "Beau Vallon",
+        "country_id": 43
+    },
+    {
+        "id": 546,
+        "name": "Cascade",
+        "country_id": 43
+    },
+    {
+        "id": 547,
+        "name": "Glacis",
+        "country_id": 43
+    },
+    {
+        "id": 548,
+        "name": "Mont Fleuri",
+        "country_id": 43
+    },
+    {
+        "id": 549,
+        "name": "Plaisance",
+        "country_id": 43
+    },
+    {
+        "id": 550,
+        "name": "Port Glaud",
+        "country_id": 43
+    },
+    {
+        "id": 551,
+        "name": "Saint Louis",
+        "country_id": 43
+    },
+    {
+        "id": 552,
+        "name": "Takamaka",
+        "country_id": 43
+    },
+    {
+        "id": 553,
+        "name": "Bombali",
+        "country_id": 44
+    },
+    {
+        "id": 554,
+        "name": "Bonthe",
+        "country_id": 44
+    },
+    {
+        "id": 555,
+        "name": "Bo",
+        "country_id": 44
+    },
+    {
+        "id": 556,
+        "name": "Kailahun",
+        "country_id": 44
+    },
+    {
+        "id": 557,
+        "name": "Kenema",
+        "country_id": 44
+    },
+    {
+        "id": 558,
+        "name": "Kono",
+        "country_id": 44
+    },
+    {
+        "id": 559,
+        "name": "Koinadugu",
+        "country_id": 44
+    },
+    {
+        "id": 560,
+        "name": "Moyamba",
+        "country_id": 44
+    },
+    {
+        "id": 561,
+        "name": "Port Loko",
+        "country_id": 44
+    },
+    {
+        "id": 562,
+        "name": "Pujehun",
+        "country_id": 44
+    },
+    {
+        "id": 563,
+        "name": "Western Area",
+        "country_id": 44
+    },
+    {
+        "id": 564,
+        "name": "Awdal",
+        "country_id": 45
+    },
+    {
+        "id": 565,
+        "name": "Banaadir",
+        "country_id": 45
+    },
+    {
+        "id": 566,
+        "name": "Bari",
+        "country_id": 45
+    },
+    {
+        "id": 567,
+        "name": "Bay",
+        "country_id": 45
+    },
+    {
+        "id": 568,
+        "name": "Galguduud",
+        "country_id": 45
+    },
+    {
+        "id": 569,
+        "name": "Gedo",
+        "country_id": 45
+    },
+    {
+        "id": 570,
+        "name": "Hiiraan",
+        "country_id": 45
+    },
+    {
+        "id": 571,
+        "name": "Jubbada Dhexe",
+        "country_id": 45
+    },
+    {
+        "id": 572,
+        "name": "Jubbada Hoose",
+        "country_id": 45
+    },
+    {
+        "id": 573,
+        "name": "Mudug",
+        "country_id": 45
+    },
+    {
+        "id": 574,
+        "name": "Nugaal",
+        "country_id": 45
+    },
+    {
+        "id": 575,
+        "name": "Sool",
+        "country_id": 45
+    },
+    {
+        "id": 576,
+        "name": "Sanaag",
+        "country_id": 45
+    },
+    {
+        "id": 577,
+        "name": "Shabeellaha Dhexe",
+        "country_id": 45
+    },
+    {
+        "id": 578,
+        "name": "Shabeellaha Hoose",
+        "country_id": 45
+    },
+    {
+        "id": 579,
+        "name": "Togdheer",
+        "country_id": 45
+    },
+    {
+        "id": 580,
+        "name": "Woqooyi Galbeed",
+        "country_id": 45
+    },
+    {
+        "id": 581,
+        "name": "Eastern Cape",
+        "country_id": 46
+    },
+    {
+        "id": 582,
+        "name": "Free State",
+        "country_id": 46
+    },
+    {
+        "id": 583,
+        "name": "Gauteng",
+        "country_id": 46
+    },
+    {
+        "id": 584,
+        "name": "KwaZulu-Natal",
+        "country_id": 46
+    },
+    {
+        "id": 585,
+        "name": "Limpopo",
+        "country_id": 46
+    },
+    {
+        "id": 586,
+        "name": "Mpumalanga",
+        "country_id": 46
+    },
+    {
+        "id": 587,
+        "name": "North West",
+        "country_id": 46
+    },
+    {
+        "id": 588,
+        "name": "Northern Cape",
+        "country_id": 46
+    },
+    {
+        "id": 589,
+        "name": "Western Cape",
+        "country_id": 46
+    },
+    {
+        "id": 590,
+        "name": "Central Equatoria",
+        "country_id": 47
+    },
+    {
+        "id": 591,
+        "name": "Eastern Equatoria",
+        "country_id": 47
+    },
+    {
+        "id": 592,
+        "name": "Jonglei",
+        "country_id": 47
+    },
+    {
+        "id": 593,
+        "name": "Lakes",
+        "country_id": 47
+    },
+    {
+        "id": 594,
+        "name": "Northern Bahr el Ghazal",
+        "country_id": 47
+    },
+    {
+        "id": 595,
+        "name": "Unity",
+        "country_id": 47
+    },
+    {
+        "id": 596,
+        "name": "Upper Nile",
+        "country_id": 47
+    },
+    {
+        "id": 597,
+        "name": "Warrap",
+        "country_id": 47
+    },
+    {
+        "id": 598,
+        "name": "Western Bahr el Ghazal",
+        "country_id": 47
+    },
+    {
+        "id": 599,
+        "name": "Western Equatoria",
+        "country_id": 47
+    },
+    {
+        "id": 600,
+        "name": "Al Bayda",
+        "country_id": 48
+    },
+    {
+        "id": 601,
+        "name": "Al Jazeera",
+        "country_id": 48
+    },
+    {
+        "id": 602,
+        "name": "Al Qadarif",
+        "country_id": 48
+    },
+    {
+        "id": 603,
+        "name": "Al Khartoum",
+        "country_id": 48
+    },
+    {
+        "id": 604,
+        "name": "Al Qunaytirah",
+        "country_id": 48
+    },
+    {
+        "id": 605,
+        "name": "An-Nil al-Abyad",
+        "country_id": 48
+    },
+    {
+        "id": 606,
+        "name": "An-Nil al-Azraq",
+        "country_id": 48
+    },
+    {
+        "id": 607,
+        "name": "Bahr al-Ghazal",
+        "country_id": 48
+    },
+    {
+        "id": 608,
+        "name": "Darfur",
+        "country_id": 48
+    },
+    {
+        "id": 609,
+        "name": "Kassala",
+        "country_id": 48
+    },
+    {
+        "id": 610,
+        "name": "Nahr al-Nil",
+        "country_id": 48
+    },
+    {
+        "id": 611,
+        "name": "Northern",
+        "country_id": 48
+    },
+    {
+        "id": 612,
+        "name": "Sennar",
+        "country_id": 48
+    },
+    {
+        "id": 613,
+        "name": "South Darfur",
+        "country_id": 48
+    },
+    {
+        "id": 614,
+        "name": "South Kordofan",
+        "country_id": 48
+    },
+    {
+        "id": 615,
+        "name": "West Darfur",
+        "country_id": 48
+    },
+    {
+        "id": 616,
+        "name": "West Kordofan",
+        "country_id": 48
+    },
+    {
+        "id": 617,
+        "name": "Centrale",
+        "country_id": 49
+    },
+    {
+        "id": 618,
+        "name": "Kara",
+        "country_id": 49
+    },
+    {
+        "id": 619,
+        "name": "Maritime",
+        "country_id": 49
+    },
+    {
+        "id": 620,
+        "name": "Savanes",
+        "country_id": 49
+    },
+    {
+        "id": 621,
+        "name": "Tunis",
+        "country_id": 50
+    },
+    {
+        "id": 622,
+        "name": "Ariana",
+        "country_id": 50
+    },
+    {
+        "id": 623,
+        "name": "Ben Arous",
+        "country_id": 50
+    },
+    {
+        "id": 624,
+        "name": "Bizerte",
+        "country_id": 50
+    },
+    {
+        "id": 625,
+        "name": "Gabès",
+        "country_id": 50
+    },
+    {
+        "id": 626,
+        "name": "Gafsa",
+        "country_id": 50
+    },
+    {
+        "id": 627,
+        "name": "Jendouba",
+        "country_id": 50
+    },
+    {
+        "id": 628,
+        "name": "Kairouan",
+        "country_id": 50
+    },
+    {
+        "id": 629,
+        "name": "Kasserine",
+        "country_id": 50
+    },
+    {
+        "id": 630,
+        "name": "Kebili",
+        "country_id": 50
+    },
+    {
+        "id": 631,
+        "name": "Kef",
+        "country_id": 50
+    },
+    {
+        "id": 632,
+        "name": "Mahdia",
+        "country_id": 50
+    },
+    {
+        "id": 633,
+        "name": "Manouba",
+        "country_id": 50
+    },
+    {
+        "id": 634,
+        "name": "Médenine",
+        "country_id": 50
+    },
+    {
+        "id": 635,
+        "name": "Monastir",
+        "country_id": 50
+    },
+    {
+        "id": 636,
+        "name": "Nabeul",
+        "country_id": 50
+    },
+    {
+        "id": 637,
+        "name": "Sfax",
+        "country_id": 50
+    },
+    {
+        "id": 638,
+        "name": "Sidi Bouzid",
+        "country_id": 50
+    },
+    {
+        "id": 639,
+        "name": "Siliana",
+        "country_id": 50
+    },
+    {
+        "id": 640,
+        "name": "Tataouine",
+        "country_id": 50
+    },
+    {
+        "id": 641,
+        "name": "Tozeur",
+        "country_id": 50
+    },
+    {
+        "id": 642,
+        "name": "Zaghouan",
+        "country_id": 50
+    },
+    {
+        "id": 643,
+        "name": "Central Region",
+        "country_id": 51
+    },
+    {
+        "id": 644,
+        "name": "Eastern Region",
+        "country_id": 51
+    },
+    {
+        "id": 645,
+        "name": "Northern Region",
+        "country_id": 51
+    },
+    {
+        "id": 646,
+        "name": "Western Region",
+        "country_id": 51
+    },
+    {
+        "id": 647,
+        "name": "Central",
+        "country_id": 52
+    },
+    {
+        "id": 648,
+        "name": "Copperbelt",
+        "country_id": 52
+    },
+    {
+        "id": 649,
+        "name": "Eastern",
+        "country_id": 52
+    },
+    {
+        "id": 650,
+        "name": "Luapula",
+        "country_id": 52
+    },
+    {
+        "id": 651,
+        "name": "Lusaka",
+        "country_id": 52
+    },
+    {
+        "id": 652,
+        "name": "Muchinga",
+        "country_id": 52
+    },
+    {
+        "id": 653,
+        "name": "Northern",
+        "country_id": 52
+    },
+    {
+        "id": 654,
+        "name": "North-Western",
+        "country_id": 52
+    },
+    {
+        "id": 655,
+        "name": "Southern",
+        "country_id": 52
+    },
+    {
+        "id": 656,
+        "name": "Western",
+        "country_id": 52
+    },
+    {
+        "id": 657,
+        "name": "Bulawayo",
+        "country_id": 53
+    },
+    {
+        "id": 658,
+        "name": "Harare",
+        "country_id": 53
+    },
+    {
+        "id": 659,
+        "name": "Manicaland",
+        "country_id": 53
+    },
+    {
+        "id": 660,
+        "name": "Mashonaland Central",
+        "country_id": 53
+    },
+    {
+        "id": 661,
+        "name": "Mashonaland East",
+        "country_id": 53
+    },
+    {
+        "id": 662,
+        "name": "Mashonaland West",
+        "country_id": 53
+    },
+    {
+        "id": 663,
+        "name": "Masvingo",
+        "country_id": 53
+    },
+    {
+        "id": 664,
+        "name": "Midlands",
+        "country_id": 53
+    },
+    {
+        "id": 665,
+        "name": "Matabeleland North",
+        "country_id": 53
+    },
+    {
+        "id": 666,
+        "name": "Matabeleland South",
+        "country_id": 53
+    },
+    {
+        "id": 667,
+        "name": "Aousserd",
+        "country_id": 54
+    },
+    {
+        "id": 668,
+        "name": "Bojador",
+        "country_id": 54
+    },
+    {
+        "id": 669,
+        "name": "Dakhla",
+        "country_id": 54
+    },
+    {
+        "id": 670,
+        "name": "Laâyoune",
+        "country_id": 54
+    },
+    {
+        "id": 671,
+        "name": "M’hamid",
+        "country_id": 54
+    },
+    {
+        "id": 672,
+        "name": "Tarfaya",
+        "country_id": 54
+    }
+]

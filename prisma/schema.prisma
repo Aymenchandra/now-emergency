@@ -30,6 +30,7 @@ model Account {
 enum userRole {
   ADMIN
   USER
+  EMPLOYEE
 }
 
 model User {
@@ -44,6 +45,17 @@ model User {
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation twoFactorConfirmation?
   Emergency             Emergency[]
+  phone                 String?
+  location              Location?  
+}
+
+model Location {
+  id       String  @id @default(cuid())
+  country  String
+  governorate    String
+  
+  user     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String? @unique
 }
 
 model VerificationToken {
@@ -106,4 +118,5 @@ model Emergency {
   userId      String // This is the foreign key to the User model
   user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   status      emergencyStatus @default(HELP)
+  date        DateTime?       @default(now())
 }

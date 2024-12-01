@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { Emergency } from "@/components/layout/features/emergencies/user-emergencies-list";
+import { Emergency } from "@prisma/client";
 
 interface EmergencyProps {
   emergency?: Emergency;

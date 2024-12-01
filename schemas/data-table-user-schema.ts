@@ -23,7 +23,7 @@ export const editUserSchema = z.object({
   newPassword: z.optional(z.string().min(8),{
       message: "Minimum 8 characters required"
   }),
-  role: z.enum([userRole.ADMIN,userRole.USER]),
+  role: z.enum([userRole.ADMIN,userRole.USER,userRole.EMPLOYEE]),
   emailVerified : z.union([z.date(), z.null(), z.undefined()]),
   isTwoFactorEnabled : z.optional(z.boolean())
 })

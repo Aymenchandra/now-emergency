@@ -1,4 +1,5 @@
 import { emergencyStatus, emergencyType, userRole } from "@prisma/client"
+
 import * as z from "zod"
 
 export const deleteSchema = z.object({
@@ -18,7 +19,7 @@ export const ProfileSchema = z.object({
     newPassword: z.optional(z.string().min(8), {
         message: "Minimum 8 characters required"
     }),
-    role: z.enum([userRole.ADMIN, userRole.USER]),
+    role: z.enum([userRole.ADMIN, userRole.USER,userRole.EMPLOYEE]),
     emailVerified: z.union([z.date(), z.null(), z.undefined()]),
     isTwoFactorEnabled: z.optional(z.boolean())
 })
@@ -63,18 +64,6 @@ export const LoginSchema = z.object({
     code: z.optional(z.string())
 })
 
-export const RegisterSchema = z.object({
-    name: z.string().min(1, {
-        message: "Name is required"
-    }),
-    email: z.string().email({
-        message: "Email is required"
-    }),
-    password: z.string().min(8, {
-        message: "Minimum 8 characters required"
-    }),
-})
-
 export const AddUserSchema = z.object({
     name: z.string().min(1, {
         message: "Name is required"
@@ -85,7 +74,7 @@ export const AddUserSchema = z.object({
     password: z.string().min(8, {
         message: "Minimum 8 characters required"
     }),
-    role: z.enum([userRole.ADMIN, userRole.USER])
+    role: z.enum([userRole.ADMIN, userRole.USER,userRole.EMPLOYEE])
 })
 
 // map schema
