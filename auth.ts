@@ -5,7 +5,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { getUserById } from "@/data/user"
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation"
 import { getAccoutByUserId } from "@/data/account"
-import { userRole } from "@prisma/client"
+import { Location, userRole } from "@prisma/client"
 
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
@@ -46,10 +46,19 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         async session({ token, session }) {
             
             if (token.sub && session.user) {
+                const existingUser = await getUserById(token.sub)
+
                 session.user.id = token.sub
+                session.user.phone = existingUser?.phone as string
+                session.user.location = existingUser?.location as Location
+
             }
 
             if (token.role && session.user) {
+                session.user.role = token.role as userRole
+            }
+            
+            if (session.user) {
                 session.user.role = token.role as userRole
             }
             

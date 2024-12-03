@@ -2,18 +2,28 @@ import { db } from "@/lib/db"
 import { Emergency } from "@prisma/client"
 
 
-export const getUserByEmail = async(email: string) => {
+export const getUserByEmail = async (email: string) => {
     try {
-        const user = await db.user.findUnique({where : {email}})
+        const user = await db.user.findUnique({ where: { email } })
         return user
     } catch {
         return null
     }
 }
 
-export const getUserById = async(id: string) => {
+export const getUserById = async (id: string) => {
     try {
-        const user = await db.user.findUnique({where : {id}})
+        const user = await db.user.findUnique({
+            where: { id },
+            include: {
+                location: {
+                    select: {
+                        country: true,
+                        governorate: true,
+                    }
+                }
+            }
+        });
         return user
     } catch {
         return null
@@ -31,7 +41,7 @@ export const getEmergencyByUserId = async (userId: string): Promise<Emergency[]>
         });
 
         // If the user is found, return their emergencies, otherwise return an empty array
-        return user?.Emergency ?? []; 
+        return user?.Emergency ?? [];
     } catch (error) {
         console.error(error);
         return []; // Return an empty array in case of an error

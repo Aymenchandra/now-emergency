@@ -1,12 +1,12 @@
 "use server"
 
-import { RegisterSchema } from "@/schemas/registerSchema"
 import * as z from "zod"
 import bcrypt from "bcryptjs"
 import { db } from "@/lib/db"
 import { getUserByEmail } from "@/data/user"
 import { generateVerificationToken } from "@/lib/tokens"
 import { sendVerificationEmail } from "@/lib/mail"
+import { RegisterSchema } from "@/schemas"
 
 
 export const register = async (payload : z.infer<typeof RegisterSchema> ) => {

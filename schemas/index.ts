@@ -1,6 +1,12 @@
 import { emergencyStatus, emergencyType, userRole } from "@prisma/client"
+import countriesCode from '@/data/location/countriesCode.json'
+import isValidPhoneNumber from 'libphonenumber-js';
+import parsePhoneNumber from 'libphonenumber-js';
 
 import * as z from "zod"
+
+const countryNameToCode = countriesCode;
+
 
 export const deleteSchema = z.object({
     id: z.string()
@@ -19,7 +25,16 @@ export const ProfileSchema = z.object({
     newPassword: z.optional(z.string().min(8), {
         message: "Minimum 8 characters required"
     }),
-    role: z.enum([userRole.ADMIN, userRole.USER,userRole.EMPLOYEE]),
+    role: z.enum([userRole.ADMIN, userRole.USER, userRole.EMPLOYEE]),
+    phone: z.string().min(1, {
+        message: "Phone is required"
+    }).refine(isValidPhoneNumber, { message: "Invalid phone number" }),
+    location: z.object({
+        country: z.string().min(1, {
+            message: "Country is required",
+        }),
+        governorate: z.string().optional()
+    }),
     emailVerified: z.union([z.date(), z.null(), z.undefined()]),
     isTwoFactorEnabled: z.optional(z.boolean())
 })
@@ -41,6 +56,24 @@ export const ProfileSchema = z.object({
         message: "Password is required!",
         path: ["Password"]
     })
+    .refine((data) => {
+        const { phone, location } = data;
+        const { country } = location;
+
+        const countryCode = countryNameToCode[country as keyof typeof countryNameToCode];
+
+        const parsedPhoneNumber = parsePhoneNumber(phone);
+
+        // Check if the country code matches
+        if (parsedPhoneNumber && parsedPhoneNumber.country !== countryCode) {
+            return false;
+        }
+
+        return true;
+    }, {
+        message: "Phone number does not match the selected country",
+        path: ['location'], // Error will be associated with the entire location object
+    });
 
 export const NewPasswordSchema = z.object({
     password: z.string().min(8, {
@@ -64,6 +97,45 @@ export const LoginSchema = z.object({
     code: z.optional(z.string())
 })
 
+export const RegisterSchema = z.object({
+    name: z.string().min(1, {
+        message: "Name is required"
+    }),
+    email: z.string().email({
+        message: "Email is required"
+    }),
+    password: z.string().min(8, {
+        message: "Minimum 8 characters required"
+    }),
+    phone: z.string().min(1, {
+        message: "Phone is required"
+    }).refine(isValidPhoneNumber, { message: "Invalid phone number" }),
+    location: z.object({
+        country: z.string().min(1, {
+            message: "Country is required",  // Error message for empty country
+        }),
+        governorate: z.string().optional()
+    })
+})
+    .refine((data) => {
+        const { phone, location } = data;
+        const { country } = location;
+
+        const countryCode = countryNameToCode[country as keyof typeof countryNameToCode];
+
+        const parsedPhoneNumber = parsePhoneNumber(phone);
+
+        // Check if the country code matches
+        if (parsedPhoneNumber && parsedPhoneNumber.country !== countryCode) {
+            return false;
+        }
+
+        return true;
+    }, {
+        message: "Phone number does not match the selected country",
+        path: ['location'], // Error will be associated with the entire location object
+    });
+
 export const AddUserSchema = z.object({
     name: z.string().min(1, {
         message: "Name is required"
@@ -74,7 +146,7 @@ export const AddUserSchema = z.object({
     password: z.string().min(8, {
         message: "Minimum 8 characters required"
     }),
-    role: z.enum([userRole.ADMIN, userRole.USER,userRole.EMPLOYEE])
+    role: z.enum([userRole.ADMIN, userRole.USER, userRole.EMPLOYEE])
 })
 
 // map schema

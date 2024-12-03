@@ -18,7 +18,7 @@ import { FormSuccess } from "@/components/form-success"
 import { useState, useTransition } from "react"
 import { register } from "@/actions/auth/register"
 import LocationSelector from "../ui/location-input"
-import { RegisterSchema } from "@/schemas/registerSchema"
+import { RegisterSchema } from "@/schemas"
 
 export const RegisterForm = () => {
     const [isPending, startTransition] = useTransition()

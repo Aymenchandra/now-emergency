@@ -10,6 +10,12 @@ import { sendVerificationEmail } from "@/lib/mail"
 
 
 export const profile = async (payload: z.infer<typeof ProfileSchema>) => {
+    
+    const validatedFields = ProfileSchema.safeParse(payload);
+
+    if(!validatedFields.success){
+        return { error : "Invalid fields!"};
+    }
 
     const user = await CurrentUser();
 
@@ -24,46 +30,51 @@ export const profile = async (payload: z.infer<typeof ProfileSchema>) => {
     }
 
     if (user.isOAuth) {
-        payload.email = undefined;
-        payload.password = undefined;
-        payload.newPassword = undefined;
-        payload.isTwoFactorEnabled = undefined;
+        validatedFields.data.email = undefined;
+        validatedFields.data.password = undefined;
+        validatedFields.data.newPassword = undefined;
+        validatedFields.data.isTwoFactorEnabled = undefined;
     }
 
     var emailsent = ''
-    if (payload.email && payload.email !== user.email) {
-        const existingUser = await getUserByEmail(payload.email);
+    if (validatedFields.data.email && validatedFields.data.email !== user.email) {
+        const existingUser = await getUserByEmail(validatedFields.data.email);
 
         if (existingUser && existingUser.id !== user.id) {
             return { error: "Email already in use!" }
         }
 
-        const verificationToken = await generateVerificationToken(payload.email)
+        const verificationToken = await generateVerificationToken(validatedFields.data.email)
         await sendVerificationEmail(verificationToken.email, verificationToken.token)
-        payload.emailVerified = null
+        validatedFields.data.emailVerified = null
         emailsent = ' Verification email sent!'
     }
 
-    if(payload.password && payload.newPassword && dbUser.password){
-        const passwordsMatch = await bcrypt.compare(payload.password,dbUser.password);
+    if(validatedFields.data.password && validatedFields.data.newPassword && dbUser.password){
+        const passwordsMatch = await bcrypt.compare(validatedFields.data.password,dbUser.password);
         
         if(!passwordsMatch){
             return { error : "Incorrect password!"}
         }
 
-        const hashedPassword = await bcrypt.hash(payload.newPassword, 10)
+        const hashedPassword = await bcrypt.hash(validatedFields.data.newPassword, 10)
 
-        payload.password = hashedPassword;
-        payload.newPassword = undefined;
+        validatedFields.data.password = hashedPassword;
+        validatedFields.data.newPassword = undefined;
     }
 
     await db.user.update({
         where: { id: dbUser.id },
         data: {
-            ...payload
-        }
+            ...validatedFields.data,
+            location: {
+              update: {
+                country: validatedFields.data.location.country,
+                governorate: validatedFields.data.location.governorate as string,
+              }
+            }
+          }
     })
 
-    
     return { success: "Profile Updated!" + emailsent }
 }

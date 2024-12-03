@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
@@ -21,17 +21,14 @@ import { cn } from '@/lib/utils'
 import countries from '@/data/location/countries.json'
 import states from '@/data/location/states.json'
 
-interface Timezone {
-  zoneName: string
-  gmtOffset: number
-  gmtOffsetName: string
-  abbreviation: string
-  tzName: string
-}
-
-interface CountryProps {
+export interface CountryProps {
   id: number
   name: string
+}
+
+type Location = {
+  country: string;
+  governorate: string;
 }
 
 interface StateProps {
@@ -44,12 +41,14 @@ interface LocationSelectorProps {
   disabled?: boolean
   onCountryChange?: (country: CountryProps | null) => void
   onStateChange?: (state: StateProps | null) => void
+  location?: Location
 }
 
 const LocationSelector = ({
   disabled,
   onCountryChange,
   onStateChange,
+  location
 }: LocationSelectorProps) => {
   const [selectedCountry, setSelectedCountry] = useState<CountryProps | null>(
     null,
@@ -66,6 +65,25 @@ const LocationSelector = ({
   const availableStates = statesData.filter(
     (state) => state.country_id === selectedCountry?.id,
   )
+  
+  // set select country dropdown
+  const getCurrentProfileLocation = () => {
+    if (location) {
+      const selectedCountry = countries.find((c) => c.name === location.country);
+      const selectedState = states.find((g) => g.name === location.governorate);
+      if (selectedCountry) {
+        setSelectedCountry(selectedCountry)
+      }
+      if (selectedState) {
+        setSelectedState(selectedState)
+      }
+    }
+  };
+
+  useEffect(() => {
+    return () => getCurrentProfileLocation();
+  }, []);
+
 
   const handleCountrySelect = (country: CountryProps | null) => {
     setSelectedCountry(country)

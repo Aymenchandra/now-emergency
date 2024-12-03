@@ -24,6 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { userRole } from "@prisma/client"
 import { Switch } from "@/components/ui/switch"
 import { ImageForm } from "@/components/layout/image-form"
+import LocationSelector from "@/components/ui/location-input"
 
 
 export const Profile = () => {
@@ -35,6 +36,7 @@ export const Profile = () => {
 
   const user = useCurrentUser();
 
+
   const form = useForm<z.infer<typeof ProfileSchema>>({
     resolver: zodResolver(ProfileSchema),
     defaultValues: {
@@ -43,6 +45,8 @@ export const Profile = () => {
       password: undefined,
       newPassword: undefined,
       role: user?.role || undefined,
+      phone: user?.phone || undefined,
+      location: user?.location || undefined,
       isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
     }
   })
@@ -79,8 +83,7 @@ export const Profile = () => {
                 </FormControl>
                 <FormMessage />
               </FormItem>
-            )}>
-            </FormField>
+            )} />
             {user?.isOAuth === false && (
               <>
                 <FormField control={form.control} name="email" render={({ field }) => (
@@ -91,8 +94,7 @@ export const Profile = () => {
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )}>
-                </FormField>
+                )} />
                 <FormField control={form.control} name="password" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
@@ -101,8 +103,8 @@ export const Profile = () => {
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )}>
-                </FormField>
+                )}
+                />
                 <FormField control={form.control} name="newPassword" render={({ field }) => (
                   <FormItem>
                     <FormLabel>New Password</FormLabel>
@@ -111,37 +113,78 @@ export const Profile = () => {
                     </FormControl>
                     <FormMessage />
                   </FormItem>
-                )}></FormField>
+                )} />
               </>
             )}
             {user?.role === userRole.ADMIN && (
               <>
                 <FormField control={form.control} name="role" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Role</FormLabel>
-                <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a role"></SelectValue>
-                    </SelectTrigger>
-                  </FormControl>
+                  <FormItem>
+                    <FormLabel>Role</FormLabel>
+                    <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a role"></SelectValue>
+                        </SelectTrigger>
+                      </FormControl>
 
-                  <SelectContent>
-                    <SelectItem value={userRole.ADMIN}>
-                      Admin
-                    </SelectItem>
-                    <SelectItem value={userRole.USER}>
-                      User
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}>
-            </FormField>
+                      <SelectContent>
+                        <SelectItem value={userRole.ADMIN}>
+                          Admin
+                        </SelectItem>
+                        <SelectItem value={userRole.USER}>
+                          User
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
               </>
             )}
-            
+            <FormField control={form.control} name="phone" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Phone" disabled={isPending} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )} />
+            <FormField
+              control={form.control}
+              name="location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Select Country</FormLabel>
+                  <FormControl>
+                    <LocationSelector
+                      location={{
+                        country: user?.location?.country || "",    
+                        governorate: user?.location?.governorate || "", 
+                      }}
+                      disabled={isPending}
+                      onCountryChange={(country) => {
+                        form.setValue(`${field.name}.country`, country?.name || '');
+                      }}
+                      onStateChange={(state) => {
+                        form.setValue(`${field.name}.governorate`, state?.name || '');
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage>
+                    {form.formState.errors.location?.country?.message &&
+                      form.formState.errors.location?.country?.message !== undefined ?
+                      form.formState.errors.location?.country?.message :
+                      null}
+                  </FormMessage>
+                  <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500">
+                    If your country has states, it will appear after selecting country.
+                  </p>
+                </FormItem>
+              )}
+            />
+
             {user?.isOAuth === false && (
               <FormField control={form.control} name="isTwoFactorEnabled" render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
@@ -155,7 +198,7 @@ export const Profile = () => {
                     <Switch disabled={isPending} checked={field.value} onCheckedChange={field.onChange} />
                   </FormControl>
                 </FormItem>
-              )}></FormField>
+              )} />
             )}
           </div>
           <FormSuccess message={success} />
