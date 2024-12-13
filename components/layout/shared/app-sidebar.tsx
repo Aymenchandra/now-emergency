@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import {
+  BriefcaseBusiness,
   Flag,
   Sparkles,
   User,
@@ -58,6 +59,11 @@ const data = {
       title: "Profile",
       url: "/profile",
       icon: User,
+    },
+    {
+      title: "WorkStation",
+      url: "/workstation",
+      icon: BriefcaseBusiness,
     }
   ]
 }

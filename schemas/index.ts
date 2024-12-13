@@ -174,3 +174,13 @@ export const EmergencySchema = z.object({
     type: z.enum([emergencyType.FIRE, emergencyType.VIOLENCE, emergencyType.OTHER]),
     userId: z.string()
 })
+
+export const WorkStationSchema = z.object({
+    country: z.string().min(1, {
+        message: "Country is required"
+    }),
+    governorate: z.string().min(1, {
+        message: "Governorate is required"
+    }),
+    position: z.number().array(),
+})

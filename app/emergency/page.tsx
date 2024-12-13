@@ -1,4 +1,3 @@
-
 import DynamicMap from "@/components/map/dynamicMap";
 import { Toaster } from "@/components/ui/sonner"
 import { SessionProvider } from "next-auth/react";

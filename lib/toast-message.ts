@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react"
 import { toast } from "sonner"
 
-export const ToastMessage = async (title: string, description: string,setIsEmergencyOpen:Dispatch<SetStateAction<boolean>>) => {
+export const ToastMessage = async (title: string, description: string,setIsLocationDialogOpen:Dispatch<SetStateAction<boolean>>) => {
 
   toast.success(title, {
     description: description,
@@ -10,7 +10,7 @@ export const ToastMessage = async (title: string, description: string,setIsEmerg
     },
     action: {
       label: "Save",
-      onClick: () => setIsEmergencyOpen(true) // setIsOpen(true)
+      onClick: () => setIsLocationDialogOpen(true) // setIsOpen(true)
     }
   })
 }

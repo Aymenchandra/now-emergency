@@ -20,6 +20,7 @@ export const getUserById = async (id: string) => {
                     select: {
                         country: true,
                         governorate: true,
+                        position: true,
                     }
                 }
             }

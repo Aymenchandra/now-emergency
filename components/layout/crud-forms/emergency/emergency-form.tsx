@@ -21,12 +21,12 @@ import { Button } from "@/components/ui/button"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from 'lucide-react';
-import { Emergency } from '@/actions/crud/emergency/Emergency';
 import { useRouter } from 'next/navigation';
 import { Textarea } from '@/components/ui/textarea';
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { LatLngTuple } from 'leaflet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { emergency } from '@/actions/crud/emergency/Emergency';
 
 interface EmergencyFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -69,7 +69,7 @@ export const EmergencyForm = ({ setIsOpen, location, emergencyInfo }: EmergencyF
     setError("");
     setSuccess("");
     startTransition(() => {
-      Emergency(payload,emergencyInfo?.id as string)
+      emergency(payload,emergencyInfo?.id as string)
         .then((data) => {
           if (data.success) {
             setSuccess(data.success)

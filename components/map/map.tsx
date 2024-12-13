@@ -24,7 +24,8 @@ import MapUpdater from "./mapUpdater"
 import { ToastMessage } from "@/lib/toast-message"
 import { ResponsiveDialog } from "../responsive-dialog";
 import { EmergencyForm } from "../layout/crud-forms/emergency/emergency-form";
-import { Emergency } from "@prisma/client";
+import { Emergency, Location } from "@prisma/client";
+import { WorkstationForm } from "../layout/crud-forms/workstation/workstation-form";
 
 // Default location for initial load (when geolocation is unavailable)
 const defaults = {
@@ -33,9 +34,10 @@ const defaults = {
 }
 interface MapProps {
     upDateEmergency?: Emergency;
+    upDateUserWorkStation?: Location;
 };
 
-export const Map = ({ upDateEmergency }: MapProps) => {
+export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
     // State object for location-related data
     const [location, setLocation] = useState<{
         position: LatLngTuple | null;
@@ -52,7 +54,7 @@ export const Map = ({ upDateEmergency }: MapProps) => {
     });
 
     // State for modal and error handling
-    const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
+    const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
     const [error, setError] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
 
@@ -88,13 +90,19 @@ export const Map = ({ upDateEmergency }: MapProps) => {
             });
 
             // Trigger the Toast message with the display name from the fetched data
-            ToastMessage("Location Name", data.setLocation.display_name, setIsEmergencyOpen);
+            ToastMessage("Location Name", data.setLocation.display_name, setIsLocationDialogOpen);
         }).catch(() => console.error("Something went wrong"));
     };
 
     // Fetch user's geolocation or fallback to default position
     const getCurrentLocation = () => {
         switch (true) {
+
+            case upDateUserWorkStation !== undefined:
+                // in case update user workstation position
+                fetchAndSetLocation(upDateUserWorkStation.position[0], upDateUserWorkStation.position[1]);
+                break;
+
             case upDateEmergency !== undefined:
                 // data already in database in case we update emergency
                 fetchAndSetLocation(upDateEmergency.position[0], upDateEmergency.position[1]);
@@ -137,7 +145,7 @@ export const Map = ({ upDateEmergency }: MapProps) => {
                     popupContent: data?.setLocation?.popupContent,
                     display_name: data?.setLocation?.display_name,
                 });
-                ToastMessage("Location Name", data?.setLocation?.display_name, setIsEmergencyOpen);
+                ToastMessage("Location Name", data?.setLocation?.display_name, setIsLocationDialogOpen);
             }).catch(() => console.error("Something went wrong"));
         });
     };
@@ -176,7 +184,7 @@ export const Map = ({ upDateEmergency }: MapProps) => {
                 </form>
             </Form>
 
-            {!isEmergencyOpen && (
+            {!isLocationDialogOpen && (
                 <MapContainer
                     center={location.position}
                     zoom={defaults.zoom}
@@ -192,29 +200,43 @@ export const Map = ({ upDateEmergency }: MapProps) => {
                     </Marker>
                     <MapClickHandler
                         setLocation={setLocation}
-                        setIsEmergencyOpen={setIsEmergencyOpen}
+                        setIsLocationDialogOpen={setIsLocationDialogOpen}
                     />
                     <MapUpdater position={location.position} />
                 </MapContainer>
             )}
-
-            <ResponsiveDialog
-                isOpen={isEmergencyOpen}
-                setIsOpen={setIsEmergencyOpen}
-                title="Emergency"
-                description={location.display_name as string}
-            >
-                <EmergencyForm
-                    setIsOpen={setIsEmergencyOpen}
-                    location={{ ...location }}
-                    emergencyInfo={{
-                        id: upDateEmergency?.id || null,
-                        title: upDateEmergency?.title || null,
-                        description: upDateEmergency?.description || null,
-                        type: upDateEmergency?.type || null
-                    }}
-                />
-            </ResponsiveDialog>
+            {upDateEmergency && (
+                <ResponsiveDialog
+                    isOpen={isLocationDialogOpen}
+                    setIsOpen={setIsLocationDialogOpen}
+                    title="Emergency"
+                    description={location.display_name as string}
+                >
+                    <EmergencyForm
+                        setIsOpen={setIsLocationDialogOpen}
+                        location={{ ...location }}
+                        emergencyInfo={{
+                            id: upDateEmergency?.id || null,
+                            title: upDateEmergency?.title || null,
+                            description: upDateEmergency?.description || null,
+                            type: upDateEmergency?.type || null
+                        }}
+                    />
+                </ResponsiveDialog>
+            )}
+            {upDateUserWorkStation && (
+                <ResponsiveDialog
+                    isOpen={isLocationDialogOpen}
+                    setIsOpen={setIsLocationDialogOpen}
+                    title="WorkStation"
+                    description={location.display_name as string}
+                >
+                    <WorkstationForm
+                        setIsOpen={setIsLocationDialogOpen}
+                        location={{ ...location }}
+                    />
+                </ResponsiveDialog>
+            )}
         </>
     );
 };

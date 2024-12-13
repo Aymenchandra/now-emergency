@@ -7,7 +7,7 @@ import { getUserById } from "@/data/user"
 import { getEmergencyById } from "@/data/emergency"
 
 
-export const Emergency = async (payload: z.infer<typeof EmergencySchema>, idEmergency ?: string) => {
+export const emergency = async (payload: z.infer<typeof EmergencySchema>, idEmergency ?: string) => {
     const validatedFields = EmergencySchema.safeParse(payload);
 
     if (!validatedFields.success) {

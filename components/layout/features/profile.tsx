@@ -26,7 +26,6 @@ import { Switch } from "@/components/ui/switch"
 import { ImageForm } from "@/components/layout/image-form"
 import LocationSelector from "@/components/ui/location-input"
 
-
 export const Profile = () => {
 
   const [error, setError] = useState<string | undefined>('')
@@ -206,6 +205,7 @@ export const Profile = () => {
           <Button type="submit">Save</Button>
         </form>
       </Form>
+
     </>
   )
 }

@@ -53,7 +53,7 @@ model Location {
   id       String  @id @default(cuid())
   country  String
   governorate    String
-  
+  position    Float[]
   user     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId   String? @unique
 }

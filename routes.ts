@@ -24,6 +24,7 @@ export const userRoutes = [
     "/profile",
     "/emergencies",
     "/emergency",
+    "/workstation",
 ]
 
 export function isRouteAllowed(pathname: string) {
