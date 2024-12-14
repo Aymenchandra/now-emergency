@@ -176,6 +176,9 @@ export const EmergencySchema = z.object({
 })
 
 export const WorkStationSchema = z.object({
+    phone: z.string().min(1, {
+        message: "Phone is required"
+    }).refine(isValidPhoneNumber, { message: "Invalid phone number" }),
     country: z.string().min(1, {
         message: "Country is required"
     }),
@@ -184,3 +187,20 @@ export const WorkStationSchema = z.object({
     }),
     position: z.number().array(),
 })
+.refine((data) => {
+    const { phone, country } = data;
+
+    const countryCode = countryNameToCode[country as keyof typeof countryNameToCode];
+
+    const parsedPhoneNumber = parsePhoneNumber(phone);
+
+    // Check if the country code matches
+    if (parsedPhoneNumber && parsedPhoneNumber.country !== countryCode) {
+        return false;
+    }
+
+    return true;
+}, {
+    message: "Phone number does not match the selected country",
+    path: ['phone'], // Error will be associated with the entire location object
+});

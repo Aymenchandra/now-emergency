@@ -3,12 +3,17 @@ import dynamic from "next/dynamic";
 import { useMemo } from "react";
 
 // will be null in case that emergency not found
+export interface upDateUserWorkStation  {
+    location?: Location
+    phone?: string
+}
+
 interface MapProps {
     emergency?: Emergency;
-    location?: Location;
+    upDateUserWorkStation?: upDateUserWorkStation;
 };
 
-export default function DynamicMap({ emergency, location }: MapProps) {
+export default function DynamicMap({ emergency, upDateUserWorkStation }: MapProps) {
     const Map = useMemo(() => dynamic(
         () => import('@/components/map/map'),
         {
@@ -19,7 +24,7 @@ export default function DynamicMap({ emergency, location }: MapProps) {
 
     return (
         <div className="bg-white-700 p-3 w-[100%] h-[750px] space-y-2">
-            <Map upDateEmergency={emergency} upDateUserWorkStation={location} />
+            <Map upDateEmergency={emergency} upDateUserWorkStation={upDateUserWorkStation} />
         </div>
     )
 }

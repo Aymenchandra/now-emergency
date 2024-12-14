@@ -25,6 +25,14 @@ export const register = async (payload : z.infer<typeof RegisterSchema> ) => {
     if(existingUser){
         return {error : "Email already in use! "}
     }
+
+    const searchQuery = `${validatedFields.data.location.country} ${validatedFields.data.location.governorate}`
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${searchQuery}&format=json&addressdetails=1&accept-language=en`);
+    const data = await response.json();
+    if (!data) {
+      return {error : "Location doesn't available"}
+    }
+    const { lat, lon } = data[0];
     await db.user.create({
         data: {
             ...validatedFields.data,
@@ -33,6 +41,7 @@ export const register = async (payload : z.infer<typeof RegisterSchema> ) => {
               create: {
                 country: validatedFields.data.location.country,
                 governorate: validatedFields.data.location.governorate as string,
+                position : [parseFloat(lat),parseFloat(lon)]
               }
             }
           }

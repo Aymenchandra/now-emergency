@@ -26,6 +26,7 @@ import { ResponsiveDialog } from "../responsive-dialog";
 import { EmergencyForm } from "../layout/crud-forms/emergency/emergency-form";
 import { Emergency, Location } from "@prisma/client";
 import { WorkstationForm } from "../layout/crud-forms/workstation/workstation-form";
+import { upDateUserWorkStation } from "./dynamicMap";
 
 // Default location for initial load (when geolocation is unavailable)
 const defaults = {
@@ -34,7 +35,7 @@ const defaults = {
 }
 interface MapProps {
     upDateEmergency?: Emergency;
-    upDateUserWorkStation?: Location;
+    upDateUserWorkStation?: upDateUserWorkStation;
 };
 
 export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
@@ -100,7 +101,7 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
 
             case upDateUserWorkStation !== undefined:
                 // in case update user workstation position
-                fetchAndSetLocation(upDateUserWorkStation.position[0], upDateUserWorkStation.position[1]);
+                fetchAndSetLocation(upDateUserWorkStation.location?.position[0] as number, upDateUserWorkStation.location?.position[1] as number);
                 break;
 
             case upDateEmergency !== undefined:
@@ -184,12 +185,12 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
                 </form>
             </Form>
 
-            {!isLocationDialogOpen && (
+            
                 <MapContainer
                     center={location.position}
                     zoom={defaults.zoom}
                     scrollWheelZoom={true}
-                    className="w-full h-[95%] relative z-1"
+                    className="w-full h-[95%] relative z-0"
                 >
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -204,7 +205,7 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
                     />
                     <MapUpdater position={location.position} />
                 </MapContainer>
-            )}
+          
             {upDateEmergency && (
                 <ResponsiveDialog
                     isOpen={isLocationDialogOpen}
@@ -234,6 +235,7 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
                     <WorkstationForm
                         setIsOpen={setIsLocationDialogOpen}
                         location={{ ...location }}
+                        phone={upDateUserWorkStation.phone as string}
                     />
                 </ResponsiveDialog>
             )}

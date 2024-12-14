@@ -162,13 +162,7 @@ export const Profile = () => {
                         country: user?.location?.country || "",    
                         governorate: user?.location?.governorate || "", 
                       }}
-                      disabled={isPending}
-                      onCountryChange={(country) => {
-                        form.setValue(`${field.name}.country`, country?.name || '');
-                      }}
-                      onStateChange={(state) => {
-                        form.setValue(`${field.name}.governorate`, state?.name || '');
-                      }}
+                      disabled={true}
                     />
                   </FormControl>
                   <FormMessage>

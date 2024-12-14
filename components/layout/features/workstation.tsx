@@ -6,10 +6,12 @@ import { Toaster } from "@/components/ui/sonner"
 
 export const Workstation = () => {
   const location = useCurrentUser()?.location;
+  const phone = useCurrentUser()?.phone;
+  const upDateUserWorkStation = {location,phone}
   return (
     <>
             <Toaster />
-            <DynamicMap location={location} />
+            <DynamicMap upDateUserWorkStation={upDateUserWorkStation}  />
     </>
   )
 }

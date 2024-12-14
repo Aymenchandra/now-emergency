@@ -67,12 +67,7 @@ export const profile = async (payload: z.infer<typeof ProfileSchema>) => {
         where: { id: dbUser.id },
         data: {
             ...validatedFields.data,
-            location: {
-              update: {
-                country: validatedFields.data.location.country,
-                governorate: validatedFields.data.location.governorate as string,
-              }
-            }
+            location : undefined
           }
     })
 

@@ -23,10 +23,11 @@ export const workstation = async (payload: z.infer<typeof WorkStationSchema>) =>
     await db.user.update({
         where: { id: dbUser.id },
         data: {
+            phone : validatedFields.data.phone, 
             location: {
               update: {
                 country: validatedFields.data.country,
-                governorate: validatedFields.data.country,
+                governorate: validatedFields.data.governorate,
                 position: validatedFields.data.position,
               }
             }

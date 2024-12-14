@@ -20,9 +20,9 @@ import { Button } from "@/components/ui/button"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { LatLngTuple } from 'leaflet';
 import { workstation } from '@/actions/workstation';
+import { useSession } from 'next-auth/react';
 
 interface WorkstationFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -31,11 +31,12 @@ interface WorkstationFormProps {
     country: string | null;
     governorate: string | null;
   };
+  phone : string
 }
 
-export const WorkstationForm = ({ setIsOpen, location }: WorkstationFormProps) => {
+export const WorkstationForm = ({ setIsOpen, location, phone }: WorkstationFormProps) => {
 
-  const router = useRouter();
+  const { update } = useSession();
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>("")
   const [success, setSuccess] = useState<string | undefined>("")
@@ -43,6 +44,7 @@ export const WorkstationForm = ({ setIsOpen, location }: WorkstationFormProps) =
   const form = useForm<z.infer<typeof WorkStationSchema>>({
     resolver: zodResolver(WorkStationSchema),
     defaultValues: {
+      phone: phone as string,
       country: location.country as string,
       governorate: location.governorate as string,
       position: location.position as LatLngTuple,
@@ -57,9 +59,9 @@ export const WorkstationForm = ({ setIsOpen, location }: WorkstationFormProps) =
         .then((data) => {
           if (data.success) {
             setSuccess(data.success)
+            update()
             try {
               setIsOpen(false);
-              router.push('/emergencies')
             } catch (error) {
               console.log(error);
             }
@@ -75,6 +77,17 @@ export const WorkstationForm = ({ setIsOpen, location }: WorkstationFormProps) =
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
       >
+        <FormField control={form.control} name="phone" render={({ field }) => (
+          <FormItem>
+            <FormLabel>Phone</FormLabel>
+            <FormControl>
+              <Input {...field} placeholder="Phone" disabled={isPending} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+        />
+
         <FormField
           control={form.control}
           name="country"
