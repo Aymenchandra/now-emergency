@@ -73,6 +73,7 @@ export function DataTable<TData extends RowData<string>, TValue> ({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+  
   return (
     <div className="space-y-4">
       <DataTableToolbar table={table} />

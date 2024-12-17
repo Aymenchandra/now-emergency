@@ -23,8 +23,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Loader2 } from 'lucide-react';
 import { addUser } from '@/actions/crud/user/addUser';
 import { useRouter } from 'next/navigation';
+import LocationSelector from '@/components/ui/location-input';
 
-export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boolean>>;}) => {
+export const AddUserForm = ({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>>; }) => {
 
   const router = useRouter();
   const [isPending, startTransition] = useTransition()
@@ -37,6 +38,8 @@ export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boo
       name: "",
       email: "",
       password: "",
+      phone: "",
+      location: {},
       role: undefined
     }
   });
@@ -47,7 +50,7 @@ export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boo
     startTransition(() => {
       addUser(payload)
         .then((data) => {
-          if(data.success){
+          if (data.success) {
             setSuccess(data.success)
             router.refresh()
             try {
@@ -55,11 +58,11 @@ export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boo
             } catch (error) {
               console.log(error);
             }
-          } 
+          }
           setError(data.error)
         })
     })
-    
+
   }
 
   return (
@@ -124,6 +127,53 @@ export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boo
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="+216 54 545 545"
+                  type="text"
+                  disabled={isPending}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Select Country</FormLabel>
+              <FormControl>
+                <LocationSelector
+                  disabled={isPending}
+                  onCountryChange={(country) => {
+                    form.setValue(`${field.name}.country`, country?.name || '');
+                  }}
+                  onStateChange={(state) => {
+                    form.setValue(`${field.name}.governorate`, state?.name || '');
+                  }}
+                />
+              </FormControl>
+              <FormMessage>
+                {form.formState.errors.location?.country?.message &&
+                  form.formState.errors.location?.country?.message !== undefined ?
+                  form.formState.errors.location?.country?.message :
+                  null}
+              </FormMessage>
+              <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500">
+                If your country has states, it will appear after selecting country.
+              </p>
+            </FormItem>
+          )}
+        />
         <FormField control={form.control} name="role" render={({ field }) => (
           <FormItem>
             <FormLabel>Role</FormLabel>
@@ -134,12 +184,11 @@ export const AddUserForm = ({setIsOpen}: {setIsOpen: Dispatch<SetStateAction<boo
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
-                <SelectItem value={userRole.ADMIN}>
-                  Admin
-                </SelectItem>
-                <SelectItem value={userRole.USER}>
-                  User
-                </SelectItem>
+                {Object.values(userRole).map((option) => (
+                  <SelectItem key={option} value={option}>
+                    {option}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
             <FormMessage />

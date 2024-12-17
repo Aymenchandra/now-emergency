@@ -46,16 +46,16 @@ model User {
   twoFactorConfirmation twoFactorConfirmation?
   Emergency             Emergency[]
   phone                 String?
-  location              Location?  
+  location              Location?              @relation
 }
 
 model Location {
-  id       String  @id @default(cuid())
-  country  String
-  governorate    String
+  id          String  @id @default(cuid())
+  country     String
+  governorate String
   position    Float[]
-  user     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId   String? @unique
+  user        User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String? @unique
 }
 
 model VerificationToken {

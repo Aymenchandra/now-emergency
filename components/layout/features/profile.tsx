@@ -20,8 +20,6 @@ import { ProfileSchema } from "@/schemas"
 import { useCurrentUser } from "@/hooks/use-current-user"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { userRole } from "@prisma/client"
 import { Switch } from "@/components/ui/switch"
 import { ImageForm } from "@/components/layout/image-form"
 import LocationSelector from "@/components/ui/location-input"
@@ -43,7 +41,6 @@ export const Profile = () => {
       email: user?.email || undefined,
       password: undefined,
       newPassword: undefined,
-      role: user?.role || undefined,
       phone: user?.phone || undefined,
       location: user?.location || undefined,
       isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
@@ -115,32 +112,7 @@ export const Profile = () => {
                 )} />
               </>
             )}
-            {user?.role === userRole.ADMIN && (
-              <>
-                <FormField control={form.control} name="role" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Role</FormLabel>
-                    <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a role"></SelectValue>
-                        </SelectTrigger>
-                      </FormControl>
-
-                      <SelectContent>
-                        <SelectItem value={userRole.ADMIN}>
-                          Admin
-                        </SelectItem>
-                        <SelectItem value={userRole.USER}>
-                          User
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-              </>
-            )}
+          
             <FormField control={form.control} name="phone" render={({ field }) => (
               <FormItem>
                 <FormLabel>Phone</FormLabel>
@@ -162,7 +134,8 @@ export const Profile = () => {
                         country: user?.location?.country || "",    
                         governorate: user?.location?.governorate || "", 
                       }}
-                      disabled={true}
+                      //if location doesn't exist user can update his location
+                      disabled={!!user?.location}
                     />
                   </FormControl>
                   <FormMessage>

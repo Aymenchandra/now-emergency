@@ -80,6 +80,7 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
                 setError("Invalid location data");
                 return;
             }
+            console.log(data)
 
             // Update the location state with the fetched data
             setLocation({
@@ -185,27 +186,42 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
                 </form>
             </Form>
 
+            <MapContainer
+                center={location.position}
+                zoom={defaults.zoom}
+                scrollWheelZoom={true}
+                className="w-full h-[95%] relative z-0"
+            >
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={location.position} draggable={false} icon={customMarkerIcon}>
+                    <Popup>{location.popupContent}</Popup>
+                </Marker>
+                <MapClickHandler
+                    setLocation={setLocation}
+                    setIsLocationDialogOpen={setIsLocationDialogOpen}
+                />
+                <MapUpdater position={location.position} />
+            </MapContainer>
             
-                <MapContainer
-                    center={location.position}
-                    zoom={defaults.zoom}
-                    scrollWheelZoom={true}
-                    className="w-full h-[95%] relative z-0"
+            {/* open emergency form */}
+            {!upDateEmergency && !upDateUserWorkStation && (
+                <ResponsiveDialog
+                    isOpen={isLocationDialogOpen}
+                    setIsOpen={setIsLocationDialogOpen}
+                    title="Emergency"
+                    description={location.display_name as string}
                 >
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    <EmergencyForm
+                        setIsOpen={setIsLocationDialogOpen}
+                        location={{ ...location }}
                     />
-                    <Marker position={location.position} draggable={false} icon={customMarkerIcon}>
-                        <Popup>{location.popupContent}</Popup>
-                    </Marker>
-                    <MapClickHandler
-                        setLocation={setLocation}
-                        setIsLocationDialogOpen={setIsLocationDialogOpen}
-                    />
-                    <MapUpdater position={location.position} />
-                </MapContainer>
-          
+                </ResponsiveDialog>
+            )}
+            {/* open upDateEmergency form */}
+
             {upDateEmergency && (
                 <ResponsiveDialog
                     isOpen={isLocationDialogOpen}
@@ -225,6 +241,8 @@ export const Map = ({ upDateEmergency, upDateUserWorkStation }: MapProps) => {
                     />
                 </ResponsiveDialog>
             )}
+
+            {/* open user workstation */}
             {upDateUserWorkStation && (
                 <ResponsiveDialog
                     isOpen={isLocationDialogOpen}

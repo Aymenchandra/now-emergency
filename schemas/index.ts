@@ -1,12 +1,10 @@
 import { emergencyStatus, emergencyType, userRole } from "@prisma/client"
-import countriesCode from '@/data/location/countriesCode.json'
 import isValidPhoneNumber from 'libphonenumber-js';
-import parsePhoneNumber from 'libphonenumber-js';
 
 import * as z from "zod"
+import { isMatchedCountry } from "@/lib/countries-match";
 
-const countryNameToCode = countriesCode;
-
+const phoneErrorMessage = 'Phone number does not match the selected country'
 
 export const deleteSchema = z.object({
     id: z.string()
@@ -25,10 +23,10 @@ export const ProfileSchema = z.object({
     newPassword: z.optional(z.string().min(8), {
         message: "Minimum 8 characters required"
     }),
-    role: z.enum([userRole.ADMIN, userRole.USER, userRole.EMPLOYEE]),
     phone: z.string().min(1, {
         message: "Phone is required"
-    }).refine(isValidPhoneNumber, { message: "Invalid phone number" }),
+    })
+        .refine(isValidPhoneNumber, { message: "Invalid phone number" }),
     location: z.object({
         country: z.string().min(1, {
             message: "Country is required",
@@ -60,19 +58,10 @@ export const ProfileSchema = z.object({
         const { phone, location } = data;
         const { country } = location;
 
-        const countryCode = countryNameToCode[country as keyof typeof countryNameToCode];
-
-        const parsedPhoneNumber = parsePhoneNumber(phone);
-
-        // Check if the country code matches
-        if (parsedPhoneNumber && parsedPhoneNumber.country !== countryCode) {
-            return false;
-        }
-
-        return true;
+        return isMatchedCountry(country, phone)
     }, {
-        message: "Phone number does not match the selected country",
-        path: ['location'], // Error will be associated with the entire location object
+        message: phoneErrorMessage,
+        path: ['location'], // Error will be associated to location
     });
 
 export const NewPasswordSchema = z.object({
@@ -112,7 +101,7 @@ export const RegisterSchema = z.object({
     }).refine(isValidPhoneNumber, { message: "Invalid phone number" }),
     location: z.object({
         country: z.string().min(1, {
-            message: "Country is required",  // Error message for empty country
+            message: "Country is required",
         }),
         governorate: z.string().optional()
     })
@@ -121,19 +110,42 @@ export const RegisterSchema = z.object({
         const { phone, location } = data;
         const { country } = location;
 
-        const countryCode = countryNameToCode[country as keyof typeof countryNameToCode];
-
-        const parsedPhoneNumber = parsePhoneNumber(phone);
-
-        // Check if the country code matches
-        if (parsedPhoneNumber && parsedPhoneNumber.country !== countryCode) {
-            return false;
-        }
-
-        return true;
+        return isMatchedCountry(country, phone)
     }, {
-        message: "Phone number does not match the selected country",
-        path: ['location'], // Error will be associated with the entire location object
+        message: phoneErrorMessage,
+        path: ['location'], // Error will be associated to location
+    });
+export const editUserSchema = z.object({
+    name: z.optional(z.string()),
+    email: z.optional(z.string().email()),
+    password: z.optional(z.string().min(8), {
+        message: "Minimum 8 characters required"
+    }),
+    newPassword: z.optional(z.string().min(8), {
+        message: "Minimum 8 characters required"
+    }),
+    phone: z.string().min(1, {
+        message: "Phone is required"
+    })
+        .refine(isValidPhoneNumber, { message: "Invalid phone number" }),
+    location: z.object({
+        country: z.string().min(1, {
+            message: "Country is required",
+        }),
+        governorate: z.string().optional()
+    }),
+    role: z.enum([userRole.ADMIN, userRole.USER, userRole.EMPLOYEE]),
+    emailVerified: z.union([z.date(), z.null(), z.undefined()]),
+    isTwoFactorEnabled: z.optional(z.boolean())
+})
+    .refine((data) => {
+        const { phone, location } = data;
+        const { country } = location;
+
+        return isMatchedCountry(country, phone)
+    }, {
+        message: phoneErrorMessage,
+        path: ['location'], // Error will be associated to location
     });
 
 export const AddUserSchema = z.object({
@@ -146,8 +158,27 @@ export const AddUserSchema = z.object({
     password: z.string().min(8, {
         message: "Minimum 8 characters required"
     }),
+    phone: z.string().min(1, {
+        message: "Phone is required"
+    })
+        .refine(isValidPhoneNumber, { message: "Invalid phone number" }),
+    location: z.object({
+        country: z.string().min(1, {
+            message: "Country is required",
+        }),
+        governorate: z.string().optional()
+    }),
     role: z.enum([userRole.ADMIN, userRole.USER, userRole.EMPLOYEE])
 })
+    .refine((data) => {
+        const { phone, location } = data;
+        const { country } = location;
+
+        return isMatchedCountry(country, phone)
+    }, {
+        message: phoneErrorMessage,
+        path: ['location'], // Error will be associated to location
+    });
 
 // map schema
 export const MapSearchSchema = z.object({
@@ -187,20 +218,11 @@ export const WorkStationSchema = z.object({
     }),
     position: z.number().array(),
 })
-.refine((data) => {
-    const { phone, country } = data;
+    .refine((data) => {
+        const { phone, country } = data;
 
-    const countryCode = countryNameToCode[country as keyof typeof countryNameToCode];
-
-    const parsedPhoneNumber = parsePhoneNumber(phone);
-
-    // Check if the country code matches
-    if (parsedPhoneNumber && parsedPhoneNumber.country !== countryCode) {
-        return false;
-    }
-
-    return true;
-}, {
-    message: "Phone number does not match the selected country",
-    path: ['phone'], // Error will be associated with the entire location object
-});
+        return isMatchedCountry(country, phone)
+    }, {
+        message: phoneErrorMessage,
+        path: ['phone'], // Error will be associated to phone
+    });

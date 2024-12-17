@@ -18,15 +18,19 @@ import { Input } from "@/components/ui/input"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { User, userRole } from "@prisma/client"
+import { Location, User, userRole } from "@prisma/client"
 import { Switch } from "@/components/ui/switch"
 import { editUser } from "@/actions/crud/user/editUser"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { editUserSchema } from "@/schemas/data-table-user-schema"
+import LocationSelector from "@/components/ui/location-input"
+import { editUserSchema } from "@/schemas"
 
-export const EditUserForm = ({ user,setIsOpen }: { user: User, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
-  const router = useRouter()  
+interface Users extends User {
+  location: Location
+}
+export const EditUserForm = ({ user, setIsOpen }: { user: Users, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+  const router = useRouter()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
@@ -37,6 +41,8 @@ export const EditUserForm = ({ user,setIsOpen }: { user: User, setIsOpen: Dispat
       name: user?.name || undefined,
       email: user?.email || undefined,
       newPassword: undefined,
+      phone: user?.phone || undefined,
+      location: user?.location || undefined,
       role: user?.role || undefined,
       isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
     }
@@ -101,6 +107,47 @@ export const EditUserForm = ({ user,setIsOpen }: { user: User, setIsOpen: Dispat
               )}></FormField>
             </>
           )}
+          <FormField control={form.control} name="phone" render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Phone" disabled={isPending} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )} />
+          <FormField
+            control={form.control}
+            name="location"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Select Country</FormLabel>
+                <FormControl>
+                  <LocationSelector
+                    location={{
+                      country: user?.location?.country || "",
+                      governorate: user?.location?.governorate || "",
+                    }}
+                    onCountryChange={(country) => {
+                      form.setValue(`${field.name}.country`, country?.name || '');
+                    }}
+                    onStateChange={(state) => {
+                      form.setValue(`${field.name}.governorate`, state?.name || '');
+                    }}
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState.errors.location?.country?.message &&
+                    form.formState.errors.location?.country?.message !== undefined ?
+                    form.formState.errors.location?.country?.message :
+                    null}
+                </FormMessage>
+                <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500">
+                  If your country has states, it will appear after selecting country.
+                </p>
+              </FormItem>
+            )}
+          />
           <FormField control={form.control} name="role" render={({ field }) => (
             <FormItem>
               <FormLabel>Role</FormLabel>
@@ -110,14 +157,12 @@ export const EditUserForm = ({ user,setIsOpen }: { user: User, setIsOpen: Dispat
                     <SelectValue placeholder="Select a role"></SelectValue>
                   </SelectTrigger>
                 </FormControl>
-
                 <SelectContent>
-                  <SelectItem value={userRole.ADMIN}>
-                    Admin
-                  </SelectItem>
-                  <SelectItem value={userRole.USER}>
-                    User
-                  </SelectItem>
+                  {Object.values(userRole).map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />

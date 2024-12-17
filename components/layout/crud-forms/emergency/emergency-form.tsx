@@ -26,7 +26,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { LatLngTuple } from 'leaflet';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { emergency } from '@/actions/crud/emergency/Emergency';
+import { emergency } from '@/actions/crud/emergency/emergency';
 
 interface EmergencyFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -69,7 +69,7 @@ export const EmergencyForm = ({ setIsOpen, location, emergencyInfo }: EmergencyF
     setError("");
     setSuccess("");
     startTransition(() => {
-      emergency(payload,emergencyInfo?.id as string)
+      emergency(payload, emergencyInfo?.id as string)
         .then((data) => {
           if (data.success) {
             setSuccess(data.success)
@@ -137,15 +137,11 @@ export const EmergencyForm = ({ setIsOpen, location, emergencyInfo }: EmergencyF
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value={emergencyType.FIRE}>
-                    Fire
-                  </SelectItem>
-                  <SelectItem value={emergencyType.VIOLENCE}>
-                    Violence
-                  </SelectItem>
-                  <SelectItem value={emergencyType.OTHER}>
-                    Other
-                  </SelectItem>
+                  {Object.values(emergencyType).map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />

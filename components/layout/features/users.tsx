@@ -6,7 +6,17 @@ import { User } from "@prisma/client";
 
 
 const getData = async (): Promise<User[]> => {
-  return db.user.findMany();
+  return await db.user.findMany({
+    include: {
+      location: {
+        select: {
+          country: true,
+          governorate: true,
+          position: true,
+        }
+      }
+    }
+  });
 }
 export const Users = async () => {
   const data = await getData();
@@ -15,5 +25,5 @@ export const Users = async () => {
       <DataTable data={data} columns={columns} />
     </LayoutView>
   );
-  
+
 }
