@@ -23,6 +23,7 @@ export const DEFAULT_LOGIN_REDIRECT = "/profile"
 export const userRoutes = [
     "/profile",
     "/emergencies",
+    "/assistances",
     "/emergency",
     "/workstation",
 ]

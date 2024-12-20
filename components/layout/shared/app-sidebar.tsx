@@ -4,6 +4,7 @@ import * as React from "react"
 import {
   BriefcaseBusiness,
   Flag,
+  Info,
   Sparkles,
   User,
   Users,
@@ -50,6 +51,11 @@ const data = {
     // },
   ],
   userNav: [
+    {
+      title: "Assistances",
+      url: "/assistances",
+      icon: Info,
+    },
     {
       title: "Emergencies",
       url: "/emergencies",

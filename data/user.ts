@@ -37,12 +37,12 @@ export const getEmergencyByUserId = async (userId: string): Promise<Emergency[]>
                 id: userId,
             },
             include: {
-                Emergency: true,
+                emergenciesAsUser: true,
             },
         });
 
         // If the user is found, return their emergencies, otherwise return an empty array
-        return user?.Emergency ?? [];
+        return user?.emergenciesAsUser ?? [];
     } catch (error) {
         console.error(error);
         return []; // Return an empty array in case of an error

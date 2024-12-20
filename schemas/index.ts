@@ -6,6 +6,10 @@ import { isMatchedCountry } from "@/lib/countries-match";
 
 const phoneErrorMessage = 'Phone number does not match the selected country'
 
+export const assignResponderSchema = z.object({
+    id: z.string()
+});
+
 export const deleteSchema = z.object({
     id: z.string()
 });

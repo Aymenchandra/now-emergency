@@ -12,7 +12,7 @@ export interface EmergencyData extends Emergency {
 export const AdminEmergencies = async () => {
   const data = await getAllEmergencies();
   return (
-    <LayoutView title="All Users">
+    <LayoutView title="All Emergencies">
       <DataTable data={data} columns={AdminColumns} />
     </LayoutView>
   );

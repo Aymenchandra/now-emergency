@@ -9,7 +9,7 @@ export const UserEmergencies = async () => {
   const user = await CurrentUser()
   const data = await getEmergencyByUserId(user?.id as string);
   return (
-    <LayoutView title="All Users">
+    <LayoutView title="All Emergencies">
       <DataTable data={data} columns={UserColumns} />
     </LayoutView>
   );
