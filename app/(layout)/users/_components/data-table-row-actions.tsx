@@ -12,12 +12,11 @@ import { useState } from "react";
 import { MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
-import { EditUserForm } from "@/components/layout/crud-forms/users/edit-user-form";
-import { User } from "@prisma/client";
+import { EditUserForm, Users } from "@/components/layout/crud-forms/users/edit-user-form";
 import { DeleteForm } from "@/components/layout/crud-forms/delete-form";
 import { layoutEntity } from "@/lib/layout-entity";
 
-interface RowData<T> extends User{
+interface RowData<T> extends Users{
   id: string;
 }
 

@@ -38,6 +38,10 @@ export function isRouteAllowed(pathname: string) {
     if (pathname.startsWith('/emergency/')) {
         return true;
     }
+    
+    if (pathname.startsWith('/track/')) {
+        return true;
+    }
 
     return false;
 }

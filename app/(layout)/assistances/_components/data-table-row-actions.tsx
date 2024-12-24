@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
@@ -14,7 +13,6 @@ import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 
 import { AssignResponderForm } from "@/components/layout/crud-forms/assistances/assign-responder-form";
-import { db } from "@/lib/db";
 import { getEmergencyById } from "@/data/emergency";
 
 interface RowData<T> {
@@ -29,7 +27,6 @@ export function DataTableRowActions<TData extends RowData<string>>({
   row
 }: DataTableRowActionsProps<TData>) {
   const [isAssignResponderOpen, setIsAssignResponderOpen] = useState(false);
-  const [isTrackEmergencyOpen, setIsTrackEmergencyOpen] = useState(false);
   const [employeeExists, setEmployeeExists] = useState<boolean | null>(null);
 
 
@@ -47,9 +44,8 @@ export function DataTableRowActions<TData extends RowData<string>>({
     setIsAssignResponderOpen(true);
   };
 
-  // Function to handle opening the track emergency modal
   const handleTrackEmergencyOpen = () => {
-    setIsTrackEmergencyOpen(true);
+    //router 
   };
 
   return (

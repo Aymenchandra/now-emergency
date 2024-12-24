@@ -26,7 +26,7 @@ import { useRouter } from "next/navigation"
 import LocationSelector from "@/components/ui/location-input"
 import { editUserSchema } from "@/schemas"
 
-interface Users extends User {
+export interface Users extends User {
   location: Location
 }
 export const EditUserForm = ({ user, setIsOpen }: { user: Users, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {

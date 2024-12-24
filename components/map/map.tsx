@@ -24,7 +24,7 @@ import MapUpdater from "./mapUpdater"
 import { ToastMessage } from "@/lib/toast-message"
 import { ResponsiveDialog } from "../responsive-dialog";
 import { EmergencyForm } from "../layout/crud-forms/emergency/emergency-form";
-import { Emergency, Location } from "@prisma/client";
+import { Emergency } from "@prisma/client";
 import { WorkstationForm } from "../layout/crud-forms/workstation/workstation-form";
 import { upDateUserWorkStation } from "./dynamicMap";
 

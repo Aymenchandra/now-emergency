@@ -13,6 +13,16 @@ export const getEmergencyById = async (id: string) => {
     }
 }
 
+export const getTrackedEmergencyById = async (id: string) => {
+    try {
+        const emergency = await db.emergency.findUnique({ where: { id }, include : { employee : { include : {location : true}}},  });
+        return emergency;
+    } catch (error) {
+        console.error("Error fetching emergency:", error);
+        return null;
+    }
+}
+
 
 export const getAllEmergencies = async (): Promise<EmergencyData[]> => {
     try {
