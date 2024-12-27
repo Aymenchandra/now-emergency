@@ -19,14 +19,14 @@ import { layoutEntity } from "@/lib/layout-entity";
 
 interface RowData<T> {
   id: string;
-  employeeId: string;
+  employeeId: string | null;
 }
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData extends RowData<string> ? TData : any>;
+  row: Row<TData>;
 }
 
-export function UsersDataTableRowActions<TData>({
+export function UsersDataTableRowActions<TData extends RowData<string>>({
   row
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter()
@@ -92,7 +92,7 @@ export function UsersDataTableRowActions<TData>({
     </>
   );
 }
-export function AdminDataTableRowActions<TData>({
+export function AdminDataTableRowActions<TData extends RowData<string>>({
   row
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter()

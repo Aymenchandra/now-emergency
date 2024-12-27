@@ -29,6 +29,7 @@ import { editUserSchema } from "@/schemas"
 export interface Users extends User {
   location: Location
 }
+
 export const EditUserForm = ({ user, setIsOpen }: { user: Users, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const router = useRouter()
   const [error, setError] = useState<string | undefined>('')

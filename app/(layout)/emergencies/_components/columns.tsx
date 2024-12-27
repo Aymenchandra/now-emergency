@@ -149,7 +149,7 @@ export const UserColumns: ColumnDef<Emergency>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <UsersDataTableRowActions row={row} />,
+    cell: ({ row }) => <UsersDataTableRowActions row={row as any} />,
   },
 ];
 

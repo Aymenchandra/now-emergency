@@ -15,15 +15,18 @@ import { ResponsiveDialog } from "@/components/responsive-dialog";
 import { EditUserForm, Users } from "@/components/layout/crud-forms/users/edit-user-form";
 import { DeleteForm } from "@/components/layout/crud-forms/delete-form";
 import { layoutEntity } from "@/lib/layout-entity";
+import { Location, User } from "@prisma/client";
 
-interface RowData<T> extends Users{
+
+interface RowData<T> extends User{
   id: string;
+  location?: Location;
 }
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData extends RowData<string> ? TData : any>;
+  row: Row<TData>;
 }
-export function DataTableRowActions<TData>({
+export function DataTableRowActions<TData extends RowData<string>>({
   row
 }: DataTableRowActionsProps<TData>) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -38,7 +41,7 @@ export function DataTableRowActions<TData>({
         description="Are you sure you want to update this user?"
 
       >
-        <EditUserForm user={row.original} setIsOpen={setIsEditOpen} />
+        <EditUserForm user={row.original as Users} setIsOpen={setIsEditOpen} />
       </ResponsiveDialog>
       <ResponsiveDialog
         isOpen={isDeleteOpen}

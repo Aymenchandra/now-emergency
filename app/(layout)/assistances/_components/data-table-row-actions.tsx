@@ -20,15 +20,15 @@ import { emergencyStatus } from "@prisma/client";
 
 interface RowData<T> {
   id: string;
-  employeeId: string;
+  employeeId: string | null;
   status: emergencyStatus
 }
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData extends RowData<string> ? TData : any>;
+  row: Row<TData>;
 }
 
-export function DataTableRowActions<TData>({
+export function DataTableRowActions<TData extends RowData<string>>({
   row
 }: DataTableRowActionsProps<TData>) {
   const [isAssignResponderOpen, setIsAssignResponderOpen] = useState(false);
