@@ -11,9 +11,9 @@ import { FormSuccess } from "@/components/form-success"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { updateEmergencyStatusSchema } from "@/schemas/index"
-import { assignResponderEmergency } from "@/actions/crud/emergency/assignResponderEmergency"
+import { doneEmergency } from "@/actions/crud/emergency/doneEmergency"
 
-export const AssignResponderForm = ({ id, setIsOpen }: { id: string, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
+export const AssistanceDoneForm = ({ id, setIsOpen }: { id: string, setIsOpen: Dispatch<SetStateAction<boolean>> }) => {
   const router = useRouter()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
@@ -30,7 +30,7 @@ export const AssignResponderForm = ({ id, setIsOpen }: { id: string, setIsOpen: 
     setError("");
     setSuccess("");
     startTransition(() => {
-      assignResponderEmergency(payload)
+      doneEmergency(payload)
         .then((data) => {
           if (data.error) {
             setError(data.error)
@@ -48,6 +48,7 @@ export const AssignResponderForm = ({ id, setIsOpen }: { id: string, setIsOpen: 
         .catch(() => setError('Something went wrong!'))
     })
   }
+  
   return (
     <Form {...form}>
       <form className="space-y-4 mt-4" onSubmit={form.handleSubmit(onSubmit)}>
@@ -73,10 +74,10 @@ export const AssignResponderForm = ({ id, setIsOpen }: { id: string, setIsOpen: 
               {isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Responding...
+                  Completing...
                 </>
               ) : (
-                'Responde'
+                'Complete'
               )}
             </>
           </Button>

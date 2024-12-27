@@ -114,6 +114,7 @@ model Emergency {
   description String
   country     String
   governorate String
+  display_name String?
   position    Float[]
   type        emergencyType   @default(OTHER)
   status      emergencyStatus @default(HELP)

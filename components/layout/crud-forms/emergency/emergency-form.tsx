@@ -34,6 +34,7 @@ interface EmergencyFormProps {
     position: LatLngTuple | null;
     country: string | null;
     governorate: string | null;
+    display_name: string | null;
   };
   emergencyInfo?: {
     id: string | null;
@@ -58,6 +59,7 @@ export const EmergencyForm = ({ setIsOpen, location, emergencyInfo }: EmergencyF
       description: emergencyInfo?.description || "",
       country: location.country as string,
       governorate: location.governorate as string,
+      display_name: location.display_name as string,
       position: location.position as LatLngTuple,
       type: emergencyInfo?.type || undefined,
       userId: user?.id,

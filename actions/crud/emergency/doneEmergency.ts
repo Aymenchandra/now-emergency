@@ -8,7 +8,7 @@ import { CurrentUser } from "@/lib/auth";
 import { emergencyStatus } from "@prisma/client";
 
 
-export const assignResponderEmergency = async (payload: z.infer<typeof updateEmergencyStatusSchema>) => {
+export const doneEmergency = async (payload: z.infer<typeof updateEmergencyStatusSchema>) => {
 
     const validatedFields = updateEmergencyStatusSchema.safeParse(payload);
 
@@ -22,18 +22,17 @@ export const assignResponderEmergency = async (payload: z.infer<typeof updateEme
         return { error: "Emergency Not Found" }
     }
 
+    const employee = await CurrentUser()
     //already taken by other employee
-    if (emergency.employeeId) {
-        return { error: `This emergency has already been taken` }
+    if (emergency.employeeId !== employee?.id) {
+        return { error: `Only assigned employee can complete this emergency` }
     }
 
     // take employee id from token
-    const employee = await CurrentUser()
     await db.emergency.update({
         where: { id: validatedFields.data.id },
         data: {
-            status: emergencyStatus.PENDING,
-            employeeId: employee?.id, // Assign the employee to handle the emergency
+            status: emergencyStatus.DONE,
         },
     })
 

@@ -8,12 +8,12 @@ import { EmergencyProps } from "./dynamicRoutingMap";
 
 
 
-export default function MapWithRouting({ emergencyPosition }: EmergencyProps) {
+export default function MapWithRouting({ trackedEmergency }: EmergencyProps) {
 
   return (
     <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
+      center={trackedEmergency.emergencyPosition as L.LatLngTuple}
+      zoom={10}
       scrollWheelZoom={true}
       className="w-full h-[95%] relative z-0"
     >
@@ -21,8 +21,7 @@ export default function MapWithRouting({ emergencyPosition }: EmergencyProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
-      <LeafletRoutingMachine emergencyPosition={emergencyPosition} />
+      <LeafletRoutingMachine trackedEmergency={trackedEmergency} />
     </MapContainer>
   );
 

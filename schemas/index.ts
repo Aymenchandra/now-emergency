@@ -6,7 +6,7 @@ import { isMatchedCountry } from "@/lib/countries-match";
 
 const phoneErrorMessage = 'Phone number does not match the selected country'
 
-export const assignResponderSchema = z.object({
+export const updateEmergencyStatusSchema = z.object({
     id: z.string()
 });
 
@@ -203,6 +203,9 @@ export const EmergencySchema = z.object({
     }),
     governorate: z.string().min(1, {
         message: "Governorate is required"
+    }),
+    display_name: z.string().min(1, {
+        message: "Display Name is required"
     }),
     position: z.number().array(),
     status: z.enum([emergencyStatus.HELP, emergencyStatus.PENDING, emergencyStatus.DONE]),
