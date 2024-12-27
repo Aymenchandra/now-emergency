@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "@/components/data-table-components/data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
+import { AdminDataTableRowActions, UsersDataTableRowActions } from "./data-table-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Emergency, emergencyStatus, emergencyType } from "@prisma/client";
@@ -149,7 +149,7 @@ export const UserColumns: ColumnDef<Emergency>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => <UsersDataTableRowActions row={row} />,
   },
 ];
 
@@ -328,6 +328,6 @@ export const AdminColumns: ColumnDef<EmergencyData>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => <AdminDataTableRowActions row={row} />,
   },
 ];

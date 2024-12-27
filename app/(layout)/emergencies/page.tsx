@@ -4,9 +4,8 @@ import { CurrentUser } from "@/lib/auth"
 import { userRole } from "@prisma/client"
 
 
-const usersPage = async () => {
+const emergenciesPage = async () => {
   const user = await CurrentUser()
-  
   switch (user?.role) {
     case userRole.ADMIN:
       return (
@@ -14,6 +13,11 @@ const usersPage = async () => {
       )
       break;
     case userRole.USER:
+      return (
+        <UserEmergencies/> // component for type of user EMPLOYEE & USER
+      )
+      break;
+    case userRole.EMPLOYEE:
       return (
         <UserEmergencies/>
       )
@@ -23,4 +27,4 @@ const usersPage = async () => {
   }
 }
 
-export default usersPage
+export default emergenciesPage

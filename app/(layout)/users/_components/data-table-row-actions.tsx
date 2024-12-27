@@ -21,9 +21,9 @@ interface RowData<T> extends Users{
 }
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData>;
+  row: Row<TData extends RowData<string> ? TData : any>;
 }
-export function DataTableRowActions<TData extends RowData<string>>({
+export function DataTableRowActions<TData>({
   row
 }: DataTableRowActionsProps<TData>) {
   const [isEditOpen, setIsEditOpen] = useState(false);

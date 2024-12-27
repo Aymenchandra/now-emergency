@@ -52,6 +52,18 @@ const data = {
   ],
   userNav: [
     {
+      title: "Emergencies",
+      url: "/emergencies",
+      icon: Flag,
+    },
+    {
+      title: "Profile",
+      url: "/profile",
+      icon: User,
+    },
+  ],
+  employeeNav: [
+    {
       title: "Assistances",
       url: "/assistances",
       icon: Info,
@@ -62,15 +74,15 @@ const data = {
       icon: Flag,
     },
     {
+      title: "WorkStation",
+      url: "/workstation",
+      icon: BriefcaseBusiness,
+    },
+    {
       title: "Profile",
       url: "/profile",
       icon: User,
     },
-    {
-      title: "WorkStation",
-      url: "/workstation",
-      icon: BriefcaseBusiness,
-    }
   ]
 }
 
@@ -83,6 +95,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       break;
     case userRole.USER:
       navMain = data.userNav
+      break;
+    case userRole.EMPLOYEE:
+      navMain = data.employeeNav
       break;
     default:
       return

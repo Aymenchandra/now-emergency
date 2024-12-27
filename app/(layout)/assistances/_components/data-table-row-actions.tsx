@@ -7,43 +7,34 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Handshake, MapPinCheckInside, MoreHorizontal, Podcast } from "lucide-react";
 import IconMenu from "@/components/icon-menu";
 import { ResponsiveDialog } from "@/components/responsive-dialog";
 
 import { AssignResponderForm } from "@/components/layout/crud-forms/assistances/assign-responder-form";
-import { getEmergencyById } from "@/data/emergency";
 
 import { useRouter } from 'next/navigation'
 import { AssistanceDoneForm } from "@/components/layout/crud-forms/assistances/assitances-done";
+import { emergencyStatus } from "@prisma/client";
 
 interface RowData<T> {
   id: string;
+  employeeId: string;
+  status: emergencyStatus
 }
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData>;
+  row: Row<TData extends RowData<string> ? TData : any>;
 }
 
-export function DataTableRowActions<TData extends RowData<string>>({
+export function DataTableRowActions<TData>({
   row
 }: DataTableRowActionsProps<TData>) {
   const [isAssignResponderOpen, setIsAssignResponderOpen] = useState(false);
   const [isEmergencyDoneOpen, setIsEmergencyDoneOpen] = useState(false);
-  const [employeeExists, setEmployeeExists] = useState<boolean | null>(null);
   const router = useRouter()
 
-
-  useEffect(() => {
-
-    const fetchEmergency = async () => {
-      const emergency = await getEmergencyById(row.original.id);
-      setEmployeeExists(!!emergency?.employeeId);
-
-    };
-    fetchEmergency();
-  }, [row]);
 
   const handleAssignResponderOpen = () => {
     setIsAssignResponderOpen(true);
@@ -85,16 +76,17 @@ export function DataTableRowActions<TData extends RowData<string>>({
             className="group flex w-full items-center justify-between text-left p-0 text-sm font-base text-neutral-500"
           >
             <button
-              onClick={() => employeeExists ? handleTrackEmergencyOpen(row.original.id) : handleAssignResponderOpen()}
+              onClick={() => row.original.employeeId ? handleTrackEmergencyOpen(row.original.id) : handleAssignResponderOpen()}
               className="w-full justify-start flex rounded-md p-2 transition-all duration-75 hover:bg-neutral-100"
             >
+              {/* row.original.employeeId == employeeExists */}
               <IconMenu
-                text={employeeExists ? 'Track' : 'Responder'}
-                icon={employeeExists ? <Podcast className="h-4 w-4" /> : <Handshake className="h-4 w-4" />}
+                text={row.original.employeeId ? 'Track' : 'Responder'}
+                icon={row.original.employeeId ? <Podcast className="h-4 w-4" /> : <Handshake className="h-4 w-4" />}
               />
             </button>
           </DropdownMenuItem>
-          {employeeExists && (
+          {row.original.status != emergencyStatus.DONE && row.original.employeeId && (
             <DropdownMenuItem
               className="group flex w-full items-center justify-between text-left p-0 text-sm font-base text-neutral-500"
             >

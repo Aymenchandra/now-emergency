@@ -37,7 +37,7 @@ export const getAllAssistancesByEmployee = async (): Promise<EmergencyData[]> =>
     const user = await CurrentUser();
     // get emergencies list in my area which is location.governorate
     try {
-        const emergency = await db.emergency.findMany({ where: { governorate: user?.location.governorate }, include: { user: true } })
+        const emergency = await db.emergency.findMany({ where: { governorate: user?.location.governorate, employeeId : { not : user?.id } }, include: { user: true } })
         return emergency
     } catch {
         return []
